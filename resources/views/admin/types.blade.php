@@ -4,7 +4,9 @@
  <?php $slug = str_slug($c->title); ?>
  @section("title")
  
- <i class="fa fa-{{$c->icon}}"></i> {{@e2($c->title)}}
+ <i class="">
+	<img src="{{url("assets/icons/". $c->icon . ".png")}}" width="48" alt="">
+ </i> {{@e2($c->title)}}
  @endsection
  @section("desc",@$c->title." ". __("türüne ait içerikler")) 
  <?php } ?>

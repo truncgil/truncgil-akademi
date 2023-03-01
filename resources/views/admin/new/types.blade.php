@@ -32,9 +32,7 @@
 					<tr>
 						<td class="text-center">
                             
-                        <i class="material-symbols-outlined">
-										{{$a->icon}}
-									</i>
+                            <img src="{{url("assets/icons/". $a->icon .".png")}}" width="24" alt="">
                         </td>
                         <td>
 						

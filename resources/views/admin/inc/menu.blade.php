@@ -22,16 +22,20 @@
 								<li>
 							<?php $alt = Types::where("kid",$c->slug)->get(); ?>
 									<a  <?php if(varmi($alt)) { ?>class="nav-submenu" data-toggle="nav-submenu"<?php } ?>  href="{{ url('admin/types/'. $c->slug) }}">
-									<i class="material-symbols-outlined">
-										{{$c->icon}}
+									<i>
+									<img src="{{url("assets/icons/".$c->icon . ".png")}}" width="24" alt="">
 									</i>
-									<span>{{__($c->title)}}</span></a>
+									<span class="ml-2">{{__($c->title)}}</span></a>
 									<?php  if(varmi($alt)) { ?>
 								
 									<ul>
 									<?php foreach($alt AS $a) { ?>
 									@if(in_array($c->title,$permissions) || in_array("ALL PRIVILEGES",$permissions))
-										<li><a href="{{ url('admin/types/'. $a->slug) }}">{{$a->title}}</a></li>
+										<li>
+											<i class="float-left mr-1">
+												<img src="{{url("assets/icons/".$a->icon . ".png")}}" width="16" alt="">
+											</i>
+											<a href="{{ url('admin/types/'. $a->slug) }}">{{$a->title}}</a></li>
 									@endif
 									<?php } ?>
 									</ul>

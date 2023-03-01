@@ -48,6 +48,7 @@ if(getisset("ajax")) {
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <link rel="stylesheet" id="css-main" href="{{ asset('assets/admin/css/pelinom6.min.css') }}">
+    <link rel="stylesheet" id="css-main" href="{{ asset('assets/admin/css/themes/pulse.min.css') }}">
     <link rel="stylesheet" id="css-main" href="{{ asset('assets/admin/css/stellar.css?'.rand()) }}">
 	
 	
