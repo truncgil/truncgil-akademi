@@ -1,5 +1,5 @@
 @extends('admin.master')
-@section("title",__("Kullanıcılar"))
+@section("title",__("Users"))
 @section("desc",__("Sistemde yer alan kullanıcıları bu bölümden yönetebilirsiniz"))
 @section('content')
 <?php
@@ -44,7 +44,14 @@
 	$types = Types::all();
 	
 ?>
+
 <div class="content">
+<div class="row">
+	<?php if(getisset("id"))  { 
+	  ?>
+ 	@include("admin.users.detail") 
+	 <?php } ?>
+</div>
 <div class="block">
         <div class="block-header block-header-default">
             <h3 class="block-title">
@@ -75,7 +82,7 @@
 
         <div class="block-content">
 			<div class="table-responsive">
-				<table class="table table-bordered table-hover table-striped">
+				<table class="table table-bordered table-hover table-striped table-sm">
 					<tr>
 						<td>{{e2("ID")}}</td>
 						<td>{{e2("Parent")}}</td>
@@ -96,12 +103,14 @@
 						@endphp
 					<tr>
 						<td>{{$u->id}}</td>
-						<td><input type="text" name="ust" value="{{$u->ust}}" style="min-width:100px" table="users" id="{{$u->id}}" class="name{{$u->id}} form-control edit" /></td>
-						<td><input type="text" name="name" value="{{$u->name}}" table="users" id="{{$u->id}}" class="name{{$u->id}} form-control edit" /></td>
-						<td><input type="text" name="surname" value="{{$u->surname}}" table="users" id="{{$u->id}}" class="surname{{$u->id}} form-control edit" /></td>
+						<td><x-input-edit name="ust" type="number" value="{{$u->ust}}" id="{{$u->id}}" table="users" /></td>
+						<td>
+							<x-input-edit name="name" type="text" value="{{$u->name}}" id="{{$u->id}}" table="users" />
+						</td>
+						<td><x-input-edit name="surname" type="text" value="{{$u->surname}}" id="{{$u->id}}" table="users" /></td>
 						<td>
 							<select name="level" id="{{$u->id}}" table="users" class="form-control edit">
-							@if($seviye!=null)
+						@if($seviye!=null)
 								@foreach($seviye AS $l)
 								<?php $l = trim($l); ?>
 								<?php 
@@ -121,42 +130,47 @@
 						<td><input type="text" name="email" value="{{$u->email}}" table="users" id="{{$u->id}}" class="email{{$u->id}} form-control edit" /></td>
 						<td><input type="text" name="phone" value="{{$u->phone}}" table="users" id="{{$u->id}}" class="phone{{$u->id}} form-control edit" /></td>
 						<td>
-			<?php // print_r( $permissions); ?>
-						<form action="{{url('admin-ajax/permission-update')}}" method="post">
-							@csrf
-							<select name="permissions[]" multiple id="" class="select2" style="width:250px">
-							@if($types!=null)
-							@foreach($types AS $t)
-							<?php 
-							$ust = "";
-							if($t->kid!="") {
-								$ust = slugtotitle($t->kid). " / ";
-							} ?>
-								<option value="{{$t->title}}" @if(in_array($t->title,$permissions)) selected @endif>{{$ust}}{{$t->title}}</option>
-							@endforeach
-							@endif
-							@foreach(diger_ayarlar() AS $d) 
-							
-								<option value="{{$d}}" @if(in_array($d,$permissions)) selected @endif>{{$d}}</option>
-							@endforeach
-							</select>
-							<input type="hidden" name="id" value="{{$u->id}}" />
-							<button class="btn btn-default" title="{{__('Kullanıcının yetkilerini güncelle')}}"><i class="fa fa-sync"></i></button>
-						</form>
+							<button class="btn btn-secondary btn-sm btn-block" data-toggle="collapse" data-target="#permissions{{$u->id}}">{{e2("Select")}}</button>
+
+							<div id="permissions{{$u->id}}" class="collapse">
+								<form action="{{url('admin-ajax/permission-update')}}" method="post">
+									@csrf
+									<select name="permissions[]" multiple id="" class="select2" style="width:250px">
+									@if($types!=null)
+									@foreach($types AS $t)
+									<?php 
+									$ust = "";
+									if($t->kid!="") {
+										$ust = slugtotitle($t->kid). " / ";
+									} ?>
+										<option value="{{$t->title}}" @if(in_array($t->title,$permissions)) selected @endif>{{$ust}}{{$t->title}}</option>
+									@endforeach
+									@endif
+									@foreach(diger_ayarlar() AS $d) 
+									
+										<option value="{{$d}}" @if(in_array($d,$permissions)) selected @endif>{{$d}}</option>
+									@endforeach
+									</select>
+									<input type="hidden" name="id" value="{{$u->id}}" />
+									<button class="btn btn-default" title=""><i class="fa fa-sync"></i> {{__('Update Permissions')}}</button>
+								</form>
+							</div>
+		
+						
 						</td>
 						
-						<td><a href="{{url('admin-ajax/password-update?id='.$u->id)}}" title="{{__('Kullanıcının şifresini sıfırla')}}" class="btn btn-default"><i class="fa fa-sync"></i> {{e2("Reset Password")}}</button></td>
+						<td><a href="{{url('admin-ajax/password-update?id='.$u->id)}}" title="{{__('Reset user\'s password')}}" class="btn btn-default btn-sm"><i class="fa fa-sync"></i> {{e2("Reset Password")}}</button></td>
 						<td>{{$u->recover}}</td>
 						<td><input type="text" name="alias" value="{{$u->alias}}" table="users" id="{{$u->id}}" class="alias{{$u->id}} form-control edit" /></td>
 
 						<td>
 						<div class="dropdown">
-						  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							{{e2("Opr.")}}
 						  </button>
 						  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							<a class="dropdown-item" href="#"><i class="fa fa-lock"></i> {{e2("Login")}}</a>
-							<a class="dropdown-item ajax_modal" href="?ajax2=admin.users.detail&id={{$u->id}}"  ><i class="fa fa-pen"></i> {{e2("User Info")}}</a>
+							<a class="dropdown-item" href="?id={{$u->id}}"  ><i class="fa fa-pen"></i> {{e2("User Info")}}</a>
 							<a class="dropdown-item" teyit="{{$u->adi}} {$u->soyadi} {{e2("Are you sure delete this user?")}}" href="{{url('admin-ajax/user-delete?id='.$u->id)}}">
 							<i class="fa fa-times"></i>
 							{{e2("Delete")}}</a>

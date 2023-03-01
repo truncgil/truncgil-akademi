@@ -11,13 +11,14 @@
                         $(function() {
                             $(".profile-update  .new-password, .profile-update .reemail").remove();
                             <?php $user = u()->toArray(); 
-                            
+                            unset($user['password']);
+                            unset($user['json']);
                             foreach($user AS $name => $value) {
-                                if($name!="password")  {  ?>
+                               ?>
                                 <?php if(!is_array($value))  { 
                                   ?>
                                    $(".profile-update [name='{{$name}}']").val("<?php echo $value ?>");  
-                                 <?php } ?>
+                                
                                 <?php 
                                 } 
                             }

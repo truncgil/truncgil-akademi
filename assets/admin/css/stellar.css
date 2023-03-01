@@ -1,0 +1,10 @@
+.table-sm td {
+    padding: 2px;
+    text-align: center;
+}
+
+.table-sm input, .table-sm select {
+    padding: 0px 10px;
+    height:30px;
+    border:none;
+}

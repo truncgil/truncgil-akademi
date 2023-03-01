@@ -1,0 +1,1 @@
+<input type="{{$type}}" name="{{$name}}" value="{{$value}}" table="{{$table}}" id="{{$id}}" class="{{$name}}{{$id}} form-control edit" />
