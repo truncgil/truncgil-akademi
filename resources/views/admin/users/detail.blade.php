@@ -15,6 +15,7 @@ if(isAdmin())  {
     }
    
     unset($post['password2']);
+    unset($post['password']);
     unset($post['_token']);
    db("users")
         ->where("id",get("update"))
