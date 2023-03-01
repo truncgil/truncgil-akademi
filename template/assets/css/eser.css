@@ -1,0 +1,164 @@
+/*!
+ * E-SER Modified CSS 
+ * Copyright 2022 Truncgil Technology
+ */
+ @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+ .navbar-brand .navbar-brand-item {
+    height: 70px;
+    display: block;
+    width: auto;
+  }
+  .navbar-brand {
+    margin-right:0px;
+    position:relative;
+    width: 280px;
+  }
+  .navbar-title {
+      font-family: 'Anton', sans-serif;
+      display: block;
+      width: 217px;
+      position: absolute;
+      top: 30px;
+      white-space: normal;
+      left: 96px;
+      font-size: 25px;
+      line-height: 35px;
+      text-align: revert;
+      /* transform: scale(1.5); */
+  }
+.navbar-sticky-on .navbar-title {
+      display: block;
+      width: 178px;
+      position: absolute;
+      top: 18px;
+      white-space: normal;
+      left: 73px;
+      font-size: 19px;
+      line-height: 21px;
+      text-align: revert;
+      /* display:none; */
+}
+.navbar-sticky-on .navbar-brand .navbar-brand-item {
+  height: 50px;
+}
+.offcanvas .navbar-title {
+  top: 0px;
+}
+footer .navbar-title {
+  top: 10px;
+  /* font-size: 18px; */
+  line-height: 23px;
+  /* position: relative; */
+  /* left: 0px; */
+  height: 70px;
+  font-size: 21px;
+  color: white !important;
+}
+.navbar-expand-xl .navbar-collapse {
+  display: block !important;
+}
+  @media screen and (max-width:1199px) {
+    .navbar-brand {
+      margin-right:0px;
+      position:relative;
+      width: auto;
+    }
+    .navbar-title {
+        /* display: none; */
+    }
+  }
+    @media screen and (max-width:991px) {
+    .navbar-brand {
+      margin-right:0px;
+      position:relative;
+      width: auto;
+    }
+    .navbar-title {
+      display: block;
+      width: 213px;
+      position: absolute;
+      top: 40px;
+      white-space: normal;
+      left: 96px;
+      font-size: 24px;
+      line-height: 24px;
+      text-align: revert;
+    }
+  }   
+    @media screen and (max-width:767px) {
+    .navbar-brand {
+      margin-right:0px;
+      position:relative;
+      width: auto;
+    }
+    .navbar-expand-xl .navbar-collapse {
+      display: none !important;
+    }
+    .navbar-expand-xl .navbar-collapse.show {
+      display: block !important;
+    }
+    .navbar-title {
+      display: block;
+      width: 213px;
+      position: absolute;
+      top: 30px;
+      white-space: normal;
+      left: 96px;
+      font-size: 24px;
+      line-height: 24px;
+      text-align: revert;
+    }
+    footer .navbar-title {
+        top: 10px;
+        /* font-size: 18px; */
+        /* line-height: 23px; */
+        position: absolute;
+        left: 92px;
+        height: 75px;
+    }
+  }   
+   @media screen and (max-width:440px) {
+    .navbar-brand {
+      margin-right:0px;
+      position:relative;
+      width: auto;
+    }
+    .navbar-title {
+      display: block;
+      width: 180px;
+      position: absolute;
+      top: 18px;
+      white-space: normal;
+      left: 54px;
+      font-size: 18px;
+      line-height: 20px;
+      text-align: revert;
+    }
+    .navbar-brand .navbar-brand-item {
+      height: 40px;
+    }
+  }
+.navbar-nav .material-symbols-outlined {
+  position:relative;
+  top: 3px;
+  font-size: 20px;
+}
+.material-symbols-outlined {
+  font-size:unset;
+  position: relative;
+  top: 3px;
+}
+.navbar-expand-xl .navbar-nav {
+
+  float: right !important;
+}
+
+.show .navbar-nav {
+  float:none !important;
+}
+.navbar-nav .nav-item:last-child .nav-link {
+  padding-right: 15px;
+}
+[data-theme="dark"] .navbar-title {
+  color:white !important;
+}
