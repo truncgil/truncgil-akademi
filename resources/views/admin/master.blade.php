@@ -48,6 +48,7 @@ if(getisset("ajax")) {
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <link rel="stylesheet" id="css-main" href="{{ asset('assets/admin/css/pelinom6.min.css') }}">
+    <link rel="stylesheet" id="css-main" href="{{ asset('assets/admin/css/stellar.css?'.rand()) }}">
 	
 	
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,400i,600,700">
@@ -76,6 +77,7 @@ if(getisset("ajax")) {
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clusterize.js/0.18.0/clusterize.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/clusterize.js/0.18.0/clusterize.min.css" />
 
+<script src="https://cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
 
 
 <script src="{{ asset('assets/admin/js/plugins/dropzonejs/dropzone.min.js') }}"></script>
@@ -173,19 +175,18 @@ if(getisset("ajax")) {
         
         <nav id="sidebar">
             <div class="sidebar-content">
-      
 
                 <div class="content-side content-side-full content-side-user px-10 align-parent">
                     <!-- Visible only in mini mode -->
                     <div class="sidebar-mini-visible-b align-v animated fadeIn">
-                        <img class="img-fluid" src="{{ url(env("APP_LOGO")) }}" alt="">
+                        <img class="img-fluid" src="{{ url("assets/logo.svg") }}" alt="">
                     </div>
                     <!-- END Visible only in mini mode -->
 
                     <!-- Visible only in normal mode -->
                     <div class="sidebar-mini-hidden-b text-center">
                         <a class="img-link" href="#">
-                            <img class="img-fluid" src="{{ url(env("APP_LOGO")) }}" alt="">
+                            <img class="img-fluid" src="{{ url("assets/logo.svg") }}" alt="">
                         </a>
                         <a class="text-center text-dual-primary-dark font-size-xs font-w600"
                                     href="#">{{ Auth::user()->name }}  {{ Auth::user()->surname }}</a>

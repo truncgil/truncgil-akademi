@@ -329,6 +329,11 @@ function picture2($f,$size,$storage=1) {
     $f = url("r.php?p=$f&w=$size");
     return $f;
 }
+function picture3($f,$size) {
+      
+    $f = url("r.php?p=$f&w=$size");
+    return $f;
+}
 function price($price,$type="¥") {
     $price = str_replace(",","",$price);
     $price = str_replace(".","",$price);
@@ -709,17 +714,21 @@ function tak_list() {
 function upload($file, $folder = "", $name = "")
 {
     $request = \Request::all();
-
-    $ext = $request[$file]->getClientOriginalExtension();
-    if($name=="") {
-        $name = str_slug($request[$file]->getClientOriginalName()) . "." . $ext;
+    if(isset($request[$file])) {
+        $ext = $request[$file]->getClientOriginalExtension();
+        if($name=="") {
+            $name = str_slug($request[$file]->getClientOriginalName()) . "." . $ext;
+        } else {
+            $name = $name . "." . $ext;
+        }
+        
+    
+        $path = $request[$file]->storeAs("files/$folder", $name);
+        return "storage/app/$path";
     } else {
-        $name = $name . "." . $ext;
+        return null;
     }
     
-
-    $path = $request[$file]->storeAs("files/$folder", $name);
-    return "storage/app/$path";
 }
 function upload2($file, $folder = "") 
 {
