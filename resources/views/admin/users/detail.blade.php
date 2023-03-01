@@ -270,7 +270,7 @@ if(isAdmin())  {
 </select>
     </div>
     <div class="col-md-6">
-        <label for="">{{e2("E-Mail")}}: </label><input  type="email" value="" name="email" id="e-mail" class="form-control">
+        <label for="">{{e2("E-Mail")}}: </label><input  type="text" value="" name="email" id="e-mail" class="form-control">
     </div>
     <div class="col-md-6">
         <label for="">{{e2("Phone")}}: </label><input  type="text" value="" name="phone" id="phone" class="form-control">
