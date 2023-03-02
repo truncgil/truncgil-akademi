@@ -19,7 +19,7 @@ if(getisset("ajax")) {
 @endphp
 <?php $u = u(); ?>
 <!DOCTYPE HTML>
-<html lang="tr">
+<html lang="{{App::getLocale()}}">
 
 <head>	
     <meta charset="utf-8">
