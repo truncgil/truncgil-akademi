@@ -119,7 +119,7 @@
                         </li>
                         <li>
                             <a class="nav-submenu" href="{{ url('admin/new/types') }}"><i
-                                    class="si si-layers"></i><span class="sidebar-mini-hide">{{__('Types')}}</span></a>
+                                    class="si si-layers"></i><span class="sidebar-mini-hide">{{__('Modules')}}</span></a>
                             
                         </li>
                         <li>
