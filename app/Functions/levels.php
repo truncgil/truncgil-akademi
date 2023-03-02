@@ -14,4 +14,8 @@
         'Document Staff' =>                                             [9,0,1,1,1],
         'Field Staff' =>                                                [10,0,1,1,1],
     ];
-} ?>
+} 
+
+function level_keys() {
+    return array_keys(levels());
+}
