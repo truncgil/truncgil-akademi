@@ -14,7 +14,31 @@
             </div>
         </div>
         <div class="block-content">
+            
             <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover">
+                    <tr>
+                        <th>{{e2("User No")}}</th>
+                        <th>{{e2("Level")}}</th>
+                        <th>{{e2("Full Control")}}</th>
+                        <th>{{e2("Write")}}</th>
+                        <th>{{e2("Read")}}</th>
+                        <th>{{e2("Modify")}}</th>
+                    </tr>
+                    <?php $levels = levels(); 
+                    foreach($levels AS $level => $detail)  { 
+                     
+                     ?>
+                     <tr>
+                        <td>{{$detail[0]}}</td>
+                        <td>{{$level}}</td>
+                        <td>{{$detail[1]==1 ? "✅" : "❌"}}</td>
+                        <td>{{$detail[2]==1 ? "✅" : "❌"}}</td>
+                        <td>{{$detail[3]==1 ? "✅" : "❌"}}</td>
+                        <td>{{$detail[4]==1 ? "✅" : "❌"}}</td>
+                     </tr> 
+                     <?php } ?>
+                </table>
                 <table class="table table-striped table-hover table-bordered table-vcenter table-sm">
                     <thead>
                         <tr>
