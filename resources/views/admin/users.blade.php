@@ -16,7 +16,7 @@
 	} catch (Exception $e) {
 		
 	}
-	$seviye = levels();
+	$seviye = level_keys();
 //	$seviye = explode("\n",$seviye);
 	$request = null;
 	if(getisset("q")) {
