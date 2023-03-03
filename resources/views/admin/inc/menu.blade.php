@@ -4,7 +4,7 @@
  <div class="content-side content-side-full">
                     
                     <ul class="nav-main">
-                        <li >
+                        <li class="d-none">
                             <a class="active" href="{{url('admin/')}}"><i class="si si-cup"></i><span
                                     class="sidebar-mini-hide">Dashboard</span></a>
                         </li>
