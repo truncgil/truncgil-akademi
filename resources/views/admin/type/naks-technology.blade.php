@@ -1,6 +1,6 @@
 <?php 
 use App\Models\NaksCertificate; 
-use App\Models\NaksCenter; 
+
 $path = "admin.type.naks-technology";
 
 ?>
@@ -9,18 +9,7 @@ $path = "admin.type.naks-technology";
     <div class="row">   
         <div class="col-12">
         <?php 
-         if(getisset("add-center")) {
-            $post = $_POST;
-            unset($post['_token']);
-            
-            try {
-                NaksCenter::create($post);
-                bilgi("Naks Center has been created","success");
-            } catch (\Throwable $th) {
-                dump($th);
-            }
-            
-        }
+        
         if(getisset("add-certificate")) {
             $post = $_POST;
             unset($post['_token']);
@@ -64,8 +53,10 @@ $path = "admin.type.naks-technology";
                 </table>
                 
             </div>
-            <div class="block-content block-content-full block-content-sm">
-            {{$naksCertificates->appends($_GET)->links()}}
+            <div class="row">
+                <div class="block-content block-content-full block-content-sm">
+                    {{$naksCertificates->appends($_GET)->links()}}
+                </div>
             </div>
             
         
