@@ -28,9 +28,9 @@
 <td><input type="text" name="max_thick2" value="{{$naksCertificate->max_thick2}}" class="form-control edit" table="naks_certificates" id="{{$naksCertificate->id}}"></td>
 <td><input type="text" name="join_type" value="{{$naksCertificate->join_type}}" class="form-control edit" table="naks_certificates" id="{{$naksCertificate->id}}"></td>
 <td>
-    <select name="pwth" id="" class="form-control">
-        <option value="YES" selected>{{e2("YES")}}</option>
-        <option value="NO">{{e2("NO")}}</option>
+    <select name="pwth" id="{{$naksCertificate->id}}" class="form-control edit" table="naks_certificates">
+        <option value="YES" {{$naksCertificate->pwth=='YES' ? "selected" : ""}}>{{e2("YES")}}</option>
+        <option value="NO" {{$naksCertificate->pwth=='NO' ? "selected" : ""}}>{{e2("NO")}}</option>
     </select>
 </td>
 
@@ -39,9 +39,9 @@
 <td><input type="text" name="angle_type" class="form-control" id=""></td>
 <td><input type="text" name="position" class="form-control" id=""></td>
 <td>
-<select name="pre_heating" id="" class="form-control">
-        <option value="YES" selected>{{e2("YES")}}</option>
-        <option value="NO">{{e2("NO")}}</option>
+    <select name="pre_heating" id="{{$naksCertificate->id}}" class="form-control edit" table="naks_certificates">
+            <option value="YES" {{$naksCertificate->pre_heating=='YES' ? "selected" : ""}}>{{e2("YES")}}</option>
+            <option value="NO" {{$naksCertificate->pre_heating=='NO' ? "selected" : ""}}>{{e2("NO")}}</option>
     </select>
 </td>
 <td><input type="text" name="shielding_gas" class="form-control" id=""></td>

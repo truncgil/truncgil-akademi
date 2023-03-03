@@ -1,4 +1,5 @@
 <?php 
+use App\Models\NaksCenter; 
 use App\Models\NaksCertificate; 
 
 $path = "admin.type.naks-technology";
@@ -32,9 +33,9 @@ $path = "admin.type.naks-technology";
         
          ?>   
         </div>
-        {{col("col-md-9","Certificates",0)}} 
+        {{col("col-md-12","Certificates",0)}} 
             <div class="table-responsive">
-                <table class="table table-sm table-bordered table-striped table-hover">
+                <table id="excel" class="table table-sm table-bordered table-striped table-hover">
                     <thead>
                         @include("$path.header")
                         <form action="?add-certificate" method="post">
@@ -61,24 +62,7 @@ $path = "admin.type.naks-technology";
             
         
         {{_col()}}
-         {{col("col-md-3","Naks Center")}} 
         
-            <table class="table table-bordered table-sm">
-                <tr>
-                    <th>{{e2("Center No")}}</th>
-                    <th>{{e2("Center Name")}}</th>
-                    <th>{{e2("Opt")}}</th>
-                </tr>
-                <form action="?add-center" method="post">
-                    @csrf
-                <tr>
-                    <td><input type="text" name="center_no" id="" class="form-control"></td>
-                    <td><input type="text" name="center_name" id="" class="form-control"></td>
-                    <td><button class="btn btn-default btn-sm"><i class="fa fa-plus"></i></button></td>
-                </tr>
-                </form>
-            </table>
-         {{_col()}}
         
     </div>
 </div>

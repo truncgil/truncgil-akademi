@@ -12,6 +12,10 @@ if(getisset("add-center")) {
     }
             
 }
+if(getisset("delete-center")) {
+    NaksCenter::where('id', get('delete-center'))->delete();
+
+}
         ?>
 <table class="table table-bordered table-sm">
     <tr>
@@ -21,7 +25,7 @@ if(getisset("add-center")) {
     </tr>
     <form action="?t={{get("t")}}&add-center" method="post">
         @csrf
-        <tr>
+        <tr class="table-warning">
             <td><input type="text" name="center_no" id="" class="form-control"></td>
             <td><input type="text" name="center_name" id="" class="form-control"></td>
             <td><button class="btn btn-default btn-sm"><i class="fa fa-plus"></i></button></td>
@@ -33,7 +37,7 @@ if(getisset("add-center")) {
                     <td><input type="text" name="center_no" value="{{$naksCenter->center_no}}" table="naks_centers" id="{{$naksCenter->id}}" class="form-control edit"></td>
                     <td><input type="text" name="center_name" value="{{$naksCenter->center_name}}" table="naks_centers" id="{{$naksCenter->id}}" class="form-control edit"></td>
                     <td>
-                        <a href="" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></a>
+                        <a href="?t={{get("t")}}&delete-center={{$naksCenter->id}}" teyit="{{e2("Are you sure you want to delete?")}}" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></a>
                     </td>
                 </tr>
                  <?php 

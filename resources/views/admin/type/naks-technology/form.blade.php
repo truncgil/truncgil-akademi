@@ -1,5 +1,5 @@
 
- <tr>
+ <tr class="table-warning">
     <td>#</td>
     <td><input type="text" name="certificate_no" class="form-control" id=""></td>
     <th width="400px">

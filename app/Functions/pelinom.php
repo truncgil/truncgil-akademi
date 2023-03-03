@@ -40,6 +40,8 @@ function col($size,$title="",$color="0",$options=[]) {
                          <?php } ?> 
                         data-action="fullscreen_toggle"><i class="si si-size-fullscreen"></i></button>
 
+                        <button type="button" class="btn-block-option" onclick="ExportToExcel('xlsx')"><i class="fa fa-file-excel-o"></i></button>
+
                     </div>
                 </div>
                  <?php 
