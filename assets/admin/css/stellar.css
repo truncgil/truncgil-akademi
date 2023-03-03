@@ -1,12 +1,20 @@
-.table-sm td {
+.table-sm td, .table-sm th {
     padding: 2px;
     text-align: center;
+    white-space: nowrap;
 }
 
-.table-sm input, .table-sm select {
+.table-sm input, .table-sm select, .table-sm .select2-selection {
     padding: 0px 10px;
     height:30px;
     border:none;
+    background: transparent;
+}
+.table-sm .select2 {
+    min-width:200px;
+}
+.table-sm td {
+    min-width:100px;
 }
 .sidebar-inverse #sidebar img {
     filter: invert(1);

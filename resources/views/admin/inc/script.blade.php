@@ -17,6 +17,15 @@ CKEDITOR.replace( 'editor', {
   
 
 });
+<?php 
+if(oturumisset("full-screen-block")) {
+	 ?>
+	 $("#{{oturum("full-screen-block")}}").addClass('block-mode-fullscreen');
+	 <?php 
+}
+?>
+
+
 
 $(".editable").on("click",function(){
 	$(this).attr("contenteditable",true);

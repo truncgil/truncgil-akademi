@@ -86,18 +86,24 @@ if(getisset("ajax")) {
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
         <script>
             $(function(){
                 $("[name='orcid'],[name='ORCID No'],[name='ORCID_No'],#orcid").mask('AAAA-AAAA-AAAA-AAAA');
             });
         </script>
+        <!-- use the latest version -->
+<script lang="javascript" src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
 <script>
     function ExportToExcel(type, fn, dl) {
             var elt = document.getElementById('excel');
-            var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+            window.setTimeout(function(){
+                var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
             return dl ?
                 XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }) :
                 XLSX.writeFile(wb, fn || ('{!! trim(strip_tags($__env->yieldContent('title'))) !!}.' + (type || 'xlsx')));
+            }, 500);
+            
         }
 </script>
 </div>
@@ -261,8 +267,6 @@ if(getisset("ajax")) {
                     <div class="btn-group" role="group">
 
 						
-                        <div class="btn btn-info" onclick="window.print()"><i class="fa fa-print"></i> {{e2("Print")}}</div>
-                        <div class="btn btn-success" onclick="ExportToExcel('xlsx')"><i class="fa fa-file-excel"></i> {{e2("Export Excel")}}</div> 
                         <a onclick="$.get('{{url("clear-cache")}}'); $(this).html('Clear!');" target="_blank" class="btn btn-primary text-white d-none"><i class="fa fa-sync"></i> {{__('Clear cache')}}</a>
                         
                        <button type="button" class="btn btn-rounded btn-dual-secondary " id="language-dropdown"
