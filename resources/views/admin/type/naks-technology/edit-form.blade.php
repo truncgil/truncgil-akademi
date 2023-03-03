@@ -1,5 +1,5 @@
 <tr>
-<td>#</td>
+<td>{{$naksCertificate->id}}</td>
 <td><input type="text" name="certificate_no" value="{{$naksCertificate->certificate_no}}" class="form-control edit" table="naks_certificates" id="{{$naksCertificate->id}}"></td>
 <td >
     <select style="width:100px" name="naks_center_id" id="{{$naksCertificate->id}}" table="naks_certificates" class="form-control edit">
@@ -50,6 +50,6 @@
 <td><input type="text" name="performed_works_type" class="form-control" id=""></td>
 <td><input type="text" name="remarks" class="form-control" id=""></td>
 <td>
-    <button class="btn btn-default btn-sm"><i class="fa fa-plus"></i></button>
+    <a href="?delete={{$naksCertificate->id}}" {{delete_teyit()}} class="btn btn-danger btn-sm"><i class="fa fa-remove"></i></a>
 </td>    
 </tr>

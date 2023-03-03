@@ -41,7 +41,7 @@ if(getisset("delete-center")) {
                 <td><input type="text" name="center_no" value="{{$naksCenter->center_no}}" table="naks_centers" id="{{$naksCenter->id}}" class="form-control edit"></td>
                 <td><input type="text" name="center_name" value="{{$naksCenter->center_name}}" table="naks_centers" id="{{$naksCenter->id}}" class="form-control edit"></td>
                 <td>
-                    <a href="?t={{get("t")}}&delete-center={{$naksCenter->id}}" teyit="{{e2("Are you sure you want to delete?")}}" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></a>
+                    <a href="?t={{get("t")}}&delete-center={{$naksCenter->id}}" {{delete_teyit()}} class="btn btn-sm btn-danger"><i class="fa fa-times"></i></a>
                 </td>
             </tr>
                 <?php 

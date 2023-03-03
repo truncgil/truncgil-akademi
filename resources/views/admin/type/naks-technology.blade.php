@@ -25,6 +25,9 @@ $path = "admin.type.naks-technology";
             }
             
         } 
+        if(getisset("delete")) {
+            NaksCertificate::where('id', get('delete'))->delete();
+        }
         $naksCertificates = NaksCertificate::paginate(10);
         $naksCenters = NaksCenter::all();
 

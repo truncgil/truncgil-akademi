@@ -10,7 +10,9 @@ function admin_delete($id) {
     <?php 
 }
 
-
+function delete_teyit() {
+    echo 'teyit="'.set_return("Are you sure you want to delete?").'"';
+}
 function col($size,$title="",$color="0",$options=[]) {
     $id = str_slug($title);
     $colors = colors();
