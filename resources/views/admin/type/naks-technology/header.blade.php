@@ -1,4 +1,4 @@
-<tr>
+<tr class="table-dark">
     <td data-resizable-column-id="sn">{{e2("SN")}}</td>
     <td data-resizable-column-id="certificate-no">{{e2("CERTIFICATE No")}}</td>
     <td data-resizable-column-id="stort_name">{{e2("Short Name")}}</td>
