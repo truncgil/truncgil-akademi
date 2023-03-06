@@ -38,21 +38,16 @@ $path = "admin.type.naks-technology";
         </div>
         {{col("col-md-12","Certificates",0)}} 
             <div class="table-responsive">
-                <table id="excel" class="table table-sm table-bordered table-striped table-hover">
-                    <thead>
+                <table id="excel" style="table-layout:fixed;width:200%" class="table table-sm table-bordered table-striped table-hover">
                         @include("$path.header")
-                        <form action="?add-certificate" method="post">
-                            @csrf
-                            @include("$path.form")
-                        </form>
-                    </thead>
-                    <tbody>
+                        
+                        @include("$path.form")
+                        
                         <?php foreach($naksCertificates AS $naksCertificate) {
                              ?>
                                 @include("$path.edit-form")
                              <?php 
                         } ?>
-                    </tbody>
                     
                 </table>
                 

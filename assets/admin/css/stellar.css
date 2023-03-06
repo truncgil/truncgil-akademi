@@ -2,6 +2,8 @@
     padding: 2px;
     text-align: center;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .table-sm input, .table-sm select, .table-sm .select2-selection {
@@ -14,8 +16,11 @@
     min-width:200px;
 }
 .table-sm td {
-    min-width:100px;
+    min-width:10%;
 }
 .sidebar-inverse #sidebar img {
     filter: invert(1);
+}
+.table-sm td input:focus {
+    width: 200px;
 }
