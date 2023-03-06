@@ -12,6 +12,7 @@ use App\Contents;
 use App\Types;
 use App\Fields;
 use App\User;
+use App\Models\NaksCertificate;
 use Illuminate\Auth\Events\Registered;
 class AdminController extends Controller
 {
@@ -97,6 +98,25 @@ class AdminController extends Controller
 			return abort(404);
 		}
 	}
+
+	public function exportExcel(Request $request, string $tableName, string $fileName="") {
+		
+		$data = db($tableName);
+
+		if($fileName=="") {
+			$fileName = $tableName;
+		}
+		if($request->filter) {
+			dd($request->filter);
+		}
+
+		
+
+		export_excel($data->get(), $fileName);
+	}
+
+
+
 	public function default(Request $request,string $type="",string $id="" )
     {
 		$this->middleware('auth');

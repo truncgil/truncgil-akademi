@@ -17,6 +17,7 @@ if(getisset("delete-center")) {
 
 }
         ?>
+        <a href="{{url("admin/export/naks_centers")}}" class="btn btn-outline-success"><i class="fa fa-download"></i> {{e2("Excel Export")}}</a>
 <table class="table table-bordered table-sm">
     <thead>
     <tr>

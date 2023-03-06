@@ -28,6 +28,11 @@ $path = "admin.type.naks-technology";
         if(getisset("delete")) {
             NaksCertificate::where('id', get('delete'))->delete();
         }
+
+        
+
+        
+        
         $naksCertificates = NaksCertificate::paginate(setting('row_count'));
         $naksCenters = NaksCenter::all();
 
@@ -36,7 +41,9 @@ $path = "admin.type.naks-technology";
         
          ?>   
         </div>
-        {{col("col-md-12","Certificates",0)}} 
+        {{col("col-md-12","Certificates",0,[
+            'export' => 'naks_certificates'
+            ])}} 
             <div class="table-responsive">
                 <table id="excel" style="table-layout:fixed;width:300%" class="table table-sm table-bordered table-striped table-hover">
                         @include("$path.header")
