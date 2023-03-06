@@ -21,13 +21,15 @@ if(getisset("delete-center")) {
 <table class="table table-bordered table-sm">
     <thead>
     <tr>
-        <th>{{e2("Center No")}}</th>
-        <th>{{e2("Center Name")}}</th>
-        <th>{{e2("Opt")}}</th>
+        <th data-resizable-column-id="id">{{e2("ID")}}</th>
+        <th data-resizable-column-id="center_no">{{e2("Center No")}}</th>
+        <th data-resizable-column-id="center_name">{{e2("Center Name")}}</th>
+        <th data-resizable-column-id="opt">{{e2("Opt")}}</th>
     </tr>
         <form action="?t={{get("t")}}&add-center" method="post">
         @csrf
         <tr class="table-warning">
+            <td>#</td>
             <td><input type="text" name="center_no" id="" class="form-control"></td>
             <td><input type="text" name="center_name" id="" class="form-control"></td>
             <td><button class="btn btn-default btn-sm"><i class="fa fa-plus"></i></button></td>
@@ -39,6 +41,7 @@ if(getisset("delete-center")) {
         foreach(NaksCenter::all() AS $naksCenter) {
                 ?>
             <tr>
+                <td>{{$naksCenter->id}}</td>
                 <td><input type="text" name="center_no" value="{{$naksCenter->center_no}}" table="naks_centers" id="{{$naksCenter->id}}" class="form-control edit"></td>
                 <td><input type="text" name="center_name" value="{{$naksCenter->center_name}}" table="naks_centers" id="{{$naksCenter->id}}" class="form-control edit"></td>
                 <td>
