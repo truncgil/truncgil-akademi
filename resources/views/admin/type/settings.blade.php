@@ -1,7 +1,7 @@
 <?php 
 $tabs = [
-    'Common Settings' => 'cog',
-    'Naks Center' => '',
+    'Common Settings' => 'setting',
+    'Naks Center' => '11.1 NAKS Technology',
 ];
 ?>
 
@@ -13,7 +13,9 @@ $tabs = [
               ?>
              <li class="nav-item">
                  <a class="nav-link {{getesit("t",$id) ? "active show" : ""}}" href="?t={{$id}}">
-                    <i class="fa fa-{{$icon}}"></i>
+                    <i class="float-left mr-1">
+                        <img src="{{url("assets/icons/".$icon . '.png')}}" width="16" alt="">
+                    </i>
                     {{e2($tab)}}</a>
              </li> 
              <?php } ?>
