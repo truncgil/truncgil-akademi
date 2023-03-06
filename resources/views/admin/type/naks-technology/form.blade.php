@@ -1,8 +1,10 @@
 
  <tr class="table-warning">
-    <td>#</td>
+    <td><form action="?add-certificate" method="post">
+                            @csrf
+                            #</td>
     <td><input type="text" name="certificate_no" class="form-control" id=""></td>
-    <th width="400px">
+    <td>
         <select name="naks_center_id" id="" class=" form-control">
                 <option value="">{{e2("Select")}}</option>
                 <?php foreach($naksCenters AS $naksCenter)  { 
@@ -40,7 +42,7 @@
     <td><input type="text" name="angle_type" class="form-control" id=""></td>
     <td><input type="text" name="position" class="form-control" id=""></td>
     <td>
-    <select name="pre_heating" id="" class="form-control">
+        <select name="pre_heating" id="" class="form-control">
             <option value="YES" selected>{{e2("YES")}}</option>
             <option value="NO">{{e2("NO")}}</option>
         </select>
@@ -52,5 +54,6 @@
     <td><input type="text" name="remarks" class="form-control" id=""></td>
     <td>
         <button class="btn btn-default btn-sm"><i class="fa fa-plus"></i></button>
+        </form>
     </td>    
 </tr>

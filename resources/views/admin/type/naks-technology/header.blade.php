@@ -1,34 +1,34 @@
-<tr>
-    <td>{{e2("SN")}}</td>
-    <td>{{e2("CERTIFICATE No")}}</td>
-    <td>{{e2("Short Name")}}</td>
-    <td>{{e2("Valid from")}}</td>
-    <td>{{e2("Valid to")}}</td>
-    <td>{{e2("Welding Method")}}</td>
-    <td>{{e2("MAT. GROUP 1")}}</td>
-    <td>{{e2("MAT. GROUP 2")}}</td>
-    <td>{{e2("Welding consumables")}}</td>
-    <td>{{e2("CATEGORY")}}</td>
-    <td>{{e2("TYPE")}}</td>
-    <td>{{e2("MIN")}}</td>
-    <td>{{e2("MAX")}}</td>
-    <td>{{e2("MIN2")}}</td>
-    <td>{{e2("MAX2")}}</td>
-    <td>{{e2("MIN THICK")}}</td>
-    <td>{{e2("MAX THICK")}}</td>
-    <td>{{e2("MIN THICK 2")}}</td>
-    <td>{{e2("MAX THICK 2")}}</td>
-    <td>{{e2("JOINT TYPE")}}</td>
-    <td>{{e2("PWHT")}}</td>
-    <td>{{e2("CONNECTION TYPE")}}</td>
-    <td>{{e2("JOINT VIEW")}}</td>
-    <td>{{e2("ANGLE TYPE")}}</td>
-    <td>{{e2("POSITION")}}</td>
-    <td>{{e2("PRE HEATING")}}</td>
-    <td>{{e2("Shielding gas")}}</td>
-    <td>{{e2("Type of electrode coating")}}</td>
-    <td>{{e2("Type of welding equipment")}}</td>
-    <td>{{e2("Performed works type")}}</td>
-    <td>{{e2("Remarks")}}</td>          
-    <td>{{e2("Opt")}}</td>          
+<tr class="table-dark">
+    <td data-resizable-column-id="sn">{{e2("SN")}}</td>
+    <td data-resizable-column-id="certificate-no">{{e2("CERTIFICATE No")}}</td>
+    <td data-resizable-column-id="stort_name">{{e2("Short Name")}}</td>
+    <td data-resizable-column-id="valid_from">{{e2("Valid from")}}</td>
+    <td data-resizable-column-id="valid_to">{{e2("Valid to")}}</td>
+    <td data-resizable-column-id="welding_meth">{{e2("Welding Method")}}</td>
+    <td data-resizable-column-id="mg1">{{e2("MAT. GROUP 1")}}</td>
+    <td data-resizable-column-id="mg2">{{e2("MAT. GROUP 2")}}</td>
+    <td data-resizable-column-id="wc">{{e2("Welding consumables")}}</td>
+    <td data-resizable-column-id="category">{{e2("CATEGORY")}}</td>
+    <td data-resizable-column-id="type">{{e2("TYPE")}}</td>
+    <td data-resizable-column-id="min">{{e2("MIN")}}</td>
+    <td data-resizable-column-id="max">{{e2("MAX")}}</td>
+    <td data-resizable-column-id="min2">{{e2("MIN2")}}</td>
+    <td data-resizable-column-id="max2">{{e2("MAX2")}}</td>
+    <td data-resizable-column-id="mt">{{e2("MIN THICK")}}</td>
+    <td data-resizable-column-id="mmt">{{e2("MAX THICK")}}</td>
+    <td data-resizable-column-id="mt2">{{e2("MIN THICK 2")}}</td>
+    <td data-resizable-column-id="mm2">{{e2("MAX THICK 2")}}</td>
+    <td data-resizable-column-id="jt">{{e2("JOINT TYPE")}}</td>
+    <td data-resizable-column-id="pwht">{{e2("PWHT")}}</td>
+    <td data-resizable-column-id="ct">{{e2("CONNECTION TYPE")}}</td>
+    <td data-resizable-column-id="jw">{{e2("JOINT VIEW")}}</td>
+    <td data-resizable-column-id="at">{{e2("ANGLE TYPE")}}</td>
+    <td data-resizable-column-id="position">{{e2("POSITION")}}</td>
+    <td data-resizable-column-id="ph">{{e2("PRE HEATING")}}</td>
+    <td data-resizable-column-id="sg">{{e2("Shielding gas")}}</td>
+    <td data-resizable-column-id="toec">{{e2("Type of electrode coating")}}</td>
+    <td data-resizable-column-id="towe">{{e2("Type of welding equipment")}}</td>
+    <td data-resizable-column-id="pwt">{{e2("Performed works type")}}</td>
+    <td data-resizable-column-id="remarks">{{e2("Remarks")}}</td>          
+    <td data-resizable-column-id="opt">{{e2("Opt")}}</td>          
 </tr>

@@ -1,17 +1,22 @@
 <?php 
 $tabs = [
-    'Naks Center',
+    'Common Settings' => 'setting',
+    'Naks Center' => '11.1 NAKS Technology',
 ];
 ?>
 
 <div class="content">
     <div class="block">
         <ul class="nav nav-tabs nav-tabs-block js-tabs-enabled" data-toggle="tabs" role="tablist">
-            <?php foreach($tabs AS $tab)  { 
+            <?php foreach($tabs AS $tab => $icon)  { 
                 $id = str_slug($tab);
               ?>
              <li class="nav-item">
-                 <a class="nav-link {{getesit("t",$id) ? "active show" : ""}}" href="?t={{$id}}">{{e2($tab)}}</a>
+                 <a class="nav-link {{getesit("t",$id) ? "active show" : ""}}" href="?t={{$id}}">
+                    <i class="float-left mr-1">
+                        <img src="{{url("assets/icons/".$icon . '.png')}}" width="16" alt="">
+                    </i>
+                    {{e2($tab)}}</a>
              </li> 
              <?php } ?>
             

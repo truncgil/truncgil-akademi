@@ -103,9 +103,7 @@ $(".ckeditor").each(function(){
 
 </script>
 
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<script type="text/javascript" src="{{url('assets/touch.js')}}"></script>	
 
 <script>
 

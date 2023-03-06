@@ -1740,15 +1740,15 @@ pre code {
 }
 
 .table-dark,.table-dark>td,.table-dark>th {
-    background-color: #c6c8ca
+    background-color: #070707;
 }
 
 .table-hover .table-dark:hover {
-    background-color: #b9bbbe
+    background-color: #181818;
 }
 
 .table-hover .table-dark:hover>td,.table-hover .table-dark:hover>th {
-    background-color: #b9bbbe
+    background-color: #000000;
 }
 
 .table-active,.table-active>td,.table-active>th {
