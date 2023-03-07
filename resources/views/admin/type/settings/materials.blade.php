@@ -30,7 +30,7 @@ $tableName = "materials"; ?>
 @include("components.excel-buttons")
 @include("components.excel-file-input")
 <div class="table-responsive">
-<table class="table table-bordered table-sm">
+<table class="table table-bordered table-sm" style="table-layout:fixed;width:300%">
     <thead>
     <tr>
         <?php foreach($tableColumns AS $column)  {  ?>
