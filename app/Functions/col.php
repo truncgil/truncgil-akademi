@@ -30,7 +30,9 @@ function col($size,$title="",$color="0",$options=[]) {
                          <?php if(isset($options['export']))  {  ?>
                               <a href="<?php echo url("admin/export/". $options['export']) ?>" class="btn-block-option" title="<?php e2("Export to Excel") ?>" ><i class="fa fa-download"></i></a>
                           <?php } ?>
-                          <a href="?import" class="btn-block-option" title="<?php e2("Import to Excel") ?>" ><i class="fa fa-upload"></i></a>
+                          <label
+                          for="excel-file"
+                          class="btn-block-option" title="<?php e2("Import to Excel") ?>" ><i class="fa fa-upload"></i></label>
                         
                     </div>
                 </div>
