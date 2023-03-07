@@ -30,8 +30,10 @@ class ImportExcel implements ToCollection
             $refactoringRow = [];
 
             foreach($firstRow AS $column) {
-                $refactoringRow[$column] = $row[$columnKey];
-                $columnKey++;
+                if($column!="")  { 
+                    $refactoringRow[$column] = $row[$columnKey];
+                    $columnKey++; 
+                }
             }
 
             (firstOrUpdate(
@@ -39,7 +41,7 @@ class ImportExcel implements ToCollection
                 $this->tableName,
                 [
                     'id' => $refactoringRow['id']
-                ], false
+                ], true
             ));
         }
     }
