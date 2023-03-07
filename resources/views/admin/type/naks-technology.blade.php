@@ -44,6 +44,8 @@ $path = "admin.type.naks-technology";
         {{col("col-md-12","Certificates",0,[
             'export' => 'naks_certificates'
             ])}} 
+            <?php  $tableName = "naks_certificates"; ?>
+            @include("components.excel-file-input")
             <div class="table-responsive">
                 <table id="excel" style="table-layout:fixed;width:300%" class="table table-sm table-bordered table-striped table-hover">
                         @include("$path.header")
