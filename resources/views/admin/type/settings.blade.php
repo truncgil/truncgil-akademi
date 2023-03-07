@@ -4,6 +4,7 @@ $tabs = [
     'Naks Center' => '11.1 NAKS Technology',
     'Welding Methods' => '11 Welding',
     'Materials' => '11 Welding',
+    'P-Numbers' => '11 Welding',
 ];
 ?>
 
