@@ -11,11 +11,13 @@ class ExportExcel implements FromCollection, WithHeadings
 
     public $tableName;
     public $columnNames;
+    public $exceptsColumns;
 
     public function __construct(string $tableName) 
     {
         $this->tableName = $tableName;
-        $this->columnNames = Schema::getColumnListing($this->tableName);
+        $exceptsColumns = ['created_at', 'updated_at'];
+        $this->columnNames = array_diff(Schema::getColumnListing($this->tableName), $exceptsColumns);
     }
 
     /**
@@ -23,7 +25,7 @@ class ExportExcel implements FromCollection, WithHeadings
     */
     public function collection()
     {   
-        return db($this->tableName)->get();
+        return db($this->tableName)->select($this->columnNames)->get();
     }
     public function headings(): array
     {

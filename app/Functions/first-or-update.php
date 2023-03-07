@@ -3,10 +3,13 @@
  * Try catch kullanarak ekler veya günceller
  */
 function firstOrUpdate($data, $table,$where,$debug=false) {
-
-    if($data['id']=="") {
-        unset($data['id']);
+    
+    if(isset($data['id'])) {
+        if($data['id']=="") {
+            unset($data['id']);
+        }
     }
+    
 
     try {
         $data['created_at'] = simdi();
