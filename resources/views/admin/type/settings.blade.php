@@ -2,6 +2,7 @@
 $tabs = [
     'Common Settings' => 'setting',
     'Naks Center' => '11.1 NAKS Technology',
+    'Welding Methods' => '11 Welding',
 ];
 ?>
 
