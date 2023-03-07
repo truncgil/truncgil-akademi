@@ -16,7 +16,7 @@ class CreateWeldingMethodsTable extends Migration
         Schema::create('welding_methods', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('en_welding_number')->nullable();
+            $table->string('en_welding_number')->unique()->nullable();
             $table->string('russian_definition')->nullable();
             $table->string('iso_4063_definition')->nullable();
             $table->string('aws')->nullable();
