@@ -4,6 +4,10 @@
  */
 function firstOrUpdate($data, $table,$where,$debug=false) {
 
+    if($data['id']=="") {
+        unset($data['id']);
+    }
+
     try {
         $data['created_at'] = simdi();
         $id = db($table)->insertGetId($data);
@@ -11,12 +15,12 @@ function firstOrUpdate($data, $table,$where,$debug=false) {
     } catch (\Throwable $th) {
         
         if($debug) {
-            print2($th);
+            dump($th);
         }
         
         
-        db($table)->where($where)->update($data);
-        return "update";
+        $affectedRows = db($table)->where($where)->update($data);
+        return "update $affectedRows";
     }
     
 } ?>
