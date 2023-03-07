@@ -15,7 +15,7 @@ class CreateNaksCentersTable extends Migration
     {
         Schema::create('naks_centers', function (Blueprint $table) {
             $table->id();
-            $table->string('center_no')->nullable();
+            $table->string('center_no')->unique()->nullable();
             $table->string('center_name')->nullable();
             $table->timestamps();
         });
