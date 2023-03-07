@@ -17,7 +17,12 @@ if(getisset("delete-center")) {
 
 }
         ?>
-        <a href="{{url("admin/export/naks_centers")}}" class="btn btn-outline-success"><i class="fa fa-download"></i> {{e2("Excel Export")}}</a>
+
+<?php  
+$tableName = "naks_centers"; ?>
+@include("components.excel-buttons")
+@include("components.excel-file-input")
+<div class="table-responsive">
 <table class="table table-bordered table-sm">
     <thead>
     <tr>
@@ -32,7 +37,7 @@ if(getisset("delete-center")) {
             <td>#</td>
             <td><input type="text" name="center_no" id="" class="form-control"></td>
             <td><input type="text" name="center_name" id="" class="form-control"></td>
-            <td><button class="btn btn-default btn-sm"><i class="fa fa-plus"></i></button></td>
+            <td><button class="btn btn-outline-success btn-sm"><i class="fa fa-plus"></i></button></td>
         </tr>
         </form>
     </thead>
@@ -45,7 +50,7 @@ if(getisset("delete-center")) {
                 <td><input type="text" name="center_no" value="{{$naksCenter->center_no}}" table="naks_centers" id="{{$naksCenter->id}}" class="form-control edit"></td>
                 <td><input type="text" name="center_name" value="{{$naksCenter->center_name}}" table="naks_centers" id="{{$naksCenter->id}}" class="form-control edit"></td>
                 <td>
-                    <a href="?t={{get("t")}}&delete-center={{$naksCenter->id}}" {{delete_teyit()}} class="btn btn-sm btn-danger"><i class="fa fa-times"></i></a>
+                    <a href="?t={{get("t")}}&delete-center={{$naksCenter->id}}" {{delete_teyit()}} class="btn btn-sm btn-outline-danger"><i class="fa fa-times"></i></a>
                 </td>
             </tr>
                 <?php 
@@ -54,3 +59,4 @@ if(getisset("delete-center")) {
     </tbody>
     
 </table>
+</div>
