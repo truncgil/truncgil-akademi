@@ -12,7 +12,11 @@ use App\Contents;
 use App\Types;
 use App\Fields;
 use App\User;
+use App\Models\NaksCertificate;
 use Illuminate\Auth\Events\Registered;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ImportExcel;
+
 class AdminController extends Controller
 {
 	public function __construct()
@@ -97,6 +101,34 @@ class AdminController extends Controller
 			return abort(404);
 		}
 	}
+
+	public function exportExcel(Request $request, string $tableName, string $fileName="") {
+		
+		$data = db($tableName);
+
+		if($fileName=="") {
+			$fileName = $tableName;
+		}
+		if($request->filter) {
+			dd($request->filter);
+		}
+
+		
+
+		export_excel($data->get(), $fileName);
+	}
+
+	public function importExcel(Request $request, string $tableName) {
+
+		if(!is_null($request->file('excel-file'))) {
+			Excel::import(new ImportExcel($tableName),
+				$request->file('excel-file')->store('files'));
+		} 
+
+		return redirect()->back();
+		
+	}
+
 	public function default(Request $request,string $type="",string $id="" )
     {
 		$this->middleware('auth');

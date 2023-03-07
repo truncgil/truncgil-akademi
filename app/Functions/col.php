@@ -27,8 +27,12 @@ function col($size,$title="",$color="0",$options=[]) {
                          onclick="$.get('?ajax=full-screen-block&id=<?php echo($id) ?>')" 
                          <?php } ?> 
                         data-action="fullscreen_toggle"><i class="si si-size-fullscreen"></i></button>
-
-                        <button type="button" class="btn-block-option" onclick="ExportToExcel('xlsx')"><i class="fa fa-file-excel-o"></i></button>
+                         <?php if(isset($options['export']))  {  ?>
+                              <a href="<?php echo url("admin/export/". $options['export']) ?>" class="btn-block-option" title="<?php e2("Export to Excel") ?>" ><i class="fa fa-download"></i></a>
+                          <?php } ?>
+                          <label
+                          for="excel-file"
+                          class="btn-block-option" title="<?php e2("Import to Excel") ?>" ><i class="fa fa-upload"></i></label>
                         
                     </div>
                 </div>

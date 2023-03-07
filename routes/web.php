@@ -54,6 +54,11 @@ Route::match(['get', 'post'],'/'.$hash,"AdminController@default");
 Route::get("/$hash/contents","AdminController@default");
 Route::match(['get', 'post'],"/$hash/{id}","AdminController@default");
 Route::get("/$hash/new/{type}","AdminController@new");
+
+Route::get("/$hash/export/{tableName}/{fileName?}","AdminController@exportExcel");
+
+Route::post("/$hash/import/{tableName}","AdminController@importExcel");
+
 Route::match(['get', 'post'],'/admin/action/{action}/{type}',"AdminController@action2");
 Route::match(['get', 'post'],"/$hash/{type}/{id}","AdminController@default");
 Route::match(['get', 'post'],"/$hash/{type}/{id}/{action}","AdminController@action");

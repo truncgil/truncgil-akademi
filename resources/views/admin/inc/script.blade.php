@@ -566,7 +566,7 @@ $("#modal-popin .modal-dialog").removeClass("modal-lg");
 
 	$(".btn")
 
-		.addClass("btn-noborder")
+		//.addClass("btn-noborder")
 
 		.addClass("btn-rounded");
 
