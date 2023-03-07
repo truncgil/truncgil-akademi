@@ -16,6 +16,7 @@ use App\Models\NaksCertificate;
 use Illuminate\Auth\Events\Registered;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\ImportExcel;
+use App\Exports\ExportExcel;
 
 class AdminController extends Controller
 {
@@ -104,7 +105,6 @@ class AdminController extends Controller
 
 	public function exportExcel(Request $request, string $tableName, string $fileName="") {
 		
-		$data = db($tableName);
 
 		if($fileName=="") {
 			$fileName = $tableName;
@@ -115,7 +115,8 @@ class AdminController extends Controller
 
 		
 
-		export_excel($data->get(), $fileName);
+		//export_excel($data->get(), $fileName);
+		Excel::download(new ExportExcel($tableName), $fileName . '.xlsx')->send();
 	}
 
 	public function importExcel(Request $request, string $tableName) {
