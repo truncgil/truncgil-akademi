@@ -35,14 +35,19 @@ class ImportExcel implements ToCollection
                     $columnKey++; 
                 }
             }
-
-            (firstOrUpdate(
-                $refactoringRow, 
-                $this->tableName,
-                [
-                    'id' => $refactoringRow['id']
-                ], true
-            ));
+            if($refactoringRow['id']=="") {
+                unset($refactoringRow['id']);
+                ekle2($refactoringRow, $this->tableName);
+            } else {
+                firstOrUpdate(
+                    $refactoringRow, 
+                    $this->tableName,
+                    [
+                        'id' => $refactoringRow['id']
+                    ], false
+                );
+            }
+            
         }
     }
 }
