@@ -13,6 +13,7 @@ $tabs = [
     'Ru Welding Geometry ' => '11 Welding',
     'Current Types' => '11 Welding',
     'Welding Consumables' => '11 Welding',
+    'Product Type' => '11 Welding',
 ];
 ?>
 
