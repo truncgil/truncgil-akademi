@@ -14,12 +14,13 @@
         <div class="block-content">
             <?php if(getisset("command")) {
                 try {
-                    
-                    Artisan::call(get("command"));
+                    dump(get("command"));
+                    $command = str_replace("\\","/",get("command"));
+                    Artisan::call($command);
                     $output = Artisan::output();
 
                     ekle2([
-                        'title' => get("command"),
+                        'title' => $command,
                         'html' => $output,
                         'type' => 'ARTISAN',
                         'kid' => 'ARTISAN'
@@ -41,9 +42,9 @@
             </form>
 
             <div class="table-responsive">
-                <table class="table">
+                <table class="table table-bordered">
                     <tr>
-                        <th>Command</th>
+                        <th style="width:50%">Command</th>
                         <th>Output</th>
                     </tr>
                     <?php $query = db("contents")->where("type","ARTISAN")->orderBy("id","DESC")->simplePaginate(100);
