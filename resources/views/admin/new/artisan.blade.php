@@ -14,9 +14,19 @@
         <div class="block-content">
             <?php if(getisset("command")) {
                 try {
+                    
                     Artisan::call(get("command"));
                     $output = Artisan::output();
+
+                    ekle2([
+                        'title' => get("command"),
+                        'html' => $output,
+                        'type' => 'ARTISAN',
+                        'kid' => 'ARTISAN'
+                    ],"contents");
+
                     dump($output);
+
                 } catch (\Throwable $th) {
                     dump($th);
                 }
@@ -29,6 +39,25 @@
                     <button class="btn btn-primary"><i class="fa fa-cog"></i></button>
                 </div>
             </form>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>Command</th>
+                        <th>Output</th>
+                    </tr>
+                    <?php $query = db("contents")->where("type","ARTISAN")->orderBy("id","DESC")->simplePaginate(100);
+                    foreach($query AS $q)  { 
+                     
+                     ?>
+                     <tr>
+                         <td><?php echo $q->title ?></td>
+                         <td><?php echo $q->html ?></td>
+                     </tr> 
+                     <?php } ?>
+                </table>
+            </div>
+            {{$query->links()}}
            
            
         </div>
