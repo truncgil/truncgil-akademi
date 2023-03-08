@@ -253,8 +253,7 @@ if(getisset("ajax")) {
                                     <i class="fas fa-times"></i>
                                 </button>
                             </div>
-                            <input type="text" class="form-control" value="{{@$q}}" placeholder="{{e2("Ara...")}}"
-                                id="q" required  name="q">
+                            
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-secondary">
                                     <i class="fas fa-search"></i>
