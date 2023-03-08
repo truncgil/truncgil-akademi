@@ -9,6 +9,7 @@ $tabs = [
     'Hazard Classes' => '11 Welding',
     'Joint Type' => '11 Welding',
     'Joint View' => '11 Welding',
+    'Electrode Coating' => '11 Welding',
 ];
 ?>
 
