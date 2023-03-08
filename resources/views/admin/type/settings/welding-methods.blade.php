@@ -6,7 +6,7 @@ if(getisset("add")) {
     
     try {
         WeldingMethod::create($post);
-        bilgi("Naks Center has been created","success");
+        bilgi("Welding Methots has been created","success");
     } catch (\Throwable $th) {
         dump($th);
     }

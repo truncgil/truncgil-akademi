@@ -563,13 +563,13 @@ $("#modal-popin .modal-dialog").removeClass("modal-lg");
 
 
 	});
-
+/*
 	$(".btn")
 
-		//.addClass("btn-noborder")
+		.addClass("btn-noborder")
 
 		.addClass("btn-rounded");
-
+*/
 	$(".input-group-append .btn, .input-group-prepend .btn")
 
 		.removeClass("btn-noborder")

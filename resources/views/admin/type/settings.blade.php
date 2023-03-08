@@ -3,6 +3,19 @@ $tabs = [
     'Common Settings' => 'setting',
     'Naks Center' => '11.1 NAKS Technology',
     'Welding Methods' => '11 Welding',
+    'Materials' => '11 Welding',
+    'P-Numbers' => '11 Welding',
+    'Welding Positions' => '11 Welding',
+    'Hazard Classes' => '11 Welding',
+    'Joint Type' => '11 Welding',
+    'Joint View' => '11 Welding',
+    'Electrode Coating' => '11 Welding',
+    'Ru Welding Geometry ' => '11 Welding',
+    'Current Types' => '11 Welding',
+    'Welding Consumables' => '11 Welding',
+    'Product Type' => '11 Welding',
+    'Welding Machine Type' => '11 Welding',
+    'Welding Materials Brend' => '11 Welding',
 ];
 ?>
 

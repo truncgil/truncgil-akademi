@@ -22,7 +22,7 @@
     filter: invert(1);
 }
 .table-sm td input:focus {
-    width: 200px;
+    min-width: 200px;
 }
 .rc-handle:hover {
     background: #e0e0e0;

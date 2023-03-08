@@ -1,5 +1,6 @@
 <?php 
 use App\Contents;
+use App\Translate;
 function admin_delete($id) {
     ?>
     <?php if(u()->level=="Admin") {
@@ -891,8 +892,29 @@ function ksorgu()
     return 0;
 }
 
+function createTranslate($key) {
+    if($key!="")  { 
+     
+        $translate = db("translate")->where([
+            'dil'=> App::getLocale(),
+            'icerik' => $key
+        ])->first();
+    
+        if(is_null($translate)) {
+            db("translate")->insert([
+                'dil'=> App::getLocale(),
+                'icerik' => $key
+            ]);
+        } 
+     }
+    
+}
+
 function e2($text)
 {
+    if(getisset("create-translate")) {
+        createTranslate($text);
+    }
     echo __($text);
 }
 
