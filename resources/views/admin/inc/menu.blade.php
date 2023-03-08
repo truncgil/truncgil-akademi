@@ -110,9 +110,9 @@
 						</style>
 						@endif 
 						@if(in_array("new",$permissions))
-						<li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span
+						<li class="nav-main-heading "><span class="sidebar-mini-visible">UI</span><span
                                 class="sidebar-mini-hidden">{{e2('Content Management')}}</span></li>
-                        <li>
+                        <li class="d-none">
                             <a class="nav-submenu" href="{{url('admin/new/contents')}}"><i class="si si-grid"></i><span
                                     class="sidebar-mini-hide">{{e2("Contents")}}</span></a>
                           
@@ -122,7 +122,12 @@
                                     class="si si-layers"></i><span class="sidebar-mini-hide">{{e2('Modules')}}</span></a>
                             
                         </li>
-                        <li>
+						<li>
+                            <a class="nav-submenu" href="{{ url('admin/new/artisan') }}"><i
+                                    class="fa fa-code"></i><span class="sidebar-mini-hide">{{e2('Artisan')}}</span></a>
+                            
+                        </li>
+                        <li class="d-none">
                             <a class="nav-submenu" href="{{url('admin/fields')}}"><i class="si si-list"></i><span
                                     class="sidebar-mini-hide">{{e2('Columns')}}</span></a>
                            
