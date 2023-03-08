@@ -6,6 +6,7 @@ $tabs = [
     'Materials' => '11 Welding',
     'P-Numbers' => '11 Welding',
     'Welding Positions' => '11 Welding',
+    'Hazard Classes' => '11 Welding',
 ];
 ?>
 
