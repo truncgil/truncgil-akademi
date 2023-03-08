@@ -11,7 +11,8 @@ $tabs = [
     'Joint View' => '11 Welding',
     'Electrode Coating' => '11 Welding',
     'Ru Welding Geometry ' => '11 Welding',
-    'Current Types ' => '11 Welding',
+    'Current Types' => '11 Welding',
+    'Welding Consumables' => '11 Welding',
 ];
 ?>
 
