@@ -31,7 +31,13 @@ class ImportExcel implements ToCollection
 
             foreach($firstRow AS $column) {
                 if($column!="")  { 
-                    $refactoringRow[$column] = $row[$columnKey];
+                    $columnType = table_column_type($this->tableName, $column);
+                    if($columnType=="date") {
+                        $refactoringRow[$column] = date("Y-m-d", strtotime($row[$columnKey]));
+                    } else {
+                        $refactoringRow[$column] = $row[$columnKey];
+                    }
+                    
                     $columnKey++; 
                 }
             }
