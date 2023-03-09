@@ -6,7 +6,7 @@
         <option value="">{{e2("Select")}}</option>
         <?php foreach($naksCenters AS $naksCenter)  { 
           ?>
-         <option value="{{$naksCenter->id}}" {{$naksCenter->id==$naksCertificate->naks_center_id ? "selected" : ""}}>#{{$naksCenter->id}} {{$naksCenter->center_no}} - {{$naksCenter->center_name}}</option> 
+         <option value="{{$naksCenter->center_no}}" {{$naksCenter->center_no==$naksCertificate->short_name ? "selected" : ""}}>#{{$naksCenter->id}} {{$naksCenter->center_no}} - {{$naksCenter->center_name}}</option> 
          <?php } ?>
     </select>
 </td>

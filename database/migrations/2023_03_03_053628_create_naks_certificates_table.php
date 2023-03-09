@@ -18,7 +18,7 @@ class CreateNaksCertificatesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('certificate_no')->nullable();
-            $table->foreignIdFor(NaksCenter::class)->nullable()->default(null);
+            $table->string('short_name')->nullable()->default(null);
             $table->date('valid_from')->nullable()->default(null);
             $table->date('valid_to')->nullable()->default(null);
             $table->string('welding_method')->nullable();

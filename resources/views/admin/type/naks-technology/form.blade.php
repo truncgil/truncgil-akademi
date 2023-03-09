@@ -5,11 +5,11 @@
                             #</td>
     <td><input type="text" name="certificate_no" class="form-control" id=""></td>
     <td>
-        <select name="naks_center_id" id="" class=" form-control">
+        <select name="short_name" id="" class=" form-control">
                 <option value="">{{e2("Select")}}</option>
                 <?php foreach($naksCenters AS $naksCenter)  { 
                 ?>
-                <option value="{{$naksCenter->id}}" >{{$naksCenter->center_no}} - {{$naksCenter->center_name}}</option> 
+                <option value="{{$naksCenter->center_no}}" >{{$naksCenter->center_no}} - {{$naksCenter->center_name}}</option> 
                 <?php } ?>
         </select>
     </td>
