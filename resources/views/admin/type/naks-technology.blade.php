@@ -14,7 +14,7 @@ $path = "admin.type.naks-technology";
         if(getisset("add-certificate")) {
             $post = $_POST;
             unset($post['_token']);
-            if($post['naks_center_id'] =='') $post['naks_center_id'] = null;
+           // if($post['naks_center_id'] =='') $post['naks_center_id'] = null;
           //  dump($post);
             
             try {

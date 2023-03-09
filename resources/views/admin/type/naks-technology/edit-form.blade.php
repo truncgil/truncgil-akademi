@@ -2,7 +2,7 @@
 <td>{{$naksCertificate->id}}</td>
 <td><input type="text" name="certificate_no" value="{{$naksCertificate->certificate_no}}" class="form-control edit" table="naks_certificates" id="{{$naksCertificate->id}}"></td>
 <td >
-    <select style="width:100px" name="naks_center_id" id="{{$naksCertificate->id}}" table="naks_certificates" class="form-control edit">
+    <select style="width:100px" name="short_name" id="{{$naksCertificate->id}}" table="naks_certificates" class="form-control edit">
         <option value="">{{e2("Select")}}</option>
         <?php foreach($naksCenters AS $naksCenter)  { 
           ?>
