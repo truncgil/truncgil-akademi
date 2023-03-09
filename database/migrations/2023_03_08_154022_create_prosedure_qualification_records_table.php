@@ -50,7 +50,7 @@ class CreateProsedureQualificationRecordsTable extends Migration
             $table->string('backing_gas')->nullable()->default(null);
             $table->foreignIdFor(CurrentType::class, 'current')->nullable()->default(null);
             $table->foreignIdFor(JointType::class, 'joint_design')->nullable()->default(null);
-            $table->foreignIdFor(ProductType::class, 'base_metal')->nullable()->default(null);
+            $table->foreignIdFor(WorkType::class, 'base_metal')->nullable()->default(null);
             $table->date('approved_date')->nullable()->default(null);
             $table->string('status')->nullable()->default(null);
         });
