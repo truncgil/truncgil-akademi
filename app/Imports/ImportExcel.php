@@ -59,7 +59,7 @@ class ImportExcel implements ToCollection
                     ], false
                 );
             }
-            break;
+            
         }
     }
 }
