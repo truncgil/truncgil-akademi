@@ -3,7 +3,13 @@ $columnName = $column['name'];
 $columnData = $datas[$columnName];  
 
 ?>
-<select name="{{$columnName}}" id="" class="form-control" 
+<select name="{{$columnName}}"  class="form-control {{isset($listData) ? 'edit' : ''}}" 
+<?php if(isset($listData))  { 
+  ?>
+ table="{{$tableName}}"  
+ id="{{$listData->id}}"
+ <?php } ?>
+
     {{$columnData['multiple'] ? 'multiple' : ''}}>
     <option value="">{{e2("Select")}}</option>
     <?php foreach($columnData['data'] AS $data)  {  

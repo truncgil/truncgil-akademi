@@ -1,8 +1,10 @@
 <?php $columnName = $column['name']; ?>
-<input type="text" class="form-control" name="{{$columnName}}" 
+<input type="text" class="form-control {{isset($listData) ? 'edit' : ''}}" name="{{$columnName}}" 
 <?php if(isset($listData))  { 
   ?>
- value="{{$listData->$columnName}}"  
+ value="{{$listData->$columnName}}" 
+ table="{{$tableName}}"  
+ id="{{$listData->id}}"
  <?php } ?>
 
-id="">
+>

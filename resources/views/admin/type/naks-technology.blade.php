@@ -1,5 +1,6 @@
 <?php 
 use App\Models\NaksCenter; 
+use App\Models\WeldingMethod; 
 use App\Models\NaksCertificate; 
 
 $path = "admin.type.naks-technology";
@@ -33,6 +34,7 @@ $path = "admin.type.naks-technology";
         
         $naksCertificates = NaksCertificate::paginate(setting('row_count'));
         $naksCenters = NaksCenter::all();
+        $welding_method = WeldingMethod::all();
         
         $tableName = "naks_certificates";
 
@@ -46,6 +48,13 @@ $path = "admin.type.naks-technology";
                 'data' => $naksCenters,
                 'value' => 'center_no',
                 'html' => ['center_no', 'center_name'],
+                'type' => 'select',
+                'multiple' => false
+            ],
+            'welding_method' => [
+                'data' => $welding_method,
+                'value' => 'ru_short_name',
+                'html' => ['ru_short_name', 'iso_short_name', 'aws_short_name'],
                 'type' => 'select',
                 'multiple' => false
             ],
@@ -76,16 +85,16 @@ $path = "admin.type.naks-technology";
             <?php  ; ?>
             @include("components.excel-file-input")
             <div class="table-responsive">
-                <table id="excel" style="table-layout:fixed;width:300%" class="table table-sm table-bordered table-striped table-hover">
+                <table style="table-layout:fixed;width:300%" class="table table-sm table-bordered table-striped table-hover">
                         
                         <tr>
                             <?php foreach($columns AS $column)  { 
                               ?>
-                             <th>{{e2($column)}}</th> 
+                             <th data-resizable-column-id="{{str_slug($column)}}">{{e2($column)}}</th> 
                              <?php } ?>
-                             <th>{{e2("Opt")}}</th>
+                             <th data-resizable-column-id="opt">{{e2("Opt")}}</th>
                         </tr>
-                        <tr>
+                        <tr class="table-warning">
                             <form action="?add" method="post">
                                 @csrf
                             
@@ -96,7 +105,7 @@ $path = "admin.type.naks-technology";
                                     @include("components.columns.{$column['type']}")
                                 </th> 
                              <?php } ?>
-                             <th><button class="btn btn-outline-success"><i class="fa fa-plus"></i></button></th>
+                             <th><button class="btn btn-outline-success btn-sm"><i class="fa fa-plus"></i></button></th>
                              </form>
 
                         </tr>
@@ -111,7 +120,7 @@ $path = "admin.type.naks-technology";
                                 </td> 
                                 <?php } ?>
                                 <td>
-                                    <a href="?delete={{$listData->id}}" {{delete_teyit()}} class="btn btn-danger btn-sm"><i class="fa fa-remove"></i></a>
+                                    <a href="?delete={{$listData->id}}" {{delete_teyit()}} class="btn btn-outline-danger btn-sm"><i class="fa fa-remove"></i></a>
                                 </td>
                             </tr>
                              <?php 
