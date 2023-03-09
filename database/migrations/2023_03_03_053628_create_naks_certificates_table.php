@@ -36,12 +36,12 @@ class CreateNaksCertificatesTable extends Migration
             $table->string('min_thick2')->nullable();
             $table->string('max_thick2')->nullable();
             $table->string('join_type')->nullable();
-            $table->enum('pwth', ['YES', 'NO'])->nullable();
+            $table->string('pwth')->nullable();
             $table->string('connection_type')->nullable();
             $table->string('join_view')->nullable();
             $table->string('angle_type')->nullable();
             $table->string('position')->nullable();
-            $table->enum('pre_heating', ['YES', 'NO'])->nullable();
+            $table->string('pre_heating')->nullable();
             $table->string('shielding_gas')->nullable();
             $table->string('electrode_coating')->nullable();
             $table->string('welding_equipment')->nullable();

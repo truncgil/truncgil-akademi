@@ -14,7 +14,7 @@ $path = "admin.type.naks-technology";
         if(getisset("add-certificate")) {
             $post = $_POST;
             unset($post['_token']);
-            
+
             try {
                 NaksCertificate::create($post);
                 bilgi("Certificate has been created","success");
@@ -33,6 +33,17 @@ $path = "admin.type.naks-technology";
         
         $naksCertificates = NaksCertificate::paginate(setting('row_count'));
         $naksCenters = NaksCenter::all();
+        
+        $tableName = "naks_certificates";
+
+        $columns = table_columns($tableName);
+        
+         
+        foreach($columns AS $column) {
+           // dump(table_column_type($tableName, $column));
+        }
+
+
 
 
        
@@ -40,13 +51,13 @@ $path = "admin.type.naks-technology";
          ?>   
         </div>
         {{col("col-md-12","Certificates",0,[
-            'export' => 'naks_certificates'
+            'export' => $tableName
             ])}} 
-            <?php  $tableName = "naks_certificates"; ?>
+            <?php  ; ?>
             @include("components.excel-file-input")
             <div class="table-responsive">
                 <table id="excel" style="table-layout:fixed;width:300%" class="table table-sm table-bordered table-striped table-hover">
-                        @include("$path.header")
+                        
                         
                         @include("$path.form")
                         
