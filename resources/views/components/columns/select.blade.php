@@ -1,0 +1,28 @@
+<?php 
+$columnName = $column['name'];
+$columnData = $datas[$columnName];  
+
+?>
+<select name="{{$columnName}}" id="" class="form-control" 
+    {{$columnData['multiple'] ? 'multiple' : ''}}>
+    <option value="">{{e2("Select")}}</option>
+    <?php foreach($columnData['data'] AS $data)  {  
+        $value = $columnData['value'];
+        $optionHtml = "";
+        foreach($columnData['html'] AS $html) {
+            $optionHtml .= $data->$html . " ";
+        }
+    ?>
+
+    <option value="{{$data->$value}}" 
+    <?php if(isset($listData)) {
+        
+        if($listData->$columnName==$data->$value) {
+            echo "selected";
+        }
+    } ?>
+    >
+    {{$optionHtml}}
+    </option> 
+    <?php } ?>
+</select>

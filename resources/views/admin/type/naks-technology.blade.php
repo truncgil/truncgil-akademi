@@ -11,7 +11,7 @@ $path = "admin.type.naks-technology";
         <div class="col-12">
         <?php 
         
-        if(getisset("add-certificate")) {
+        if(getisset("add")) {
             $post = $_POST;
             unset($post['_token']);
 
@@ -38,11 +38,31 @@ $path = "admin.type.naks-technology";
 
         $columns = table_columns($tableName);
         
-         
+        
+        $columnsList = [];
+
+        $datas = [
+            'short_name' => [
+                'data' => $naksCenters,
+                'value' => 'center_no',
+                'html' => ['center_no', 'center_name'],
+                'type' => 'select',
+                'multiple' => false
+            ],
+        ];
+
         foreach($columns AS $column) {
-           // dump(table_column_type($tableName, $column));
+            $columnType = table_column_type($tableName, $column);
+            if($column!="id") {
+                $columnsList[] = [
+                    'name' => $column,
+                    'type' => isset($datas[$column]) ? $datas[$column]['type'] : $columnType,
+                    'relation' => isset($datas[$column]) ? $datas[$column] : ''
+                ];
+            }
         }
 
+       // dump($columnsList);
 
 
 
@@ -58,12 +78,42 @@ $path = "admin.type.naks-technology";
             <div class="table-responsive">
                 <table id="excel" style="table-layout:fixed;width:300%" class="table table-sm table-bordered table-striped table-hover">
                         
+                        <tr>
+                            <?php foreach($columns AS $column)  { 
+                              ?>
+                             <th>{{e2($column)}}</th> 
+                             <?php } ?>
+                             <th>{{e2("Opt")}}</th>
+                        </tr>
+                        <tr>
+                            <form action="?add" method="post">
+                                @csrf
+                            
+                            <th>#</th>
+                            <?php foreach($columnsList AS $column)  {  
+                                ?>
+                                <th>
+                                    @include("components.columns.{$column['type']}")
+                                </th> 
+                             <?php } ?>
+                             <th><button class="btn btn-outline-success"><i class="fa fa-plus"></i></button></th>
+                             </form>
+
+                        </tr>
                         
-                        @include("$path.form")
-                        
-                        <?php foreach($naksCertificates AS $naksCertificate) {
+                        <?php foreach($naksCertificates AS $listData) {
                              ?>
-                                @include("$path.edit-form")
+                            <tr>
+                                <td>{{$listData->id}}</td>
+                                <?php foreach($columnsList AS $column)  { ?>
+                                <td>
+                                    @include("components.columns.{$column['type']}")
+                                </td> 
+                                <?php } ?>
+                                <td>
+                                    <a href="?delete={{$listData->id}}" {{delete_teyit()}} class="btn btn-danger btn-sm"><i class="fa fa-remove"></i></a>
+                                </td>
+                            </tr>
                              <?php 
                         } ?>
                     
