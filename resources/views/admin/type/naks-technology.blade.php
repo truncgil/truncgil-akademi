@@ -27,10 +27,6 @@ $path = "admin.type.naks-technology";
         if(getisset("delete")) {
             NaksCertificate::where('id', get('delete'))->delete();
         }
-
-        
-
-        
         
         $naksCertificates = NaksCertificate::paginate(setting('row_count'));
         $naksCenters = NaksCenter::all();
@@ -71,12 +67,6 @@ $path = "admin.type.naks-technology";
             }
         }
 
-       // dump($columnsList);
-
-
-
-       
-        
          ?>   
         </div>
         {{col("col-md-12","Certificates",0,[
