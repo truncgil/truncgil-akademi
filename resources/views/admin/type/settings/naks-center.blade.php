@@ -14,8 +14,12 @@ if(getisset("add-center")) {
 }
 if(getisset("delete-center")) {
     NaksCenter::where('id', get('delete-center'))->delete();
-
 }
+
+if(getisset("delete-all")) {
+    NaksCenter::truncate();
+}
+
         ?>
 
 <?php  
