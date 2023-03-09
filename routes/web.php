@@ -58,6 +58,7 @@ Route::get("/$hash/new/{type}","AdminController@new");
 Route::get("/$hash/export/{tableName}/{fileName?}","AdminController@exportExcel");
 
 Route::post("/$hash/import/{tableName}","AdminController@importExcel");
+Route::get("/$hash/truncate/{tableName}","AdminController@truncateTable");
 
 Route::match(['get', 'post'],'/admin/action/{action}/{type}',"AdminController@action2");
 Route::match(['get', 'post'],"/$hash/{type}/{id}","AdminController@default");

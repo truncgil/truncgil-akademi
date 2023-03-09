@@ -130,6 +130,11 @@ class AdminController extends Controller
 		
 	}
 
+	public function truncateTable(Request $request, string $tableName) {
+		db($tableName)->truncate();
+		return redirect()->back();
+	}
+
 	public function default(Request $request,string $type="",string $id="" )
     {
 		$this->middleware('auth');
