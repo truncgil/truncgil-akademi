@@ -139,6 +139,21 @@ class AdminController extends Controller
 		echo db($tableName)->where("id", $id)->delete();
 	}
 
+	public function autocomplete(string $tableName, string $columnName) {
+		$query =  db($tableName)->select($columnName)->pluck($columnName);
+		return response()->json(
+			($query), 
+			200, 
+			[
+				'Content-Type' => 'application/json;charset=UTF-8', 
+				'Charset' => 'utf-8'
+			],
+        	JSON_UNESCAPED_UNICODE
+	);
+
+	}
+
+
 	public function create(Request $request, string $tableName) {
 		$post = $request->all();
 		unset($post['_token']);

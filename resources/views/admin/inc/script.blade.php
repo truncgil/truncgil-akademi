@@ -25,7 +25,24 @@ if(oturumisset("full-screen-block")) {
 }
 ?>
 
-
+$('.auto-complete').autocomplete({
+      source: function( request, response ) {
+        $.ajax( {
+          url: "{{url("admin/autocomplete/welding_methods/ru_short_name")}}",
+          dataType: "jsonp",
+          data: {
+            term: request.term
+          },
+          success: function( data ) {
+            response( data );
+          }
+        } );
+      },
+      minLength: 2,
+      select: function( event, ui ) {
+        log( "Selected: " + ui.item.value + " aka " + ui.item.id );
+      }
+    } );
 
 $(".editable").on("click",function(){
 	$(this).attr("contenteditable",true);

@@ -9,14 +9,13 @@ $columnData = $relationDatas[$columnName];
  table="{{$tableName}}"  
  id="{{$listData->id}}"
  <?php } ?>
-
-    {{$columnData['multiple'] ? 'multiple' : ''}}>
+>
     <option value="">{{e2("Select")}}</option>
     <?php foreach($columnData['data'] AS $data)  {  
         $value = $columnData['value'];
         $optionHtml = "";
-        foreach($columnData['html'] AS $html) {
-            $optionHtml .= $data->$html . " ";
+        foreach($columnData['text'] AS $text) {
+            $optionHtml .= $data->$text . " ";
         }
     ?>
 

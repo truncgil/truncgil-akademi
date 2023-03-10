@@ -12,16 +12,14 @@ $relationDatas = [
     'short_name' => [
         'data' => NaksCenter::all(),
         'value' => 'center_no',
-        'html' => ['center_no', 'center_name'],
-        'type' => 'select',
-        'multiple' => false
+        'text' => ['center_no', 'center_name'],
+        'type' => 'select'
     ],
     'welding_method' => [
         'data' => WeldingMethod::all(),
         'value' => 'ru_short_name',
-        'html' => ['ru_short_name', 'iso_short_name', 'aws_short_name'],
-        'type' => 'select',
-        'multiple' => false
+        'text' => ['ru_short_name', 'iso_short_name', 'aws_short_name'],
+        'type' => 'select'
     ],
 ];
 ?>
