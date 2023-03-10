@@ -28,10 +28,11 @@ class CreateProsedureQualificationRecordsTable extends Migration
             $table->string('pqr_no')->nullable()->default(null);
             $table->string('rev_no')->nullable()->default(null);
             $table->string('naks_technology')->nullable()->default(null);
+            $table->string('technology_category')->nullable()->default(null);
             $table->string('pwps_no')->nullable()->default(null);
             $table->string('base_metal')->nullable()->default(null);
             $table->date('date')->nullable();
-            $table->string('welding_process')->nullable()->default(null);
+            $table->string('welding_method')->nullable()->default(null);
             $table->string('position')->nullable()->default(null);
             $table->string('type_grade_1')->nullable()->default(null);
             $table->string('type_grade_2')->nullable()->default(null);
@@ -58,9 +59,11 @@ class CreateProsedureQualificationRecordsTable extends Migration
             $table->float('outside_daimeter_max', 2, 2)->nullable()->default(null);
             $table->float('thickness_min', 2, 2)->nullable()->default(null);
             $table->string('process')->nullable()->default(null);
+            $table->string('pre_heating_2')->nullable()->default(null);
             $table->string('pwht')->nullable()->default(null);
             $table->string('range_position')->nullable()->default(null);
             $table->string('type_of_joint')->nullable()->default(null);  
+            $table->string('backing_gas_2')->nullable()->default(null);  
             $table->date('approved_date')->nullable()->default(null);
             $table->string('status')->nullable()->default(null);
         });
