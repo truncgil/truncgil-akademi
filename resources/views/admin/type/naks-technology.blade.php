@@ -1,6 +1,5 @@
 <?php 
-use App\Models\NaksCenter; 
-use App\Models\WeldingMethod; 
+
 use App\Models\NaksCertificate; 
 
 $title = "Certificates";
@@ -9,14 +8,18 @@ $path = "admin.type.naks-technology";
 $listDatas = NaksCertificate::orderBy("id","DESC")->paginate(setting('row_count'));
 $tableName = "naks_certificates";
 $relationDatas = [
-    'short_name' => [
-        'data' => NaksCenter::all(),
+    'short_number' => [
+        'table' => 'naks_centers',
         'value' => 'center_no',
-        'text' => ['center_no', 'center_name'],
-        'type' => 'select'
+        'text' => ['center_no'],
+        'type' => 'select',
+        'affected' => [
+            'short_name' => 'center_name',
+            //'certificate_no' => 'center_no'
+        ]
     ],
     'welding_method' => [
-        'data' => WeldingMethod::all(),
+        'table' => 'welding_methods',
         'value' => 'ru_short_name',
         'text' => ['ru_short_name', 'iso_short_name', 'aws_short_name'],
         'type' => 'select'

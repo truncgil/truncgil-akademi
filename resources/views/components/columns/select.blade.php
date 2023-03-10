@@ -1,9 +1,16 @@
 <?php 
 $columnName = $column['name'];
 $columnData = $relationDatas[$columnName];  
+$datas = db($columnData['table'])->get();
 
 ?>
-<select name="{{$columnName}}"  class="form-control {{isset($listData) ? 'edit' : ''}}" 
+<select name="{{$columnName}}"  class="form-control table-select {{isset($listData) ? 'edit' : ''}}" 
+<?php if(isset($columnData['affected'])) {
+     ?>
+     affected="{{json_encode($columnData['affected'])}}"
+     data-url="{{url("admin/detail/{$columnData['table']}/{$columnData['value']}")}}"
+     <?php 
+} ?>
 <?php if(isset($listData))  { 
   ?>
  table="{{$tableName}}"  
@@ -11,7 +18,7 @@ $columnData = $relationDatas[$columnName];
  <?php } ?>
 >
     <option value="">{{e2("Select")}}</option>
-    <?php foreach($columnData['data'] AS $data)  {  
+    <?php foreach($datas AS $data)  {  
         $value = $columnData['value'];
         $optionHtml = "";
         foreach($columnData['text'] AS $text) {
