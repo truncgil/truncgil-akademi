@@ -15,7 +15,6 @@ $relationDatas = [
         'type' => 'select',
         'affected' => [
             'short_name' => 'center_name',
-            //'certificate_no' => 'center_no'
         ]
     ],
     'welding_method' => [
