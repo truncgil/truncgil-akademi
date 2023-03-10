@@ -35,7 +35,12 @@ class ImportExcel implements ToCollection
                 if($column!="")  { 
                     $columnType = table_column_type($this->tableName, $column);
                     if($columnType=="date") {
-                        $refactoringRow[$column] = Date::excelToDateTimeObject($row[$columnKey]);
+                        try {
+                            $refactoringRow[$column] = Date::excelToDateTimeObject($row[$columnKey]);
+                        } catch (\Throwable $th) {
+                            $refactoringRow[$column] = "1970-01-01";
+                        }
+                        
                     } else {
                         $refactoringRow[$column] = $row[$columnKey];
                     }
