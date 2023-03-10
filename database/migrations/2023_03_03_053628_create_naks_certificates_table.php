@@ -17,6 +17,7 @@ class CreateNaksCertificatesTable extends Migration
         Schema::create('naks_certificates', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('short_number')->nullable()->default(null);
             $table->string('certificate_no')->nullable();
             $table->string('short_name')->nullable()->default(null);
             $table->date('valid_from')->nullable()->default(null);
@@ -24,17 +25,17 @@ class CreateNaksCertificatesTable extends Migration
             $table->string('welding_method')->nullable();
             $table->string('mat_group_1')->nullable();
             $table->string('mat_group_2')->nullable();
-            $table->string('consumable')->nullable();
+            $table->string('welding_consumable')->nullable();
             $table->string('technology_category')->nullable();
-            $table->string('type')->nullable();
-            $table->string('min')->nullable();
-            $table->string('max')->nullable();
-            $table->string('min2')->nullable();
-            $table->string('max2')->nullable();
-            $table->string('min_thick')->nullable();
-            $table->string('max_thick')->nullable();
-            $table->string('min_thick2')->nullable();
-            $table->string('max_thick2')->nullable();
+            $table->string('work_type')->nullable();
+            $table->string('min_dia')->nullable();
+            $table->string('max_dia')->nullable();
+            $table->string('min_dia2')->nullable();
+            $table->string('max_dia2')->nullable();
+            $table->integer('min_thick')->nullable();
+            $table->integer('max_thick')->nullable();
+            $table->integer('min_thick2')->nullable();
+            $table->integer('max_thick2')->nullable();
             $table->string('join_type')->nullable();
             $table->string('pwth')->nullable();
             $table->string('connection_type')->nullable();
@@ -46,7 +47,6 @@ class CreateNaksCertificatesTable extends Migration
             $table->string('electrode_coating')->nullable();
             $table->string('welding_equipment')->nullable();
             $table->string('performed_works_type')->nullable();
-            $table->string('apparatus')->nullable();
             $table->string('remarks')->nullable();
         });
     }
