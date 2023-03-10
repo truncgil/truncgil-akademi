@@ -139,6 +139,13 @@ class AdminController extends Controller
 		echo db($tableName)->where("id", $id)->delete();
 	}
 
+	public function create(Request $request, string $tableName) {
+		$post = $request->all();
+		unset($post['_token']);
+		db($tableName)->insert($post);
+		return redirect()->back();
+	}
+
 	public function default(Request $request,string $type="",string $id="" )
     {
 		$this->middleware('auth');

@@ -1,6 +1,6 @@
 <?php 
 $columnName = $column['name'];
-$columnData = $datas[$columnName];  
+$columnData = $relationDatas[$columnName];  
 
 ?>
 <select name="{{$columnName}}"  class="form-control {{isset($listData) ? 'edit' : ''}}" 

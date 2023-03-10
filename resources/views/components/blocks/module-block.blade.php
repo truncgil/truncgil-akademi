@@ -1,3 +1,7 @@
+<?php 
+$columns = table_columns($tableName);       
+$columnsList = [];
+?>
 {{col("col-md-12", $title,0,[
             'export' => $tableName
             ])}} 
@@ -7,15 +11,20 @@
         if($column!="id") {
             $columnsList[] = [
                 'name' => $column,
-                'type' => isset($datas[$column]) ? $datas[$column]['type'] : $columnType,
-                'relation' => isset($datas[$column]) ? $datas[$column] : ''
+                'type' => isset($relationDatas[$column]) ? $relationDatas[$column]['type'] : $columnType,
+                'relation' => isset($relationDatas[$column]) ? $relationDatas[$column] : ''
             ];
         }
     }
     ?>
     @include("components.excel-file-input")
-    <div class="table-responsive">
-        <table style="table-layout:fixed;width:{{$tableWidth}}" class="table table-sm table-bordered table-striped table-hover">
+    <div class="row">
+        <div class="col-12">
+            {{$listDatas->appends($_GET)->links()}}
+        </div>
+    </div>
+    <div class="table-responsive mt-10 mb-10">
+        <table style="table-layout:fixed;width:{{$tableWidth}}" class=" table table-sm table-bordered table-striped table-hover">
                 
                 <tr class="table-dark">
                     <?php foreach($columns AS $column)  { 
@@ -25,7 +34,7 @@
                         <td data-resizable-column-id="opt">{{e2("Opt")}}</td>
                 </tr>
                 <tr class="table-warning">
-                    <form action="?add" method="post">
+                    <form action="{{url("admin/create/$tableName")}}" method="post">
                     @csrf
                     
                     <td>#</td>
@@ -58,7 +67,7 @@
         
     </div>
     <div class="row">
-        <div class="block-content block-content-full block-content-sm">
+        <div class="col-12">
             {{$listDatas->appends($_GET)->links()}}
         </div>
     </div>
