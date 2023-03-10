@@ -6,5 +6,6 @@
  table="{{$tableName}}"  
  id="{{$listData->id}}"
  <?php } ?>
+ placeholder="{{$column['type']}}"
 
 >

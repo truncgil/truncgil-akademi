@@ -1,10 +1,10 @@
 <?php 
-use App\Models\ProsedureQualificationRecord; 
+use App\Models\WPS; 
 
-$title = "Procedure Qualification Records";
+$title = "WPS";
 $tableWidth="300%";
-$listDatas = ProsedureQualificationRecord::orderBy("id","DESC")->paginate(setting('row_count'));
-$tableName = "prosedure_qualification_records";
+$listDatas = WPS::orderBy("id","DESC")->paginate(setting('row_count'));
+$tableName = "w_p_s";
 /*
 $relationDatas = [
     'short_name' => [
