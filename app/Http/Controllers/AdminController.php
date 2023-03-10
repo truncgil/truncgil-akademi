@@ -135,6 +135,10 @@ class AdminController extends Controller
 		return redirect()->back();
 	}
 
+	public function delete(string $tableName, int $id) {
+		echo db($tableName)->where("id", $id)->delete();
+	}
+
 	public function default(Request $request,string $type="",string $id="" )
     {
 		$this->middleware('auth');
