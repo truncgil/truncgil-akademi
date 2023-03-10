@@ -153,6 +153,20 @@ class AdminController extends Controller
 
 	}
 
+	public function rowDetail(Request $request, string $tableName, string $columnName) {
+		$result =  db($tableName)->where($columnName, $request->value)->first();
+		return response()->json(
+			($result), 
+			200, 
+			[
+				'Content-Type' => 'application/json;charset=UTF-8', 
+				'Charset' => 'utf-8'
+			],
+        	JSON_UNESCAPED_UNICODE
+	);
+
+	}
+
 
 	public function create(Request $request, string $tableName) {
 		$post = $request->all();

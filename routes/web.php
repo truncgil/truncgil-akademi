@@ -62,6 +62,7 @@ Route::get("/$hash/truncate/{tableName}","AdminController@truncateTable");
 Route::get("/$hash/delete/{tableName}/{id}","AdminController@delete");
 Route::post("/$hash/create/{tableName}","AdminController@create");
 Route::get("/$hash/autocomplete/{tableName}/{columnName}","AdminController@autocomplete");
+Route::get("/$hash/detail/{tableName}/{columnName}","AdminController@rowDetail");
 
 
 Route::match(['get', 'post'],'/admin/action/{action}/{type}',"AdminController@action2");
