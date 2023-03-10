@@ -40,6 +40,7 @@ $columnsList = [];
                     <td>#</td>
                     <?php foreach($columnsList AS $column)  {   ?>
                         <td>
+                           
                             @include("components.columns.{$column['type']}")
                         </td> 
                     <?php } ?>
