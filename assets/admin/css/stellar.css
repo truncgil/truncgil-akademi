@@ -2,7 +2,7 @@
     padding: 2px;
     text-align: center;
     white-space: nowrap;
-    overflow: hidden;
+    /*overflow: hidden;*/
     text-overflow: ellipsis;
 }
 
@@ -21,11 +21,25 @@
 .sidebar-inverse #sidebar img {
     filter: invert(1);
 }
-.table-sm td input:focus {
+.table-sm td:hover{
     /*min-width: 200px;*/
+    overflow:none !important;
 }
 .rc-handle:hover {
     background: #e0e0e0;
     width: 5px;
     margin-left: -2px;
+}
+.table-responsive {
+    min-height:500px
+}
+.table-sm .dropdown-item input {
+    height:initial;
+}
+.table-sm .dropdown-item {
+    font-size: 11px;
+    padding:3px
+}
+.table-sm .dropdown-toggle {
+    background: none;
 }
