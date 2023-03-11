@@ -23,9 +23,18 @@
                 parent.find("input[type='checkbox'][value='"+i+"']").prop("checked", true);
             });
         });
+        /*
+        $(".multiple-choice input[type='text']").on("click", function(){
+
+            var parent = $(this).parent();
+            parent.find('[data-toggle=dropdown]').dropdown('toggle');
+            //console.log(selected);
+        });
+        */
         $(document).on('click', 'someyourContainer .dropdown-menu', function (e) {
             e.stopPropagation();
         });
+        
     });
 </script>
 
