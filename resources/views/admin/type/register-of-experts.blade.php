@@ -3,7 +3,7 @@
 use App\Models\RegisterOfExpert; 
 
 $title = "Register of Experts";
-$tableWidth="300%";
+$tableWidth="100%";
 $path = "admin.type.naks-consumables";
 $listDatas = RegisterOfExpert::orderBy("id","DESC")->paginate(setting('row_count'));
 $tableName = "register_of_experts";
