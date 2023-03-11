@@ -8,10 +8,11 @@ $title = "Procedure Qualification Records";
 $tableWidth="300%";
 $listDatas = ProsedureQualificationRecord::orderBy("id","DESC")->paginate(setting('row_count'));
 $tableName = "prosedure_qualification_records";
-
+$materials = db('materials')->get();
 $relationDatas = [
     'naks_technology' => [
         'table' => 'naks_certificates',
+        'datas' => db('naks_certificates')->get(),
         'value' => 'certificate_no',
         'text' => ['short_number', 'certificate_no'],
         'type' => 'select',
@@ -22,6 +23,7 @@ $relationDatas = [
     ],
     'base_metal' => [
         'table' => 'materials',
+        'datas' => $materials,
         'value' => 'steel_grade',
         'text' => ['steel_grade', 'product_name'],
         'type' => 'select',
@@ -31,6 +33,7 @@ $relationDatas = [
     ],
     'welding_method' => [
         'table' => 'materials',
+        'datas' => $materials,
         'value' => 'steel_grade',
         'text' => ['steel_grade', 'product_name'],
         'type' => 'select',
@@ -40,6 +43,7 @@ $relationDatas = [
     ],
     'type_grade_1' => [
         'table' => 'materials',
+        'datas' => $materials,
         'value' => 'steel_grade',
         'text' => ['steel_grade'],
         'type' => 'select',

@@ -3,29 +3,30 @@
 use App\Models\WeldingEquipment; 
 
 $title = "NAKS Welding Equipments";
-$tableWidth="100%";
+$tableWidth="200%";
 $path = "admin.type.naks-welding-equipments";
 $listDatas = WeldingEquipment::orderBy("id","DESC")->paginate(setting('row_count'));
 $tableName = "welding_equipment";
-/*
+
 $relationDatas = [
-    'short_number' => [
-        'table' => 'naks_centers',
-        'value' => 'center_no',
-        'text' => ['center_no'],
-        'type' => 'select',
-        'affected' => [
-            'short_name' => 'center_name',
-        ]
+    'working_status' => [
+        'values' => [
+            'Working',
+            'Attestation waiting',
+            'Repair',
+            'Out of use',
+        ],
+        'type' => 'manuel-select'
     ],
-    'welding_method' => [
-        'table' => 'welding_methods',
-        'value' => 'ru_short_name',
-        'text' => ['ru_short_name', 'iso_short_name', 'aws_short_name'],
-        'type' => 'select'
+    'groups_of_technical_devices' => [
+        'table' => 'hazard_classes',
+        'datas' => db('hazard_classes')->get(),
+        'key' => 'serial_number',
+        'type' => 'multiple-choice'
     ],
+    
 ];
-*/
+
 ?>
 <div class="content">
     <div class="row">   

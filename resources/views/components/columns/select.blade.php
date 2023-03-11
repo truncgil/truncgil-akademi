@@ -1,7 +1,7 @@
 <?php 
 $columnName = $column['name'];
 $columnData = $relationDatas[$columnName];  
-$datas = db($columnData['table'])->get();
+$datas = $columnData['datas'];
 
 ?>
 <select name="{{$columnName}}"  class="form-control table-select {{isset($listData) ? 'edit' : ''}}" 

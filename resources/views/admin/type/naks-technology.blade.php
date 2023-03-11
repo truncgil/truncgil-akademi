@@ -10,6 +10,7 @@ $tableName = "naks_certificates";
 $relationDatas = [
     'short_number' => [
         'table' => 'naks_centers',
+        'datas' => db('naks_centers')->get(),
         'value' => 'center_no',
         'text' => ['center_no'],
         'type' => 'select',
@@ -19,6 +20,7 @@ $relationDatas = [
     ],
     'welding_method' => [
         'table' => 'welding_methods',
+        'datas' => db('welding_methods')->get(),
         'value' => 'ru_short_name',
         'text' => ['ru_short_name', 'iso_short_name', 'aws_short_name'],
         'type' => 'select'
