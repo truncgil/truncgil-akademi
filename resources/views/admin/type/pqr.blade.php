@@ -17,18 +17,38 @@ $relationDatas = [
         'type' => 'select',
         'affected' => [
             'technology_category' => 'technology_category',
+            'welding_method' => 'welding_method',
         ]
     ],
-    /*
     'base_metal' => [
         'table' => 'materials',
         'value' => 'steel_grade',
-        'text' => ['short_number', 'certificate_no'],
+        'text' => ['steel_grade', 'product_name'],
         'type' => 'select',
         'affected' => [
             'technology_category' => 'technology_category',
         ]
     ],
+    'welding_method' => [
+        'table' => 'materials',
+        'value' => 'steel_grade',
+        'text' => ['steel_grade', 'product_name'],
+        'type' => 'select',
+        'affected' => [
+            'technology_category' => 'technology_category',
+        ]
+    ],
+    'type_grade_1' => [
+        'table' => 'materials',
+        'value' => 'steel_grade',
+        'text' => ['steel_grade'],
+        'type' => 'select',
+        'affected' => [
+            'russian_standart_group_no' => 'mat_group_1',
+        ]
+    ],
+    /*
+    
     'type_grade_1' => [
         'table' => 'naks_certificates',
         'value' => 'certificate_no',
