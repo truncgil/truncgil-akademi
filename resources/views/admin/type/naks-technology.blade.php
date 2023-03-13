@@ -55,7 +55,6 @@ $relationDatas = [
         'type' => 'select-dropdown'
     ],
     'performed_works_type' => [
-        'table' => 'performed_work_types',
         'datas' => db('performed_work_types')->get(),
         'key' => 'title',
         'type' => 'multiple-choice'
@@ -77,7 +76,6 @@ $relationDatas = [
     ],
     
     'electrode_coating' => [
-        'table' => 'electrode_coatings',
         'datas' => db('electrode_coatings')->get(),
         'key' => 'short_name_ru',
         'type' => 'multiple-choice'
