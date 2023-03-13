@@ -82,7 +82,7 @@ $relationDatas = [
     ],
     'welding_equipment' => [
         'datas' => db("welding_machine_types")->get(),
-        'pattern' => '{short_name_ru}',
+        'pattern' => '{purpose_ru}',
         'type' => 'select-dropdown'
     ],
     'pwht' => [
