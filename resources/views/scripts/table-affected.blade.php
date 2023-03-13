@@ -12,7 +12,12 @@
             }, function(result){
                 $.each(affected,function(key,value){
                     //var value = d.
-                    parent.find("[name='"+key+"']").val(result[value]).trigger("blur");
+                    var replaceString = value;
+                    //console.log(replaceString
+                    $.each(result, function(resultKey, resultValue){
+                        replaceString = replaceString.replace("{"+resultKey+"}",resultValue);
+                    });
+                    parent.find("[name='"+key+"']").val(replaceString).trigger("blur");
                 });
             });
             

@@ -43,3 +43,7 @@
 .table-sm .dropdown-toggle {
     background: none;
 }
+.table-sm .dropdown-menu {
+    height: 200px;
+    overflow: auto;
+}
