@@ -18,7 +18,7 @@ $key = $columnData['key'];
         
     </button>
     <div class="dropdown-menu">
-        <h6 class="dropdown-header">{{e2($key)}}</h6>
+        <h6 class="dropdown-header d-none">{{e2($key)}}</h6>
         <?php foreach($datas AS $data)  { 
           ?>
          <label class="dropdown-item"><input type="checkbox" value="{{$data->$key}}" name="" id=""> {{$data->$key}}</label> 
