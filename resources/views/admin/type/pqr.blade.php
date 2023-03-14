@@ -5,7 +5,7 @@ use App\Models\Material;
 use App\Models\WeldingConsumable; 
 
 $title = "Procedure Qualification Records";
-$tableWidth="300%";
+$tableWidth="500%";
 $listDatas = ProsedureQualificationRecord::orderBy("id","DESC")->paginate(setting('row_count'));
 $tableName = "prosedure_qualification_records";
 $materials = db('materials')->get();
