@@ -22,6 +22,7 @@ class ImportExcel implements ToCollection
     public function collection(Collection $collection)
     {
         set_time_limit(0);
+        ini_set('memory_limit', '-1');
         $firstRow = $collection[0];
         $otherRow = $collection;
         unset($otherRow[0]);
@@ -29,12 +30,14 @@ class ImportExcel implements ToCollection
         $data = [];
         $insertArray = []; 
         $columnTypes = []; 
-        
         foreach($firstRow AS $column) {
-            $columnType = table_column_type($this->tableName, $column);
-            $columnTypes[$column] = $columnType;
+            if(!is_null($column)) {
+                $columnType = table_column_type($this->tableName, $column);
+                $columnTypes[$column] = $columnType;
+            }
+            
         }
-
+        
         foreach($otherRow AS $row) {
             $columnKey = 0;
             $refactoringRow = [];
@@ -80,5 +83,6 @@ class ImportExcel implements ToCollection
         }
 
         db($this->tableName)->insert($insertArray);
+        
     }
 }
