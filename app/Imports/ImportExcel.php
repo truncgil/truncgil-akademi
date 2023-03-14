@@ -27,13 +27,20 @@ class ImportExcel implements ToCollection
         unset($otherRow[0]);
 
         $data = [];
+        $insertArray = []; 
+        $columnTypes = []; 
         
+        foreach($firstRow AS $column) {
+            $columnType = table_column_type($this->tableName, $column);
+            $columnTypes[$column] = $columnType;
+        }
+
         foreach($otherRow AS $row) {
             $columnKey = 0;
             $refactoringRow = [];
             foreach($firstRow AS $column) {
                 if($column!="")  { 
-                    $columnType = table_column_type($this->tableName, $column);
+                    $columnType =  $columnTypes[$column];
                     if($columnType=="date") {
                         try {
                             $refactoringRow[$column] = Date::excelToDateTimeObject($row[$columnKey]);
@@ -41,6 +48,10 @@ class ImportExcel implements ToCollection
                             $refactoringRow[$column] = "1970-01-01";
                         }
                         
+                    } elseif($columnType=="integer") {
+                        $refactoringRow[$column] = (int) $row[$columnKey];
+                    } elseif($columnType=="float") {
+                        $refactoringRow[$column] =  (float) $row[$columnKey];
                     } else {
                         $refactoringRow[$column] = $row[$columnKey];
                     }
@@ -54,7 +65,8 @@ class ImportExcel implements ToCollection
             }
             if($refactoringRow['id']=="") {
                 unset($refactoringRow['id']);
-                ekle2($refactoringRow, $this->tableName);
+                //ekle2($refactoringRow, $this->tableName);
+                $insertArray[] = $refactoringRow;
             } else {
                 firstOrUpdate(
                     $refactoringRow, 
@@ -66,5 +78,7 @@ class ImportExcel implements ToCollection
             }
             
         }
+
+        db($this->tableName)->insert($insertArray);
     }
 }
