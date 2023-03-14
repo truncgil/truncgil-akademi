@@ -56,7 +56,7 @@ $relationDatas = [
     ],
     'performed_works_type' => [
         'datas' => db('performed_work_types')->get(),
-        'key' => 'title',
+        'pattern' => '{title}',
         'type' => 'multiple-choice'
     ],
     'joint_type' => [
@@ -77,7 +77,7 @@ $relationDatas = [
     
     'electrode_coating' => [
         'datas' => db('electrode_coatings')->get(),
-        'key' => 'short_name_ru',
+        'pattern' => '{short_name_ru}',
         'type' => 'multiple-choice'
     ],
     'welding_equipment' => [

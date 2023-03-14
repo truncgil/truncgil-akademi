@@ -1,7 +1,7 @@
 <?php $columnName = $column['name']; 
 $columnData = $relationDatas[$columnName];  
 $datas = $columnData['datas'];
-$key = $columnData['key'];
+
 ?>
 <div class="input-group multiple-choice">
     <input type="text" class="form-control {{isset($listData) ? 'edit' : ''}}" name="{{$columnName}}" 
@@ -18,10 +18,14 @@ $key = $columnData['key'];
         
     </button>
     <div class="dropdown-menu">
-        <h6 class="dropdown-header d-none">{{e2($key)}}</h6>
+        
         <?php foreach($datas AS $data)  { 
+            $patternString = $columnData['pattern'];
+            foreach($data AS $dataColumn => $dataValue) {
+                $patternString = str_replace('{'.$dataColumn.'}', $dataValue, $patternString);
+            }
           ?>
-         <label class="dropdown-item"><input type="checkbox" value="{{$data->$key}}" name="" id=""> {{$data->$key}}</label> 
+         <label class="dropdown-item"><input type="checkbox" value="{{$patternString}}" name="" id=""> {{$patternString}}</label> 
          <?php } ?>
     </div>
     </div>
