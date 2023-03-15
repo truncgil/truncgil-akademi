@@ -37,7 +37,7 @@ $relationDatas = [
     'component' => [
         'datas' => $productType,
         'pattern' => '{short_name_ru}',
-        'type' => 'select-dropdown'
+        'type' => 'multiple-choice'
     ],
 
     'weld_type' => [
@@ -53,7 +53,7 @@ $relationDatas = [
     'material' => [
         'datas' => $materials,
         'pattern' => '{ru_group}',
-        'type' => 'select-dropdown'
+        'type' => 'multiple-choice'
     ],
     'welding_position' => [
         'datas' => $weldingPositions,
