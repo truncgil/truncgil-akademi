@@ -25,19 +25,19 @@ $relationDatas = [
     ],
     'welding_method' => [
         'table' => 'welding_methods',
-        'datas' => db('welding_methods')->get(),
+        'datas' => db('welding_methods')->whereNotIn("ru_short_name",['*'])->get(),
         'value' => 'ru_short_name',
         'text' => ['ru_short_name'],    
         'type' => 'select', 
     ],
     'mat_group_1' => [
         'datas' => $materials,
-        'pattern' => '{ru_group}{short_name}',
+        'pattern' => '{ru_group}-{short_name}',
         'type' => 'select-dropdown'
     ],
     'mat_group_2' => [
         'datas' => $materials,
-        'pattern' => '{ru_group}{short_name}',
+        'pattern' => '{ru_group}-{short_name}',
         'type' => 'select-dropdown'
     ],
     'welding_consumable' => [
@@ -67,7 +67,7 @@ $relationDatas = [
     ],
     'joint_view' => [
         'datas' => $jointTypes,
-        'pattern' => '{definition_ru}',
+        'pattern' => '{short_name_ru}',
         'type' => 'multiple-choice'
     ],
     'connection_type' => [
@@ -83,7 +83,7 @@ $relationDatas = [
     ],
     'welding_equipment' => [
         'datas' => db("welding_machine_types")->get(),
-        'pattern' => '{type}',
+        'pattern' => '{code}',
         'type' => 'multiple-choice'
     ],
     'pwht' => [
