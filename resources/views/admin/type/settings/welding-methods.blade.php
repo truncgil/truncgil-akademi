@@ -23,7 +23,7 @@ $tableName = "welding_methods"; ?>
 @include("components.excel-buttons")
 @include("components.excel-file-input")
 <div class="table-responsive">
-<table class="table table-bordered table-sm">
+<table class="table table-bordered table-sm"  style="table-layout:fixed;width:200%">
     <thead>
     <tr>
         <th data-resizable-column-id="id">{{e2("ID")}}</th>

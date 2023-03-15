@@ -30,7 +30,7 @@ $tableName = "hazard_classes"; ?>
 @include("components.excel-buttons")
 @include("components.excel-file-input")
 <div class="table-responsive">
-<table class="table table-bordered table-sm" style="table-layout:fixed;width:100%">
+<table class="table table-bordered table-sm" style="table-layout:fixed;width:200%">
     <thead>
     <tr>
         <?php foreach($tableColumns AS $column)  {  ?>
