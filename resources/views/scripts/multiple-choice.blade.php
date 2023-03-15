@@ -11,13 +11,14 @@
                 }
                 
             });
-            parent.find("input[type='text']").val(selected.join(",")).trigger("blur");
+            var input = parent.find("input[type='text']");
+            input.val(selected.join(input.attr("seperator"))).trigger("blur");
             //console.log(selected);
         });
         $(".multiple-choice .dropdown-toggle").on("click", function(){
             var parent = $(this).parent().parent();
             var input = parent.find("input[type='text']");
-            var selected = input.val().split(",");
+            var selected = input.val().split(input.attr("seperator"));
             console.log(selected);
             $.each(selected, function(e,i) {
                 parent.find("input[type='checkbox'][value='"+i+"']").prop("checked", true);

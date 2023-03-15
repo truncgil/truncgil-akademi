@@ -4,7 +4,10 @@ $datas = $columnData['datas'];
 
 ?>
 <div class="input-group multiple-choice">
-    <input type="text" class="form-control {{isset($listData) ? 'edit' : ''}}" name="{{$columnName}}" 
+    <input type="text" 
+    class="form-control {{isset($listData) ? 'edit' : ''}}" 
+    name="{{$columnName}}" 
+    seperator="{{isset($columnData['seperator']) ? $columnData['seperator'] : ','}}"
     <?php if(isset($listData))  { 
     ?>
     value="{{$listData->$columnName}}" 
