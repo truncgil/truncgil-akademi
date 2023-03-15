@@ -61,13 +61,26 @@ if(isAdmin())  {
     <div class="col-md-9">
         <div class="row">
         <div class="col-md-6">
-            <label for="">{{e2("First Name")}}: </label><input required="" type="text" value="" name="name" id="first-name"
+            <label for="">{{e2("Name")}}: </label><input required="" type="text" value="" name="name" id="first-name"
             class="form-control">
-    </div>
-    <div class="col-md-6">
-            <label for="">{{e2("Last Name")}}: </label><input required="" type="text" value="" name="surname" id="last-name"
+        </div>
+        <div class="col-md-6">
+            <label for="">{{e2("Name En")}}: </label><input required="" type="text" value="" name="name_en"
             class="form-control">
-    </div>
+        </div>
+        <div class="col-md-6">
+            <label for="">{{e2("Name Ru")}}: </label><input required="" type="text" value="" name="name_ru"
+            class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label for="">{{e2("Date of Birth")}}: </label><input required="" type="date" value="" name="date_of_birth"
+            class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label for="">{{e2("Company")}}: </label><input required="" type="text" value="" name="company"
+            class="form-control">
+        </div>
+   
 
     <div class="col-md-6">
             
@@ -302,7 +315,12 @@ if(isAdmin())  {
         unset($userDetail->json);
         foreach($userDetail AS $alan => $deger) {
              ?>
-             $("[name='{{$alan}}']").val("{{$deger}}");
+             try {
+                $("[name='{{$alan}}']").val("{{$deger}}");
+             } catch (error) {
+                
+             }
+            
              <?php 
         } ?>
         $(".reemail").remove();

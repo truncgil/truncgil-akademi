@@ -87,7 +87,8 @@
 						<td>{{e2("ID")}}</td>
 						<td>{{e2("Parent")}}</td>
 						<td>{{e2("Name")}}</td>
-						<td>{{e2("Surname")}}</td>
+						<td>{{e2("Name (En)")}}</td>
+						<td>{{e2("Name (Ru)")}}</td>
 						<td>{{e2("Level")}}</td>
 						<td>{{e2("E-Mail")}}</td>
 						<td>{{e2("Phone")}}</td>
@@ -107,7 +108,8 @@
 						<td>
 							<x-input-edit name="name" type="text" value="{{$u->name}}" id="{{$u->id}}" table="users" />
 						</td>
-						<td><x-input-edit name="surname" type="text" value="{{$u->surname}}" id="{{$u->id}}" table="users" /></td>
+						<td><x-input-edit name="name_en" type="text" value="{{$u->name_en}}" id="{{$u->id}}" table="users" /></td>
+						<td><x-input-edit name="name_ru" type="text" value="{{$u->name_ru}}" id="{{$u->id}}" table="users" /></td>
 						<td>
 							<select name="level" id="{{$u->id}}" table="users" class="form-control edit">
 						@if($seviye!=null)

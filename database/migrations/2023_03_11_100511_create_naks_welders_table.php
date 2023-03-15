@@ -16,6 +16,7 @@ class CreateNaksWeldersTable extends Migration
         Schema::create('naks_welders', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('user_id')->nullable()->default(null);
             $table->string('welder_name_ru')->nullable()->default(null);
             $table->string('welder_name_en')->nullable()->default(null);
             $table->date('year_of_birth')->nullable()->default(null);
