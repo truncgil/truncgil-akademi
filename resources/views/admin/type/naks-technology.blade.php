@@ -8,7 +8,7 @@ $path = "admin.type.naks-technology";
 $listDatas = NaksCertificate::orderBy("id","DESC")->paginate(setting('row_count'));
 $tableName = "naks_certificates";
 
-$materials = db('materials')->get();
+$materials = db('materials')->groupBy("ru_group")->get();
 $jointTypes = db("joint_types")->get();
 $weldingPositions = db("welding_positions")->get();
 
@@ -68,7 +68,7 @@ $relationDatas = [
     'joint_view' => [
         'datas' => $jointTypes,
         'pattern' => '{definition_ru}',
-        'type' => 'select-dropdown'
+        'type' => 'multiple-choice'
     ],
     'connection_type' => [
         'datas' => $jointTypes,
