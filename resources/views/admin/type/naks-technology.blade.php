@@ -73,7 +73,7 @@ $relationDatas = [
     'connection_type' => [
         'datas' => $jointTypes,
         'pattern' => '{naks_name}',
-        'type' => 'select-dropdown'
+        'type' => 'multiple-choice'
     ],
     
     'electrode_coating' => [
