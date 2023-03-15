@@ -10,6 +10,7 @@ $tableName = "naks_certificates";
 
 $materials = db('materials')->get();
 $jointTypes = db("joint_types")->get();
+$weldingPositions = db("welding_positions")->get();
 
 $relationDatas = [
     'short_number' => [
@@ -42,7 +43,7 @@ $relationDatas = [
     'welding_consumable' => [
         'datas' => db("welding_consumables")->get(),
         'pattern' => '{brend}',
-        'type' => 'select-dropdown'
+        'type' => 'multiple-choice'
     ],
     'technology_category' => [
         'datas' => db("hazard_classes")->get(),
@@ -83,7 +84,7 @@ $relationDatas = [
     'welding_equipment' => [
         'datas' => db("welding_machine_types")->get(),
         'pattern' => '{type}',
-        'type' => 'select-dropdown'
+        'type' => 'multiple-choice'
     ],
     'pwht' => [
         'values' => [
@@ -98,6 +99,12 @@ $relationDatas = [
             'NO',
         ],
         'type' => 'manuel-select'
+    ],
+    'position' => [
+        'datas' => $weldingPositions,
+        'pattern' => '{gost}',
+        'type' => 'multiple-choice',
+        'seperator' => ';'
     ],
 ];
 ?>
