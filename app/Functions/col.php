@@ -28,6 +28,7 @@ function col($size,$title="",$color="0",$options=[]) {
                          <?php } ?> 
                         data-action="fullscreen_toggle"><i class="si si-size-fullscreen"></i></button>
                          <?php if(isset($options['export']))  {  ?>
+                              <a href="<?php echo url("admin/truncate/". $options['export']) ?>" <?php echo delete_teyit() ?> class="btn-block-option " title="<?php e2("Delete All") ?>" ><i class="fa fa-trash"></i></a>
                               <a href="<?php echo url("admin/export/". $options['export']) ?>" class="btn-block-option" title="<?php e2("Export to Excel") ?>" ><i class="fa fa-download"></i></a>
                           <?php } ?>
                           <label
