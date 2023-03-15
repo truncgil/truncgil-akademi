@@ -88,7 +88,6 @@ $relationDatas = [
         'type' => 'select-dropdown'
     ],
     /*
-    
     'type_grade_1' => [
         'table' => 'naks_certificates',
         'value' => 'certificate_no',
