@@ -27,7 +27,7 @@ class CreateNaksWeldersTable extends Migration
             $table->string('component')->nullable()->default(null);
             $table->string('weld_type')->nullable()->default(null);
             $table->string('naks_certificate_no')->nullable()->default(null);
-            $table->string('period_of_validity')->nullable()->default(null);
+            $table->date('period_of_validity')->nullable()->default(null);
             $table->string('group_of_technical_device')->nullable()->default(null);
             $table->string('material')->nullable()->default(null);
             $table->float('diameter_min', 255, 2)->nullable()->default(null);
