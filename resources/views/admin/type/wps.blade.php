@@ -7,11 +7,13 @@ $listDatas = WPS::orderBy("id","DESC")->paginate(setting('row_count'));
 $tableName = "w_p_s";
 $pqr = db("prosedure_qualification_records")->get();
 $naksCertificates = db("naks_certificates")->groupBy("certificate_no")->get();
-$weldingMethods = db("welding_methods")->get();
+$weldingMethods = db("welding_methods")->whereNotNull("ru_short_name")->get();
 $jointTypes = db("joint_types")->get();
 $ruWeldingGeometries = db("ru_welding_geometries")->get();
 $weldingPositions = db("welding_positions")->get();
-$materials = db("materials")->get();
+$materials = db("materials")->groupBy("steel_grade")->get();
+$currentTypes = db("current_types")->get();
+
 $relationDatas = [
     'pqr_no' => [
         'table' => 'prosedure_qualification_records',
@@ -27,7 +29,6 @@ $relationDatas = [
             'sfa_no' => '{aws_sfa_no_class}',
             'gost' => '{gost}',
             'pre_heating_min' => '{pre_heating}',
-            'pre_heating_max' => '{pre_heating}',
             'inter_pass_max' => '{inter_pass}',
             'temp_range' => '{temp_range}',
             'min_time' => '{min_time}',
@@ -35,7 +36,6 @@ $relationDatas = [
             'backing_gas' => '{backing_gas}',
             'current_polarity' => '{current_polarity}',
             'base_material' => '{work_type}',
-      //      'joint_type_definition' => '{joint_design}',
             'joint_type' => '{joint_design}',
         ]
     ],
@@ -43,6 +43,14 @@ $relationDatas = [
         'datas' => $naksCertificates,
         'pattern' => '{certificate_no}',
         'type' => 'multiple-choice'
+    ],
+    'base_material' => [
+        'table' => 'materials',
+        'datas' => $materials,
+        'value' => 'steel_grade',
+        'text' => ['steel_grade'],
+        'type' => 'select',
+        'affected' => []
     ],
     'group_of_technical_devices' => [
         'table' => 'prosedure_qualification_records',
@@ -67,6 +75,11 @@ $relationDatas = [
         'pattern' => '{connection_symbol}',
         'type' => 'select-dropdown'
     ],
+    'current_polarity' => [
+        'datas' => $currentTypes,
+        'pattern' => '{title}',
+        'type' => 'select-dropdown'
+    ],
     'welding_position' => [
         'datas' => $weldingPositions,
         'pattern' => '{gost}({en})',
@@ -75,7 +88,8 @@ $relationDatas = [
     'type_grade' => [
         'datas' => $materials,
         'pattern' => '{steel_grade}',
-        'type' => 'multiple-choice'
+        'type' => 'multiple-choice',
+        'max' => 2
     ],
    
    
