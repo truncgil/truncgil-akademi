@@ -1,4 +1,4 @@
- {{col("col-12","User Detail")}} 
+ {{col("col-12 detail","User Detail")}} 
  <?php 
 if(isAdmin())  { 
   if(getisset("update")) {
@@ -380,7 +380,7 @@ if(isAdmin())  {
         foreach($userDetail AS $alan => $deger) {
              ?>
              try {
-                $("[name='{{$alan}}']").val("{{$deger}}");
+                $(".detail [name='{{$alan}}']").val("{{$deger}}");
              } catch (error) {
                 
              }

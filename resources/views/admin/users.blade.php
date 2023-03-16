@@ -18,30 +18,7 @@
 	}
 	$seviye = level_keys();
 //	$seviye = explode("\n",$seviye);
-	$request = null;
-	if(getisset("q")) {
-		  $request = Request::all();
-		  $q = $request['q'];
-			
-		  $searchFields = ['name','surname','email','phone','permissions','id'];
-		  $users = User::where(function($query) use($request, $searchFields){
-			$searchWildcard = '%' . $request['q'] . '%';
-			foreach($searchFields as $field){
-			  $query->orWhere($field, 'LIKE', $searchWildcard);
-			}
-		  })
-		  ->where("id",">=",Auth::user()->id)
-		  ->simplePaginate(10);
-
-	} else {
-		$users = User::orderBy("id","DESC")->where("id",">=",Auth::user()->id);
-		if(u()->level!="Admin") {
-			$users = $users->where("uid",u()->id);
-		}
-		$users = $users->simplePaginate(5);
-	}
 	
-	$types = Types::all();
 	
 ?>
 
@@ -52,6 +29,33 @@
  	@include("admin.users.detail") 
 	 <?php } ?>
 </div>
+<?php 
+$request = null;
+if(getisset("q")) {
+	  $request = Request::all();
+	  $q = $request['q'];
+		
+	  $searchFields = ['name','surname','email','phone','permissions','id'];
+	  $users = User::where(function($query) use($request, $searchFields){
+		$searchWildcard = '%' . $request['q'] . '%';
+		foreach($searchFields as $field){
+		  $query->orWhere($field, 'LIKE', $searchWildcard);
+		}
+	  })
+	  ->where("id",">=",Auth::user()->id)
+	  ->simplePaginate(10);
+
+} else {
+	$users = User::orderBy("id","DESC")->where("id",">=",Auth::user()->id);
+	if(u()->level!="Admin") {
+		$users = $users->where("uid",u()->id);
+	}
+	$users = $users->simplePaginate(5);
+}
+
+$types = Types::all();
+
+?>
 <div class="block">
         <div class="block-header block-header-default">
             <h3 class="block-title">
