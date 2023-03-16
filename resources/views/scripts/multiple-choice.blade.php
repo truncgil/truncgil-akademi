@@ -4,14 +4,29 @@
 
             var selected = [];
             var selector = $(this).parent().parent().find("input[type='checkbox']");
+            var checkedSelector = $(this).parent().parent().find("input[type='checkbox']:checked");
             var parent = $(this).parent().parent().parent().parent();
+            var input = parent.find("input[type='text']");
+            if(input.hasAttr("max")) {
+                var max = input.attr("max");
+                console.log(max);
+                console.log(checkedSelector.length);
+       //         if(!$(this).is(":checked")) {
+                    if(checkedSelector.length>max) {
+                        return false;
+                    }
+         //       }
+                
+
+            }
             selector.each(function() {
                 if($(this).is(":checked")) {
                     selected.push($(this).val());
                 }
                 
             });
-            var input = parent.find("input[type='text']");
+            
+            
             input.val(selected.join(input.attr("seperator"))).trigger("blur");
             //console.log(selected);
         });
@@ -20,6 +35,7 @@
             var input = parent.find("input[type='text']");
             var selected = input.val().split(input.attr("seperator"));
             console.log(selected);
+            parent.find("input[type='checkbox']").prop("checked", false);
             $.each(selected, function(e,i) {
                 parent.find("input[type='checkbox'][value='"+i+"']").prop("checked", true);
             });

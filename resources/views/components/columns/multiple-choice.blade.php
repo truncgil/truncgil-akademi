@@ -15,6 +15,7 @@ $datas = $columnData['datas'];
     id="{{$listData->id}}"
     <?php } ?>
     placeholder="{{$column['type']}}"
+    {{isset($columnData['max']) ? 'max='.$columnData['max'] : ""}}
     >
     <div class="dropdown dropdown-sm">
     <button type="button" class="btn btn-outline-default btn-sm dropdown-toggle" data-toggle="dropdown">
