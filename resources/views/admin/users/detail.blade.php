@@ -37,8 +37,14 @@ if(isAdmin())  {
 <div class="col-md-3">
                             <div class="block block-rounded text-center">
                                 <div class="block-content block-content-full">
-                                   
-                                     <img class="img-avatar" src="{{picture3($userDetail->pic,512)}}" alt=""> 
+                                   <?php if($userDetail->pic!="")  { 
+                                     ?>
+                                      <img class="img-avatar" src="{{picture3($userDetail->pic,512)}}" alt="">  
+                                    <?php } else {
+                                         ?>
+                                         <img class="img-avatar" src="{{url('assets/icons/man.png')}}" alt="">  
+                                         <?php 
+                                    } ?>
                                      
                                 </div>
                                 <div class="block-content block-content-full block-content-sm bg-body-light">
@@ -73,11 +79,69 @@ if(isAdmin())  {
             class="form-control">
         </div>
         <div class="col-md-6">
+            <label for="">{{e2("Team/Subconstructer")}}: </label>
+            <select name="subcontructer" id="" class="form-control">
+                <option value="">{{e2("Select")}}</option>
+                <?php $teams = ['Stellar', 'Sonuc Stroy', 'Berty'];
+                foreach($teams AS $s)  {
+                     ?>
+                     <option value="{{$s}}">{{$s}}</option>
+
+                     <?php 
+                }
+                ?>
+            </select>
+        </div>
+        <div class="col-md-6">
             <label for="">{{e2("Date of Birth")}}: </label><input required="" type="date" value="" name="date_of_birth"
             class="form-control">
         </div>
         <div class="col-md-6">
             <label for="">{{e2("Company")}}: </label><input required="" type="text" value="" name="company"
+            class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label for="">{{e2("Passport No")}}: </label><input required="" type="text" value="" name="passport_no"
+            class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label for="">{{e2("Status")}}: </label>
+            <select name="status" id="" class="form-control">
+            <option value="">{{e2("Select")}}</option>
+                <?php $status = ['Active', 'Transfer to', 'Black list', 'Exit'];
+                foreach($status AS $s)  {
+                     ?>
+                     <option value="{{$s}}">{{$s}}</option>
+
+                     <?php 
+                }
+                ?>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="">{{e2("Registration No")}}: </label><input required="" type="text" value="" name="passport_no"
+            class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label for="">{{e2("Job Name")}}: </label>
+            <select name="job_name" id="" class="form-control">
+                <option value="">{{e2("Select")}}</option>
+                <?php $jobs = ['Engineer', 'Welder', 'Formen', 'Tack Welder'];
+                foreach($jobs AS $s)  {
+                     ?>
+                     <option value="{{$s}}">{{$s}}</option>
+
+                     <?php 
+                }
+                ?>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="">{{e2("Date of Start")}}: </label><input required="" type="date" value="" name="date_start"
+            class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label for="">{{e2("Date of Finish")}}: </label><input required="" type="date" value="" name="date_finish"
             class="form-control">
         </div>
    
