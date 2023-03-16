@@ -39,7 +39,6 @@ class CreateWPSTable extends Migration
             $table->string('sfa_no')->nullable()->default(null);
             $table->string('gost')->nullable()->default(null);
             $table->string('pre_heating_min')->nullable()->default(null);
-            $table->string('pre_heating_max')->nullable()->default(null);
             $table->string('inter_pass_max')->nullable()->default(null);
             $table->string('temp_range')->nullable()->default(null);
             $table->string('min_time')->nullable()->default(null);
