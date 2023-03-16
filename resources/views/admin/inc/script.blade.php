@@ -1,3 +1,9 @@
+<script>
+$.fn.hasAttr = function(name) {  
+   return this.attr(name) !== undefined;
+};
+
+</script>
 @foreach (glob(base_path() . '/resources/views/scripts/*.blade.php') as $file)
     @include('scripts.' . basename(str_replace('.blade.php', '', $file)))
 @endforeach
