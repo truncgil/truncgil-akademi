@@ -67,15 +67,15 @@ if(isAdmin())  {
     <div class="col-md-9">
         <div class="row">
         <div class="col-md-6">
-            <label for="">{{e2("Name")}}: </label><input required="" type="text" value="" name="name" id="first-name"
+            <label for="">{{e2("Name")}}: </label><input  type="text" value="" name="name" id="first-name"
             class="form-control">
         </div>
         <div class="col-md-6">
-            <label for="">{{e2("Name En")}}: </label><input required="" type="text" value="" name="name_en"
+            <label for="">{{e2("Name En")}}: </label><input  type="text" value="" name="name_en"
             class="form-control">
         </div>
         <div class="col-md-6">
-            <label for="">{{e2("Name Ru")}}: </label><input required="" type="text" value="" name="name_ru"
+            <label for="">{{e2("Name Ru")}}: </label><input  type="text" value="" name="name_ru"
             class="form-control">
         </div>
         <div class="col-md-6">
@@ -93,15 +93,15 @@ if(isAdmin())  {
             </select>
         </div>
         <div class="col-md-6">
-            <label for="">{{e2("Date of Birth")}}: </label><input required="" type="date" value="" name="date_of_birth"
+            <label for="">{{e2("Date of Birth")}}: </label><input  type="date" value="" name="date_of_birth"
             class="form-control">
         </div>
         <div class="col-md-6">
-            <label for="">{{e2("Company")}}: </label><input required="" type="text" value="" name="company"
+            <label for="">{{e2("Company")}}: </label><input  type="text" value="" name="company"
             class="form-control">
         </div>
         <div class="col-md-6">
-            <label for="">{{e2("Passport No")}}: </label><input required="" type="text" value="" name="passport_no"
+            <label for="">{{e2("Passport No")}}: </label><input  type="text" value="" name="passport_no"
             class="form-control">
         </div>
         <div class="col-md-6">
@@ -119,7 +119,7 @@ if(isAdmin())  {
             </select>
         </div>
         <div class="col-md-6">
-            <label for="">{{e2("Registration No")}}: </label><input required="" type="text" value="" name="passport_no"
+            <label for="">{{e2("Registration No")}}: </label><input  type="text" value="" name="passport_no"
             class="form-control">
         </div>
         <div class="col-md-6">
@@ -137,11 +137,11 @@ if(isAdmin())  {
             </select>
         </div>
         <div class="col-md-6">
-            <label for="">{{e2("Date of Start")}}: </label><input required="" type="date" value="" name="date_start"
+            <label for="">{{e2("Date of Start")}}: </label><input  type="date" value="" name="date_start"
             class="form-control">
         </div>
         <div class="col-md-6">
-            <label for="">{{e2("Date of Finish")}}: </label><input required="" type="date" value="" name="date_finish"
+            <label for="">{{e2("Date of Finish")}}: </label><input  type="date" value="" name="date_finish"
             class="form-control">
         </div>
    
