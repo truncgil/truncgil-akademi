@@ -8,7 +8,7 @@
         'Manager (Lead)' =>             [2,0,1,1,0],
         'Welder (Subcontractor)' =>     [4,0,1,1,0],
         'Painter (Subcontractor)' =>    [5,0,1,1,0],
-'Insulator (Subcontractor)' =>          [6,0,1,1,0],
+        'Insulator (Subcontractor)' =>          [6,0,1,1,0],
         'Welder, Painter, Insulator (Subcontractor / Payrollless)' =>   [7,0,1,1,0],
         'Quality Staff' =>                                              [8,0,1,1,1],
         'Document Staff' =>                                             [9,0,1,1,1],

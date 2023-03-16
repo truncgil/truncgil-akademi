@@ -1,5 +1,8 @@
 <?php 
-$columns = table_columns($tableName);       
+$columns = table_columns($tableName);   
+if(isset($excepts)) {
+    $columns = array_diff($columns, $excepts);
+} 
 $columnsList = [];
 ?>
 {{col("col-md-12", $title,0,[
