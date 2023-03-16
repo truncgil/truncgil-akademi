@@ -19,7 +19,24 @@ class ExportExcel implements FromCollection, WithHeadings, ShouldAutoSize //, Wi
     public function __construct(string $tableName) 
     {
         $this->tableName = $tableName;
-        $exceptsColumns = ['created_at', 'updated_at'];
+        $exceptsColumns = [
+            'created_at', 
+            'updated_at',
+            'json',
+            'pic',
+            'slug',
+            'email_verified_at',
+            'password',
+            'permissions',
+            'alias',
+            'remember_token',
+            'recover',
+            'last_seen',
+            'branslar',
+            'ust',
+            'uid',
+            'note'
+        ];
         $this->columnNames = array_diff(Schema::getColumnListing($this->tableName), $exceptsColumns);
     }
 
