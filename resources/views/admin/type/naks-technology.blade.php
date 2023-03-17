@@ -10,6 +10,7 @@ $tableName = "naks_certificates";
 
 $materials = db('materials')->groupBy("ru_group")->get();
 $jointTypes = db("joint_types")->get();
+$jointViews = db("joint_views")->get();
 $weldingPositions = db("welding_positions")->get();
 
 $relationDatas = [
@@ -66,7 +67,7 @@ $relationDatas = [
         'type' => 'select-dropdown'
     ],
     'joint_view' => [
-        'datas' => $jointTypes,
+        'datas' => $jointViews,
         'pattern' => '{short_name_ru}',
         'type' => 'multiple-choice'
     ],

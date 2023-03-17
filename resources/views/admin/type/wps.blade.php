@@ -78,7 +78,7 @@ $relationDatas = [
     'current_polarity' => [
         'datas' => $currentTypes,
         'pattern' => '{title}',
-        'type' => 'select-dropdown'
+        'type' => 'multiple-choice'
     ],
     'welding_position' => [
         'datas' => $weldingPositions,
