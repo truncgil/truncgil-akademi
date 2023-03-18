@@ -17,10 +17,9 @@ class CreateRegisterOfExpertsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('location')->nullable()->default(null);
-            $table->string('surname_ru')->nullable()->default(null);
-            $table->string('firstname_ru')->nullable()->default(null);
-            $table->string('surname_en')->nullable()->default(null);
-            $table->string('firstname_en')->nullable()->default(null);
+            $table->string('employees_id')->nullable()->default(null);
+            $table->string('name_ru')->nullable()->default(null);
+            $table->string('name_en')->nullable()->default(null);
             $table->date('date_of_birth')->nullable()->default(null);
             $table->string('certificate_no')->nullable()->default(null);
             $table->string('welding_specialist_level')->nullable()->default(null);

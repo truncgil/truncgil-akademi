@@ -3,29 +3,27 @@
 use App\Models\RegisterOfExpert; 
 
 $title = "Register of Experts";
-$tableWidth="100%";
+$tableWidth="300%";
 $path = "admin.type.naks-consumables";
 $listDatas = RegisterOfExpert::orderBy("id","DESC")->paginate(setting('row_count'));
 $tableName = "register_of_experts";
-/*
+
 $relationDatas = [
-    'short_number' => [
-        'table' => 'naks_centers',
-        'value' => 'center_no',
-        'text' => ['center_no'],
+    'employees_id' => [
+        'table' => 'users',
+        'datas' => db('users')->where("level","like","Welder%")->get(),
+        'value' => 'id',
+        'text' => ['name_en','name_ru'],    
         'type' => 'select',
         'affected' => [
-            'short_name' => 'center_name',
+            'name_ru' => '{name_ru}',
+            'name_en' => '{name_en}',
+            'date_of_birth' => '{date_of_birth}',
         ]
     ],
-    'welding_method' => [
-        'table' => 'welding_methods',
-        'value' => 'ru_short_name',
-        'text' => ['ru_short_name', 'iso_short_name', 'aws_short_name'],
-        'type' => 'select'
-    ],
+  
 ];
-*/
+
 ?>
 <div class="content">
     <div class="row">   
