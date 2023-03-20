@@ -47,8 +47,8 @@ $relationDatas = [
         'type' => 'multiple-choice'
     ],
     'technology_category' => [
-        'datas' => db("hazard_classes")->get(),
-        'pattern' => '{serial_number}',
+        'datas' => db("hazard_classes")->groupBy("category_serial_number")->get(),
+        'pattern' => '{category_serial_number}',
         'type' => 'select-dropdown'
     ],
     'work_type' => [
@@ -80,7 +80,12 @@ $relationDatas = [
     'electrode_coating' => [
         'datas' => db('electrode_coatings')->get(),
         'pattern' => '{short_name_ru}',
-        'type' => 'multiple-choice'
+        'type' => 'multiple-choice',
+        'disabled' => [
+            'column' => 'welding_method',
+            'type' => '!=',
+            'value' => 'РД',
+        ],
     ],
     'welding_equipment' => [
         'datas' => db("welding_machine_types")->get(),
