@@ -14,6 +14,13 @@ $datas = $columnData['datas'];
     table="{{$tableName}}"  
     id="{{$listData->id}}"
     <?php } ?>
+    <?php if(isset($columnData['disabled'])) {
+         ?>
+         data-disabled-condition-column="{{$columnData['disabled']['column']}}"
+         data-disabled-condition-type="{{$columnData['disabled']['type']}}"
+         data-disabled-condition-value="{{$columnData['disabled']['value']}}"
+         <?php 
+    } ?>
     placeholder="{{$column['type']}}"
     {{isset($columnData['max']) ? 'max='.$columnData['max'] : ""}}
     >
