@@ -13,7 +13,9 @@ $weldingPositions = db('welding_positions')->get();
 $weldingConsumables = db('welding_consumables')->get();
 $currentTypes = db('current_types')->get();
 $jointTypes = db('joint_types')->get();
+$naksTechnology = db('naks_certificates')->get();
 $relationDatas = [
+    /*
     'naks_technology' => [
         'table' => 'naks_certificates',
         'datas' => db('naks_certificates')->get(),
@@ -25,6 +27,13 @@ $relationDatas = [
             'welding_method' => '{welding_method}',
             'shielding_gas' => '{shielding_gas}',
         ]
+    ],
+    */
+    'naks_technology' => [
+        'datas' => $naksTechnology,
+        'pattern' => '{certificate_no}',
+        'type' => 'multiple-choice',
+        'seperate' => ' + '
     ],
     'base_metal' => [
         'table' => 'materials',
