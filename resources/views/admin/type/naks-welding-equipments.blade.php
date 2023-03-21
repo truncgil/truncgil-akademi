@@ -19,9 +19,13 @@ $relationDatas = [
         'type' => 'manuel-select'
     ],
     'groups_of_technical_devices' => [
-        'table' => 'hazard_classes',
-        'datas' => db('hazard_classes')->get(),
-        'key' => 'serial_number',
+        'datas' => db('hazard_classes')->groupBy("category_serial_number")->get(),
+        'pattern' => '{category_serial_number}',
+        'type' => 'multiple-choice'
+    ],
+    'type_of_welding_machine' => [
+        'datas' => db('welding_machine_types')->get(),
+        'pattern' => '{code}',
         'type' => 'multiple-choice'
     ],
     
