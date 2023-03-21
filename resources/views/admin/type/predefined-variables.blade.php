@@ -17,6 +17,7 @@ $tabs = [
     'Welding Materials Brend' => '11 Welding',
     'Work Type' => '11 Welding',
     'Performed Works Type' => '11 Welding',
+    'Type of Consumable' => '11 Welding',
 ];
 ?>
 

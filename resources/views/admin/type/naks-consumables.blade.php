@@ -7,25 +7,45 @@ $tableWidth="400%";
 $path = "admin.type.naks-consumables";
 $listDatas = NaksConsumable::orderBy("id","DESC")->paginate(setting('row_count'));
 $tableName = "naks_consumables";
-/*
+
+$weldingConsumables = db("welding_consumables")->get();
+$materials = db("materials");
+
 $relationDatas = [
-    'short_number' => [
-        'table' => 'naks_centers',
-        'value' => 'center_no',
-        'text' => ['center_no'],
-        'type' => 'select',
-        'affected' => [
-            'short_name' => 'center_name',
-        ]
+    'type_of_consumable' => [
+        'datas' => db("type_of_consumables")->get(),
+        'pattern' => '{title_en} / {title_ru}',
+        'type' => 'select-dropdown'
     ],
-    'welding_method' => [
-        'table' => 'welding_methods',
-        'value' => 'ru_short_name',
-        'text' => ['ru_short_name', 'iso_short_name', 'aws_short_name'],
-        'type' => 'select'
+    'brand' => [
+        'datas' => db("welding_materials_brends")->groupBy("title")->get(),
+        'pattern' => '{title}',
+        'type' => 'select-dropdown'
     ],
+    'product_name' => [
+        'datas' => $weldingConsumables,
+        'pattern' => '{brend}',
+        'type' => 'select-dropdown'
+    ],
+    'aws_classification' => [
+        'datas' => $weldingConsumables,
+        'pattern' => '{aws_class} {aws_specification}',
+        'type' => 'select-dropdown'
+    ],
+    'group_of_base_material' => [
+        'datas' => $materials->groupBy("short_name")->get(),
+        'pattern' => '{short_name}',
+        'type' => 'select-dropdown'
+    ],
+    'base_material' => [
+        'datas' => $materials->groupBy("steel_grade")->get(),
+        'pattern' => '{steel_grade}',
+        'type' => 'select-dropdown'
+    ],
+
+   
 ];
-*/
+
 ?>
 <div class="content">
     <div class="row">   

@@ -21,6 +21,11 @@ $relationDatas = [
             'date_of_birth' => '{date_of_birth}',
         ]
     ],
+    'groups_of_technical_devices' => [
+        'datas' => db("hazard_classes")->groupBy("category_serial_number")->get(),
+        'pattern' => '{category_serial_number}',
+        'type' => 'multiple-choice'
+    ],
   
 ];
 
