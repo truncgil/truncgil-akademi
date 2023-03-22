@@ -14,27 +14,33 @@ $weldingConsumables = db('welding_consumables')->get();
 $currentTypes = db('current_types')->get();
 $jointTypes = db('joint_types')->get();
 $naksTechnology = db('naks_certificates')->get();
+
 $relationDatas = [
-    /*
-    'naks_technology' => [
-        'table' => 'naks_certificates',
-        'datas' => db('naks_certificates')->get(),
-        'value' => 'certificate_no',
-        'text' => ['short_number', 'certificate_no'],
-        'type' => 'select',
-        'affected' => [
-            'technology_category' => '{technology_category}',
-            'welding_method' => '{welding_method}',
-            'shielding_gas' => '{shielding_gas}',
-        ]
-    ],
-    */
     'naks_technology' => [
         'datas' => $naksTechnology,
         'pattern' => '{certificate_no}',
         'type' => 'multiple-choice',
-        'seperate' => ' + '
+        'seperator' => ' + '
     ],
+    'technology_category' => [
+        'filter' => [
+            'targetColumn' => 'naks_technology',
+            'table' => 'naks_certificates',
+            'filterColumn' => 'certificate_no'
+        ],
+        'pattern' => '{technology_category}',
+        'type' => 'select-dropdown'
+    ],
+    'type_grade_1' => [
+        'filter' => [
+            'targetColumn' => 'naks_technology',
+            'table' => 'naks_certificates',
+            'filterColumn' => 'certificate_no'
+        ],
+        'pattern' => '{technology_category}',
+        'type' => 'select-dropdown'
+    ],
+    
     'base_metal' => [
         'table' => 'materials',
         'datas' => $materials,

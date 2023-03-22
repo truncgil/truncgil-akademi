@@ -154,7 +154,14 @@ class AdminController extends Controller
 	}
 
 	public function rowDetail(Request $request, string $tableName, string $columnName) {
-		$result =  db($tableName)->where($columnName, $request->value)->first();
+		$result =  db($tableName);
+
+		if(is_array($request->value)) {
+			$result = $result->whereIn($columnName, $request->value)->get();
+		} else {
+			$result = $result->where($columnName, $request->value)->first();
+		}
+
 		return response()->json(
 			($result), 
 			200, 

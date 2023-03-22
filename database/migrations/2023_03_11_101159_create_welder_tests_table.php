@@ -17,6 +17,7 @@ class CreateWelderTestsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('wpq_document_no')->nullable()->default(null);
+            $table->string('naks_no')->nullable()->default(null);
             $table->string('name_surname')->nullable()->default(null);
             $table->string('naks_id')->nullable()->default(null);
             $table->string('technology_range')->nullable()->default(null);
@@ -31,7 +32,7 @@ class CreateWelderTestsTable extends Migration
             $table->string('grade_2')->nullable()->default(null);
             $table->string('joint_type')->nullable()->default(null);
             $table->string('diameter')->nullable()->default(null);
-            $table->string('thicness')->nullable()->default(null);
+            $table->string('thickness')->nullable()->default(null);
             $table->float('dia_min', 255, 2)->nullable()->default(null);
             $table->float('dia_max', 255, 2)->nullable()->default(null);
             $table->float('thk_min', 255, 2)->nullable()->default(null);
