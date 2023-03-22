@@ -47,8 +47,8 @@ $relationDatas = [
         'type' => 'multiple-choice'
     ],
     'technology_category' => [
-        'datas' => db("hazard_classes")->groupBy("category_serial_number")->get(),
-        'pattern' => '{category_serial_number}',
+        'datas' => db("hazard_classes")->groupBy("serial_number")->get(),
+        'pattern' => '{serial_number}',
         'type' => 'select-dropdown'
     ],
     'work_type' => [
@@ -64,7 +64,10 @@ $relationDatas = [
     'joint_type' => [
         'datas' => $jointTypes,
         'pattern' => '{short_name_ru}',
-        'type' => 'select-dropdown'
+        'type' => 'select-dropdown',
+        'filter-columns' => [
+            'connection_type'
+        ]
     ],
     'joint_view' => [
         'datas' => $jointViews,

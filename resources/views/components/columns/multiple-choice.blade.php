@@ -32,11 +32,13 @@ $datas = $columnData['datas'];
         
         <?php foreach($datas AS $data)  { 
             $patternString = $columnData['pattern'];
+            $values = [];
             foreach($data AS $dataColumn => $dataValue) {
                 $patternString = str_replace('{'.$dataColumn.'}', $dataValue, $patternString);
+                $values[] = $dataValue;
             }
           ?>
-         <label class="dropdown-item"><input type="checkbox" value="{{$patternString}}" name="" id=""> {{$patternString}}</label> 
+         <label class="dropdown-item" data-filter-value="{{implode(',',$values)}}"><input type="checkbox" value="{{$patternString}}" name="" id=""> {{$patternString}}</label> 
          <?php } ?>
     </div>
     </div>

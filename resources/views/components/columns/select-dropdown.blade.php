@@ -1,6 +1,6 @@
 <?php $columnName = $column['name']; 
 $columnData = $relationDatas[$columnName];  
-
+$filterColumns = isset($columnData['filter-columns']) ? 'filter-columns='.implode(",",$columnData['filter-columns']) : "";
 
 ?>
 <div class="input-group select-dropdown">
@@ -37,7 +37,7 @@ $columnData = $relationDatas[$columnName];
             if(isset($columnData['datas']))  { 
              
                 foreach($columnData['datas'] AS $data)  {  ?>
-                <label class="dropdown-item">
+                <label class="dropdown-item" {{$filterColumns}}>
                     <?php if(isset($columnData['pattern'])) {
                         $patternString = $columnData['pattern'];
                         
