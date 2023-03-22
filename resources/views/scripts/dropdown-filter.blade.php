@@ -31,7 +31,9 @@
                         console.log(itemColumn);
                         console.log(itemValue);
                         thisPattern = thisPattern.replace("{"+itemColumn+"}", itemValue);
-                        
+
+                        var requiredFilterSelector = "[data-required-column='"+itemColumn+"'][data-required-value='"+itemValue+"']";
+                        parent.find(requiredFilterSelector).prop("required", true);
 
                     });
                     
