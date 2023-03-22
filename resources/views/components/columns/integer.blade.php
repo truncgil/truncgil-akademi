@@ -6,5 +6,11 @@
  table="{{$tableName}}"  
  id="{{$listData->id}}"
  <?php } ?>
+ <?php if(isset($column['relation']['required'])) {
+   ?>
+   data-required-column="{{$column['relation']['required']['column']}}"
+   data-required-value="{{$column['relation']['required']['value']}}"
+   <?php 
+ } ?>
   placeholder="{{$column['type']}}"
 >
