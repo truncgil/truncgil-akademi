@@ -147,18 +147,90 @@ $material_group_test_pieces = db("material_group_test_pieces")->select(
     $(function(){
         var material_group_test_pieces = <?php echo json_encode_tr($data) ?>;
         console.log(material_group_test_pieces);
+        var type_grade_json = [];
         $(".naks_technology input").on("blur", function(){
             
         });
-        $(".type_grade_1").on("change", function(){
+        $(".type_grade_1").on("change", function( ){
+           
             var group = $(this).attr("data-group");
             var parent = $("." + group);
         
-            $( document ).ajaxComplete(function() {
+            $( document ).ajaxComplete(function(event, xhr, settings) {
+                type_grade_json = xhr.responseJSON;
                 var value = parent.find(".p_no_from").val();
                 parent.find(".qualitication_group_of_parent_material").val(material_group_test_pieces[value]);
                 
             });
+            
+        });
+
+        $(".outside_diameter").on("change", function() {
+
+            if(type_grade_json.short_name !== undefined) {
+                var group = $(this).attr("data-group");
+                var parent = $("." + group);
+                var value = $(this).val();
+                var material_type  = "Steel";
+                var min;
+                var max;
+
+                if(['AS', 'SS', 'CS'].includes(type_grade_json.short_name)) {
+                    material_type = "Steel";
+                    if(value<=3) {
+                        min = value;
+                        max = value * 2;
+                    }
+
+                    if(value>3 && value<= 12) {
+                        min = 3;
+                        max = value * 2;
+                    }
+
+                    if(value>12) {
+                        min = 5;
+                        max = "";
+                    }
+                }
+
+                if(type_grade_json.short_name == "NI") {
+                    material_type = "Nickel";
+
+                    if(value<=3) {
+                        min = value;
+                        max = value * 2;
+                    }
+
+                    if(value>3 && value<= 12) {
+                        min = 3;
+                        max = value * 2;
+                    }
+
+                    if(value>12) {
+                        min = 5;
+                        max = "";
+                    }
+                }
+
+                if(type_grade_json.short_name == "AL") {
+                    material_type = "Aluminium";
+
+                    if(value<=6) {
+                        min = value * 0.7;
+                        max = value * 2.5;
+                    }
+
+                    if(value>6 && value<= 15) {
+                        min = 6;
+                        max = 40;
+                    }
+
+                    
+                }
+
+                parent.find(".qualitication_outside_diameter_min").val(min);
+                parent.find(".qualitication_outside_diameter_max").val(max);
+            }
             
         });
 
