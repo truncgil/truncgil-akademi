@@ -5,7 +5,7 @@ use App\Models\Material;
 use App\Models\WeldingConsumable; 
 
 $title = "Procedure Qualification Records";
-$tableWidth="800%";
+$tableWidth="1000%";
 $listDatas = ProsedureQualificationRecord::orderBy("id","DESC")->paginate(setting('row_count'));
 $tableName = "prosedure_qualification_records";
 $materials = db('materials')->get();
@@ -132,11 +132,37 @@ $relationDatas = [
 ];
 
 ?>
+<?php 
+$material_group_test_pieces = db("material_group_test_pieces")->select(
+    "incoming_value",
+    "provision_value"
+    )->get();
+    $data = [];
+    foreach($material_group_test_pieces AS $piece) {
+        $piece->incoming_value = str_replace(",", ".", $piece->incoming_value);
+        $data[$piece->incoming_value] = $piece->provision_value;
+    }
+//dump($data); ?>
 <script>
     $(function(){
+        var material_group_test_pieces = <?php echo json_encode_tr($data) ?>;
+        console.log(material_group_test_pieces);
         $(".naks_technology input").on("blur", function(){
             
         });
+        $(".type_grade_1").on("change", function(){
+            var group = $(this).attr("data-group");
+            var parent = $("." + group);
+        
+            $( document ).ajaxComplete(function() {
+                var value = parent.find(".p_no_from").val();
+                parent.find(".qualitication_group_of_parent_material").val(material_group_test_pieces[value]);
+                
+            });
+            
+        });
+
+
     });
 </script>
 <div class="content">

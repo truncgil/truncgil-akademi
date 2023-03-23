@@ -3,7 +3,7 @@ $columnData = $relationDatas[$columnName];
 $filterColumns = isset($columnData['filter-columns']) ? 'filter-columns='.implode(",",$columnData['filter-columns']) : "";
 
 ?>
-<div class="input-group select-dropdown">
+<div class="input-group select-dropdown {{$columnName}}"  data-group="{{$rowName}}">
     <input type="text" class="form-control {{isset($listData) ? 'edit' : ''}}" name="{{$columnName}}" 
     <?php if(isset($listData))  { 
     ?>

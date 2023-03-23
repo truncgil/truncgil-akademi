@@ -1,5 +1,5 @@
 <?php $columnName = $column['name']; ?>
-<input type="number" class="form-control {{isset($listData) ? 'edit' : ''}}" name="{{$columnName}}" 
+<input type="number"  data-group="{{$rowName}}" class="{{$columnName}} form-control {{isset($listData) ? 'edit' : ''}}" name="{{$columnName}}" 
 <?php if(isset($listData))  { 
   ?>
  value="{{$listData->$columnName}}" 

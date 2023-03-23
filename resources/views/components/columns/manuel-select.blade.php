@@ -3,7 +3,7 @@ $columnName = $column['name'];
 $columnData = $relationDatas[$columnName];  
 
 ?>
-<select name="{{$columnName}}"  class="form-control table-select {{isset($listData) ? 'edit' : ''}}" 
+<select name="{{$columnName}}"  data-group="{{$rowName}}"  class="{{$columnName}} form-control table-select {{isset($listData) ? 'edit' : ''}}" 
 <?php if(isset($listData))  { 
   ?>
  table="{{$tableName}}"  

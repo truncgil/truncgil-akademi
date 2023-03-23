@@ -4,7 +4,7 @@ $columnData = $relationDatas[$columnName];
 $datas = $columnData['datas'];
 
 ?>
-<select name="{{$columnName}}"  class="form-control table-select {{isset($listData) ? 'edit' : ''}}" 
+<select name="{{$columnName}}" data-group="{{$rowName}}" class="{{$columnName}}  form-control table-select {{isset($listData) ? 'edit' : ''}}" 
 <?php if(isset($columnData['affected'])) {
      ?>
      affected="{{json_encode($columnData['affected'])}}"

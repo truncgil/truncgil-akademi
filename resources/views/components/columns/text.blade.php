@@ -1,5 +1,5 @@
 <?php $columnName = $column['name']; ?>
-<textarea  class="form-control {{isset($listData) ? 'edit' : ''}}" name="{{$columnName}}" 
+<textarea   data-group="{{$rowName}}" class="{{$columnName}} form-control {{isset($listData) ? 'edit' : ''}}" name="{{$columnName}}" 
 <?php if(isset($listData))  { ?>
  table="{{$tableName}}"  
  id="{{$listData->id}}"

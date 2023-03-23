@@ -30,10 +30,11 @@ function col($size,$title="",$color="0",$options=[]) {
                          <?php if(isset($options['export']))  {  ?>
                               <a href="<?php echo url("admin/truncate/". $options['export']) ?>" <?php echo delete_teyit() ?> class="btn-block-option " title="<?php e2("Delete All") ?>" ><i class="fa fa-trash"></i></a>
                               <a href="<?php echo url("admin/export/". $options['export']) ?>" class="btn-block-option" title="<?php e2("Export to Excel") ?>" ><i class="fa fa-download"></i></a>
+                              <label
+                                   for="excel-file"
+                                   class="btn-block-option" title="<?php e2("Import to Excel") ?>" ><i class="fa fa-upload"></i></label>
                           <?php } ?>
-                          <label
-                          for="excel-file"
-                          class="btn-block-option" title="<?php e2("Import to Excel") ?>" ><i class="fa fa-upload"></i></label>
+                          
                         
                     </div>
                 </div>

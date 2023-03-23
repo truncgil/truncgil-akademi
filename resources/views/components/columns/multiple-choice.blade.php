@@ -3,7 +3,7 @@ $columnData = $relationDatas[$columnName];
 $datas = $columnData['datas'];
 
 ?>
-<div class="input-group multiple-choice {{$columnName}}">
+<div class="input-group multiple-choice {{$columnName}}"  data-group="{{$rowName}}">
     <input type="text" 
     class="form-control {{isset($listData) ? 'edit' : ''}}" 
     name="{{$columnName}}" 

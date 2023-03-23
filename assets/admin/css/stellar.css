@@ -47,3 +47,47 @@
     max-height: 200px;
     overflow: auto;
 }
+
+.new-form td, .new-form th {
+    padding: 2px;
+    text-align: center;
+    white-space: nowrap;
+    /*overflow: hidden;*/
+    text-overflow: ellipsis;
+}
+
+.new-form input, .new-form select, .new-form .select2-selection {
+    padding: 0px 10px;
+    height:30px;
+   
+}
+.new-form .select2 {
+    min-width:200px;
+}
+.new-form td {
+    min-width:10%;
+}
+
+.new-form td:hover{
+    /*min-width: 200px;*/
+    overflow:none !important;
+}
+
+.new-form .dropdown-item input {
+    height:initial;
+}
+.new-form .dropdown-item {
+    font-size: 11px;
+    padding:3px
+}
+.new-form .dropdown-toggle {
+    
+}
+.new-form .dropdown-menu {
+    max-height: 200px;
+    overflow: auto;
+}
+
+.new-form  .btn-sm {
+    height: 30px;
+}
