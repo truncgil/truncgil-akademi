@@ -74,7 +74,7 @@ class AdminController extends Controller
 		}
 		if($type=="types") {
 			switch($action) {
-				;
+				
 				case "delete":		
 					$content = Types::where('id', $id)->delete();
 					return back();
@@ -131,7 +131,12 @@ class AdminController extends Controller
 	}
 
 	public function truncateTable(Request $request, string $tableName) {
-		db($tableName)->truncate();
+		if($tableName=="users") {
+			db($tableName)->whereNotIn("level", ['Admin'])->delete();
+		} else {
+			db($tableName)->truncate();
+		}
+		
 		return redirect()->back();
 	}
 
