@@ -41,7 +41,7 @@ $seperator = isset($columnData['seperator']) ? $columnData['seperator'] : ',';
             $implodeValue = implode(',',$values);
             $addedValues[] = $patternString;
           ?>
-         <label class="dropdown-item" data-filter-value="{{$implodeValue}}"><input type="checkbox" value="{{$patternString}}" name="" id=""> {{$patternString}}</label> 
+         <label class="dropdown-item" data-filter-value="{{json_encode_tr($data)}}"><input type="checkbox" value="{{$patternString}}" name="" id=""> {{$patternString}}</label> 
          <?php } ?>
          <?php if(isset($recordedDatas[$columnName])) {
                 foreach($recordedDatas[$columnName] AS $recordedValue) {
