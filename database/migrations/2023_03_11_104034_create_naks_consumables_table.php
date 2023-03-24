@@ -27,7 +27,7 @@ class CreateNaksConsumablesTable extends Migration
             $table->integer('unit')->nullable()->default(null);
             $table->string('batch_number')->nullable()->default(null);
             $table->string('naks_certificate_no')->nullable()->default(null);
-            $table->string('naks_certificate_date')->nullable()->default(null);
+            $table->date('naks_certificate_date')->nullable()->default(null);
             $table->date('naks_valid_date')->nullable()->default(null);
             $table->string('naks_tech_group')->nullable()->default(null);            
             $table->string('inspection_test_report')->nullable()->default(null);            

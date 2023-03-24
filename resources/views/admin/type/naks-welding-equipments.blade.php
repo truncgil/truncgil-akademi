@@ -28,6 +28,11 @@ $relationDatas = [
         'pattern' => '{code}',
         'type' => 'multiple-choice'
     ],
+    'type_of_weld' => [
+        'datas' => db('welding_methods')->whereNotIn("ru_short_name", ['*'])->get(),
+        'pattern' => '{ru_short_name}',
+        'type' => 'multiple-choice'
+    ],
     
 ];
 

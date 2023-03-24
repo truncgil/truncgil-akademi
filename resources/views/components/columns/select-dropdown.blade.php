@@ -36,8 +36,11 @@ $addedValues = [];
             <?php 
             if(isset($columnData['datas']))  { 
              
-                foreach($columnData['datas'] AS $data)  {  ?>
-                <label class="dropdown-item" {{$filterColumns}}>
+                foreach($columnData['datas'] AS $data)  {  
+                    
+
+                    ?>
+                <label class="dropdown-item" {{$filterColumns}} data-filter-value="{{json_encode_tr($data)}}">
                     <?php if(isset($columnData['pattern'])) {
                         $patternString = $columnData['pattern'];
                         

@@ -20,27 +20,35 @@ $relationDatas = [
     'brand' => [
         'datas' => db("welding_materials_brends")->groupBy("title")->get(),
         'pattern' => '{title}',
-        'type' => 'select-dropdown'
+        'type' => 'select-dropdown',
+        'filter-columns' => ['product_name']
     ],
     'product_name' => [
         'datas' => $weldingConsumables,
         'pattern' => '{brend}',
-        'type' => 'select-dropdown'
+        'type' => 'select-dropdown',
+        'filter-columns' => ['aws_classification']
     ],
     'aws_classification' => [
         'datas' => $weldingConsumables,
         'pattern' => '{aws_class} {aws_specification}',
-        'type' => 'select-dropdown'
+        'type' => 'select-dropdown',
+        
     ],
     'group_of_base_material' => [
         'datas' => $materials->groupBy("short_name")->get(),
         'pattern' => '{short_name}',
         'type' => 'select-dropdown'
     ],
+    'naks_tech_group' => [
+        'datas' => db("hazard_classes")->groupBy("category_serial_number")->get(),
+        'pattern' => '{category_serial_number}',
+        'type' => 'multiple-choice'
+    ],
     'base_material' => [
         'datas' => $materials->groupBy("steel_grade")->get(),
         'pattern' => '{steel_grade}',
-        'type' => 'select-dropdown'
+        'type' => 'multiple-choice'
     ],
 
    
