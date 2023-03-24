@@ -24,7 +24,7 @@ $excepts = [
     'password',
     'permissions',
     'phone',
-    'level',
+    //'level',
     'alias',
     'email',
     'remember_token',
