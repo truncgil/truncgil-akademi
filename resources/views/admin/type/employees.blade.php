@@ -46,6 +46,15 @@ $relationDatas = [
         ],
         'type' => 'manuel-select'
     ],
+    'status' => [
+        'values' => [
+            'Active',	
+            'Transfer to ...',
+            'Black list',
+            'Exit',
+        ],
+        'type' => 'manuel-select'
+    ],
     'subcontructer' => [
         'datas' => db("subcontractors")->get(),
         'pattern' => '{company_name_en}',
