@@ -12,7 +12,7 @@ $levels = [
 ];
 */
 $listDatas = User::orderBy("id","DESC")
-    ->whereNotIn("level", ['Admin'])
+ //  ->where("level", ['Admin'])
     ->paginate(setting('row_count'));
 $tableName = "users";
 
