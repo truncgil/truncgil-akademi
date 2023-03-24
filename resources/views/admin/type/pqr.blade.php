@@ -302,6 +302,18 @@ $material_group_test_pieces = db("material_group_test_pieces")->select(
             }
 
         });
+        $(".welding_process .dropdown-item input:checkbox").on("click", function(){
+            var parent = $(this).parent().parent().parent().parent();
+            var dataGroup = parent.attr("data-group");
+            var dataGroupParent = $("." + dataGroup);
+            var checkboxChecked = parent.find("input:checked").parent();
+            var selectedNumbers = [];
+            $.each(checkboxChecked, function(index, item) {
+                var json = JSON.parse($(this).attr("data-filter-value"));
+                selectedNumbers.push(json.en_welding_number);
+            });
+            dataGroupParent.find(".qualitication_process").val(selectedNumbers.join(" + "));
+        });
 
 
     });
