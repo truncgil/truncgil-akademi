@@ -48,7 +48,7 @@ if(isAdmin())  {
                                      
                                 </div>
                                 <div class="block-content block-content-full block-content-sm bg-body-light">
-                                    <div class="font-w600 mb-5">{{$userDetail->name}} {{$userDetail->surname}}</div>
+                                    <div class="font-w600 mb-5">{{$userDetail->name}} </div>
                                     <div class="font-size-sm text-muted">{{$userDetail->level}}</div>
                                 </div>
                                 <div class="block-content block-content-full d-none">
@@ -68,10 +68,6 @@ if(isAdmin())  {
         <div class="row">
         <div class="col-md-6">
             <label for="">{{e2("Name")}}: </label><input  type="text" value="" name="name" id="first-name"
-            class="form-control">
-        </div>
-        <div class="col-md-6">
-            <label for="">{{e2("Name En")}}: </label><input  type="text" value="" name="name_en"
             class="form-control">
         </div>
         <div class="col-md-6">
