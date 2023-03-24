@@ -1,7 +1,7 @@
 <?php $columnName = $column['name']; 
 $columnData = $relationDatas[$columnName];  
 $filterColumns = isset($columnData['filter-columns']) ? 'filter-columns='.implode(",",$columnData['filter-columns']) : "";
-
+$addedValues = [];
 ?>
 <div class="input-group select-dropdown {{$columnName}}"  data-group="{{$rowName}}">
     <input type="text" class="form-control {{isset($listData) ? 'edit' : ''}}" name="{{$columnName}}" 
@@ -51,10 +51,22 @@ $filterColumns = isset($columnData['filter-columns']) ? 'filter-columns='.implod
                         ?>
                         {{$data->$key}}
                         <?php 
+                        $addedValues[] = $data->$key;
                     } ?>
                 </label> 
                 <?php } ?> 
              <?php } ?>
+             <?php if(isset($recordedDatas[$columnName])) {
+                    foreach($recordedDatas[$columnName] AS $recordedValue) {
+                        if(!in_array($recordedValue, $addedValues)) {
+                            ?>
+                            <label class="dropdown-item">{{$recordedValue}}</label>
+                            <?php 
+
+                        }
+                    }
+                    
+                } ?>
          </div>
     </div>
     </div>

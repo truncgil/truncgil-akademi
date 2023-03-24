@@ -1,13 +1,14 @@
 <?php $columnName = $column['name']; 
 $columnData = $relationDatas[$columnName];  
 $datas = $columnData['datas'];
-
+$addedValues = [];
+$seperator = isset($columnData['seperator']) ? $columnData['seperator'] : ',';
 ?>
 <div class="input-group multiple-choice {{$columnName}}"  data-group="{{$rowName}}">
     <input type="text" 
     class="form-control {{isset($listData) ? 'edit' : ''}}" 
     name="{{$columnName}}" 
-    seperator="{{isset($columnData['seperator']) ? $columnData['seperator'] : ','}}"
+    seperator="{{$seperator}}"
     <?php if(isset($listData))  { 
     ?>
     value="{{$listData->$columnName}}" 
@@ -37,9 +38,28 @@ $datas = $columnData['datas'];
                 $patternString = str_replace('{'.$dataColumn.'}', $dataValue, $patternString);
                 $values[] = $dataValue;
             }
+            $implodeValue = implode(',',$values);
+            $addedValues[] = $patternString;
           ?>
-         <label class="dropdown-item" data-filter-value="{{implode(',',$values)}}"><input type="checkbox" value="{{$patternString}}" name="" id=""> {{$patternString}}</label> 
+         <label class="dropdown-item" data-filter-value="{{$implodeValue}}"><input type="checkbox" value="{{$patternString}}" name="" id=""> {{$patternString}}</label> 
          <?php } ?>
+         <?php if(isset($recordedDatas[$columnName])) {
+                foreach($recordedDatas[$columnName] AS $recordedValue) {
+                    $recordedValues = explode($seperator, $recordedValue);
+                    foreach($recordedValues AS $recordedValue) 
+                    {
+                        if(!in_array($recordedValue, $addedValues)) {
+                            $addedValues[] = $recordedValue;
+                            ?>
+                            <label class="dropdown-item" data-filter-value="{{$recordedValue}}"><input type="checkbox" value="{{$recordedValue}}" name="" id=""> {{$recordedValue}}</label>
+                           
+                            <?php 
+    
+                        }
+                    }
+                }
+                
+            } ?>
     </div>
     </div>
 </div>

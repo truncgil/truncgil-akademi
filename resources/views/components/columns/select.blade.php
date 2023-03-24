@@ -26,15 +26,16 @@ $datas = $columnData['datas'];
         }
     ?>
 
-    <option value="{{$data->$value}}" 
-    <?php if(isset($listData)) {
-        
-        if($listData->$columnName==$data->$value) {
-            echo "selected";
-        }
-    } ?>
-    >
-    {{$optionHtml}}
-    </option> 
+        <option value="{{$data->$value}}" 
+        <?php if(isset($listData)) {
+            
+            if($listData->$columnName==$data->$value) {
+                echo "selected";
+            }
+        } ?>
+        >
+        {{$optionHtml}}
+        </option> 
     <?php } ?>
+    
 </select>

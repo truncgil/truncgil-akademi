@@ -13,6 +13,8 @@ $jointTypes = db("joint_types")->get();
 $jointViews = db("joint_views")->get();
 $weldingPositions = db("welding_positions")->get();
 
+$recordedDatas = recorded_data($tableName);
+
 $relationDatas = [
     'short_number' => [
         'table' => 'naks_centers',
