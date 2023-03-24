@@ -22,8 +22,8 @@ $relationDatas = [
         ]
     ],
     'groups_of_technical_devices' => [
-        'datas' => db("hazard_classes")->groupBy("category_serial_number")->get(),
-        'pattern' => '{category_serial_number}',
+        'datas' => db("hazard_classes")->groupBy("serial_number")->get(),
+        'pattern' => '{serial_number}',
         'type' => 'multiple-choice'
     ],
   

@@ -12,7 +12,7 @@ $levels = [
 ];
 */
 $listDatas = User::orderBy("id","DESC")
-    //->whereIn("level", $levels)
+    ->whereNotIn("level", ['Admin'])
     ->paginate(setting('row_count'));
 $tableName = "users";
 
@@ -37,6 +37,24 @@ $relationDatas = [
     'level' => [
         'values' => array_keys(levels()),
         'type' => 'manuel-select'
+    ],
+    
+    'gender' => [
+        'values' => [
+            'Male',
+            'Female',
+        ],
+        'type' => 'manuel-select'
+    ],
+    'subcontructer' => [
+        'datas' => db("subcontractors")->get(),
+        'pattern' => '{company_name_en}',
+        'type' => 'select-dropdown'
+    ],
+    'job_name' => [
+        'datas' => db("job_descriptions")->get(),
+        'pattern' => '{title}',
+        'type' => 'select-dropdown'
     ],
 ];
 
