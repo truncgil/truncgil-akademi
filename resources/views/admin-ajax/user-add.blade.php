@@ -17,9 +17,6 @@ use Illuminate\Support\Facades\Hash;
 					$user = new User;
 
 					$user->name = $rand;
-
-					$user->surname = $rand;
-
 					$user->email = $rand;
 					
 					$user->uid = u()->id;
