@@ -17,6 +17,63 @@ $jointTypes = db('joint_types')->get();
 $naksTechnology = db('naks_certificates')->groupBy("certificate_no")->get();
 $workTypes = db('work_types')->get();
 
+$blockGroup = [
+    'PQR Info' => [
+        'pqr_no',
+        'rev_no',
+        'naks_technology',
+        'technology_category',
+        'pwps_no',
+        'base_metal_used_for_pqr_coupon',
+        'date',
+        'welding_process',
+        'welding_position',
+        
+    ],
+    'Base Material' => [
+        'type_grade_1',
+        'type_grade_2',
+        'russian_standart_group_no',
+        'russian_standart_group_no_2',
+        'p_no_to',
+        'p_no_from',
+        'outside_diameter',
+        'thickness',
+        'brend',
+        'filter_metals_aws_sfa_no_class',
+        'filter_metals_gost',
+        'pre_heating_min',
+        'inter_pass_max',
+        'pwht_temp_range',
+        'pwht_min_time',
+        'shielding_gas',
+        'backing_gas',
+        'current_polarity',
+        'joint_design',
+        'base_metal',
+        'work_type',
+        
+    ],
+    
+    'Qualitification Range' => [
+        'qualitication_outside_diameter_min',
+        'qualitication_outside_diameter_max',
+        'thickness_min',
+        'thickness_max',
+        'qualitication_group_of_parent_material',
+    ],
+    'Result' => [
+        'qualitication_process',
+        'pre_heating',
+        'qualitication_pwht',
+        'qualitication_type_of_joint',
+        'qualitication_backing_gas',
+        'approved_date',
+        'status',
+    ],
+];
+
+
 $relationDatas = [
     'naks_technology' => [
         'datas' => $naksTechnology,
@@ -230,8 +287,8 @@ $material_group_test_pieces = db("material_group_test_pieces")->select(
                     
                 }
 
-                parent.find(".qualitication_outside_diameter_min").val(min);
-                parent.find(".qualitication_outside_diameter_max").val(max);
+                parent.find(".qualitication_outside_diameter_min").val(min).prop("readonly",true);
+                parent.find(".qualitication_outside_diameter_max").val(max).prop("readonly",true);
             }
             
         });
@@ -299,8 +356,8 @@ $material_group_test_pieces = db("material_group_test_pieces")->select(
                     
                 }
 
-                parent.find(".thickness_min").val(min);
-                parent.find(".thickness_max").val(max);
+                parent.find(".thickness_min").val(min).prop("readonly",true);
+                parent.find(".thickness_max").val(max).prop("readonly",true);
             }
 
         });
@@ -332,10 +389,24 @@ $material_group_test_pieces = db("material_group_test_pieces")->select(
                 dataGroupParent.find(targetFilterSelector +"[data-filter-value*='"+filterValue[0]+"']").removeClass("d-none");
             });
        });
+  //     $(".pqr-info").removeClass("col-12").addClass("col-md-6");
+  //     $(".base-material").removeClass("col-12").addClass("col-md-6");
+       $("#pqr-info").addClass("border").addClass("bg-white");
+       $("#qualitification-range").addClass("border").addClass("bg-light");
+       $("#base-material").addClass("border").addClass("bg-white");
+       $("#result").addClass("border").addClass("bg-white");
+
+       $("#pqr-info .block-header").addClass("bg-gd-sea");
+       $("#qualitification-range .block-header").addClass("bg-gd-sun");
+       $("#base-material .block-header").addClass("bg-gd-leaf");
+       $("#result .block-header").addClass("bg-gd-emerald");
 
 
     });
 </script>
+<style>
+   
+</style>
 <div class="content">
     <div class="row">   
         @include("components.blocks.module-block")     

@@ -8,27 +8,55 @@ $columnsList = [];
 foreach($columns AS $column) {
     $columnType = table_column_type($tableName, $column);
     if($column!="id") {
-        $columnsList[] = [
+        $columnsList[$column] = [
             'name' => $column,
             'type' => isset($relationDatas[$column]) ? $relationDatas[$column]['type'] : $columnType,
             'relation' => isset($relationDatas[$column]) ? $relationDatas[$column] : ''
         ];
     }
 }
+
     ?>
  {{col("col-12","New $title", 3)}} 
  <?php $rowName = "new-form"; ?>
  <form action="{{url("admin/create/$tableName")}}" method="post" class="new-form">
     @csrf
     <div class="row {{$rowName}}">
-        <?php foreach($columnsList AS $column)  {  
-            
-            ?>
-            <div class="col-md-3">
-                {{e2($column['name'])}}
-                @include("components.columns.{$column['type']}")
-            </div>
-        <?php } ?>
+        <?php if(isset($blockGroup)) {
+            foreach($blockGroup AS $blockTitle => $blockColumns) {
+                
+                $slug = str_slug($blockTitle); 
+                
+                 ?>
+                  {{col("col-12 border-1 " . $slug, $blockTitle,-1,[
+                    'no-options' => true
+                    ])}} 
+                    <div class="row">
+                        <?php foreach($blockColumns AS $column) {
+                        //    dd($columnsList[$column]);
+                        $column = $columnsList[$column]
+                            ?>
+                            <div class="col-md-3">
+                                {{e2($column['name'])}}
+                                @include("components.columns.{$column['type']}")
+                            </div>
+                            <?php 
+                        } ?>
+                    </div>
+                  {{_col()}}
+                 <?php 
+            }
+        } else  { 
+          ?>
+         <?php foreach($columnsList AS $column)  {  
+             
+             ?>
+             <div class="col-md-3">
+                 {{e2($column['name'])}}
+                 @include("components.columns.{$column['type']}")
+             </div>
+         <?php } ?> 
+         <?php } ?>
         <div class="col-12 text-center">
             <button class="btn btn-primary mt-5"><i class="fa fa-save"></i> Add</button>
         </div>
