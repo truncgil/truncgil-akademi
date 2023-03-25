@@ -317,6 +317,22 @@ $material_group_test_pieces = db("material_group_test_pieces")->select(
             dataGroupParent.find(".qualitication_process").val(selectedNumbers.join(" + "));
         });
 
+       $(".naks_technology .dropdown-item input:checkbox").on("click", function() {
+            var parent = $(this).parent().parent().parent().parent();
+            var dataGroup = parent.attr("data-group");
+            var dataGroupParent = $("." + dataGroup);
+            var checkboxChecked = parent.find("input:checked").parent();
+            
+            $.each(checkboxChecked, function(index, item) {
+                var json = JSON.parse($(this).attr("data-filter-value"));
+                var filterValue = json.mat_group_1.split("-");
+                var targetFilterSelector = ".base_metal_used_for_pqr_coupon .dropdown-item"; 
+
+                dataGroupParent.find(targetFilterSelector).addClass("d-none");
+                dataGroupParent.find(targetFilterSelector +"[data-filter-value*='"+filterValue[0]+"']").removeClass("d-none");
+            });
+       });
+
 
     });
 </script>
