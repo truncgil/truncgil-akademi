@@ -14,7 +14,7 @@ $weldingConsumables = db('welding_consumables')->get();
 $weldingMethods = db('welding_methods')->whereNotIn("ru_short_name",['*'])->get();
 $currentTypes = db('current_types')->get();
 $jointTypes = db('joint_types')->get();
-$naksTechnology = db('naks_certificates')->get();
+$naksTechnology = db('naks_certificates')->groupBy("certificate_no")->get();
 $workTypes = db('work_types')->get();
 
 $relationDatas = [
@@ -137,17 +137,19 @@ $material_group_test_pieces = db("material_group_test_pieces")->select(
     "incoming_value",
     "provision_value"
     )->get();
+
     $data = [];
+
     foreach($material_group_test_pieces AS $piece) {
         $piece->incoming_value = str_replace(",", ".", $piece->incoming_value);
         $data[$piece->incoming_value] = $piece->provision_value;
     }
-//dump($data); ?>
+ ?>
 <script>
     $(function(){
         var material_group_test_pieces = <?php echo json_encode_tr($data) ?>;
-        console.log(material_group_test_pieces);
         var type_grade_json = [];
+
         $(".naks_technology input").on("blur", function(){
             
         });
