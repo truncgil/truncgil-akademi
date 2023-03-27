@@ -232,6 +232,75 @@ $material_group_test_pieces = db("material_group_test_pieces")->select(
         });
 
         $(".outside_diameter").on("change", function() {
+            if(type_grade_json.short_name !== undefined) {
+                var group = $(this).attr("data-group");
+                var parent = $("." + group);
+                var value = $(this).val();
+                var material_type  = "Steel";
+                var min;
+                var max;
+
+                if(['AS', 'SS', 'CS'].includes(type_grade_json.short_name)) {
+                    material_type = "Steel";
+                    if(value<=25) {
+                        min = value;
+                        max = value * 2;
+                    }
+
+                    if(value>25 && value<= 150) {
+                        min = 0.5 * value;
+                        max = value * 2;
+                    }
+
+                    if(value>150) {
+                        min = 0.5 * value;
+                        max = "";
+                    }
+                }
+
+                if(type_grade_json.short_name == "NI") {
+                    material_type = "Nickel";
+
+                    if(value<=25) {
+                        min = value;
+                        max = value * 2;
+                    }
+
+                    if(value>25 && value<= 150) {
+                        min = 0.5 * value;
+                        max = value * 2;
+                    }
+
+                    if(value>150) {
+                        min = 0.5 * value;
+                        max = "";
+                    }
+                }
+
+                if(type_grade_json.short_name == "AL") {
+                    material_type = "Aluminium";
+
+                    if(value<=125) {
+                        min = value * 0.5;
+                        max = value * 2.5;
+                    }
+
+                    if(value>125) {
+                        min = 0.5 * value;
+                        max = 2.5 * value;
+                    }
+
+                    
+                }
+                parent.find(".qualitication_outside_diameter_min").val(min).prop("readonly",true);
+                parent.find(".qualitication_outside_diameter_max").val(max).prop("readonly",true);
+
+            }
+            
+            
+        });
+
+        $(".thickness").on("change", function() {
 
             if(type_grade_json.short_name !== undefined) {
                 var group = $(this).attr("data-group");
@@ -294,78 +363,11 @@ $material_group_test_pieces = db("material_group_test_pieces")->select(
                     
                 }
 
-                parent.find(".qualitication_outside_diameter_min").val(min).prop("readonly",true);
-                parent.find(".qualitication_outside_diameter_max").val(max).prop("readonly",true);
-            }
-            
-        });
-
-        $(".thickness").on("change", function() {
-
-            if(type_grade_json.short_name !== undefined) {
-                var group = $(this).attr("data-group");
-                var parent = $("." + group);
-                var value = $(this).val();
-                var material_type  = "Steel";
-                var min;
-                var max;
-
-                if(['AS', 'SS', 'CS'].includes(type_grade_json.short_name)) {
-                    material_type = "Steel";
-                    if(value<=25) {
-                        min = value;
-                        max = value * 2;
-                    }
-
-                    if(value>25 && value<= 150) {
-                        min = 0.5 * value;
-                        max = value * 2;
-                    }
-
-                    if(value>150) {
-                        min = 0.5 * value;
-                        max = "";
-                    }
-                }
-
-                if(type_grade_json.short_name == "NI") {
-                    material_type = "Nickel";
-
-                    if(value<=25) {
-                        min = value;
-                        max = value * 2;
-                    }
-
-                    if(value>25 && value<= 150) {
-                        min = 0.5 * value;
-                        max = value * 2;
-                    }
-
-                    if(value>150) {
-                        min = 0.5 * value;
-                        max = "";
-                    }
-                }
-
-                if(type_grade_json.short_name == "AL") {
-                    material_type = "Aluminium";
-
-                    if(value<=125) {
-                        min = value * 0.5;
-                        max = value * 2.5;
-                    }
-
-                    if(value>125) {
-                        min = 0.5 * value;
-                        max = 2.5 * value;
-                    }
-
-                    
-                }
-
                 parent.find(".thickness_min").val(min).prop("readonly",true);
                 parent.find(".thickness_max").val(max).prop("readonly",true);
             }
+
+            
 
         });
         $(".welding_process .dropdown-item input:checkbox").on("click", function(){
