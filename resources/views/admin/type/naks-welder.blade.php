@@ -14,18 +14,19 @@ $jointType = db("joint_types")->get();
 $hazardClasses = db("hazard_classes")->get();
 $materials = db("materials")->get();
 $weldingPositions = db("welding_positions")->get();
+$subcontractors = db("subcontractors")->get();
 
 $relationDatas = [
     'user_id' => [
         'table' => 'users',
         'datas' => $users,
         'value' => 'id',
-        'text' => ['name', 'name_en', 'name_ru'],
+        'text' => ['name'],
         'type' => 'select',
         'affected' => [
             'year_of_birth' => '{date_of_birth}',
             'welder_name_ru' => '{name_ru}',
-            'welder_name_en' => '{name_en}',
+            'welder_name_en' => '{name}',
             'company' => '{company}',
         ]
     ],
@@ -57,7 +58,13 @@ $relationDatas = [
     ],
     'welding_position' => [
         'datas' => $weldingPositions,
-        'pattern' => '{gost}',
+        'pattern' => '{gost}/{en}',
+        'type' => 'multiple-choice'
+    ],
+
+    'company' => [
+        'datas' => $subcontractors,
+        'pattern' => '{company_name_en}',
         'type' => 'multiple-choice'
     ],
 
