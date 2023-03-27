@@ -51,7 +51,6 @@ $blockGroup = [
         'current_polarity',
         'joint_design',
         'base_metal',
-        'work_type',
         
     ],
     
@@ -143,6 +142,7 @@ $relationDatas = [
             'p_no_to' => '{iso}',
         ]
     ],
+    /*
     'brend' => [
         'table' => 'welding_consumables',
         'datas' => $weldingConsumables,
@@ -153,6 +153,13 @@ $relationDatas = [
             'filter_metals_aws_sfa_no_class' => '{aws_class}-{aws_specification}',
             'filter_metals_gost' => '{gost_class}-{gost_specification}'
         ]
+    ],
+    */
+    'brend' => [
+        'datas' => $weldingConsumables,
+        'pattern' => '{brend}',
+        'type' => 'multiple-choice',
+        'seperator' => ' + '
     ],
     'current_polarity' => [
         'datas' => $currentTypes,
@@ -379,14 +386,33 @@ $material_group_test_pieces = db("material_group_test_pieces")->select(
             var dataGroup = parent.attr("data-group");
             var dataGroupParent = $("." + dataGroup);
             var checkboxChecked = parent.find("input:checked").parent();
+
+            var baseMetalUsedForPQRCoupon = ".base_metal_used_for_pqr_coupon .dropdown-item"; 
+            var weldingProcess = ".welding_process .dropdown-item"; 
+            var brend = ".brend .dropdown-item"; 
+            var baseMetal = ".base_metal .dropdown-item"; 
+
+            dataGroupParent.find(baseMetalUsedForPQRCoupon).addClass("d-none");
+            dataGroupParent.find(weldingProcess).addClass("d-none");
+            dataGroupParent.find(brend).addClass("d-none");
             
             $.each(checkboxChecked, function(index, item) {
                 var json = JSON.parse($(this).attr("data-filter-value"));
-                var filterValue = json.mat_group_1.split("-");
-                var targetFilterSelector = ".base_metal_used_for_pqr_coupon .dropdown-item"; 
+                var mathGroup = json.mat_group_1.split("-");
+                var weldingConsumables = json.welding_consumable.split(",");
+                var workType = json.work_type;
 
-                dataGroupParent.find(targetFilterSelector).addClass("d-none");
-                dataGroupParent.find(targetFilterSelector +"[data-filter-value*='"+filterValue[0]+"']").removeClass("d-none");
+                $.each(weldingConsumables, function(weldingIndex, weldingItem) {
+                    dataGroupParent.find(brend +":contains('"+weldingItem+"')").removeClass("d-none");
+                });
+
+                dataGroupParent.find(baseMetal).filter(function(){
+                    $(this).toggle($(this).text().trim() == workType);
+                });
+
+                dataGroupParent.find(baseMetalUsedForPQRCoupon +"[data-filter-value*='"+mathGroup[0]+"']").removeClass("d-none");
+                
+                dataGroupParent.find(weldingProcess +"[data-filter-value*='"+json.welding_method+"']").removeClass("d-none");
             });
        });
   //     $(".pqr-info").removeClass("col-12").addClass("col-md-6");
