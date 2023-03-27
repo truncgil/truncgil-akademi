@@ -38,7 +38,8 @@ $relationDatas = [
     'group_of_base_material' => [
         'datas' => $materials->groupBy("short_name")->get(),
         'pattern' => '{short_name}',
-        'type' => 'select-dropdown'
+        'type' => 'select-dropdown',
+        'filter-columns' => ['base_material']
     ],
     'naks_tech_group' => [
         'datas' => db("hazard_classes")->groupBy("category_serial_number")->get(),

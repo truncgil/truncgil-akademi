@@ -23,7 +23,7 @@ class CreateNaksConsumablesTable extends Migration
             $table->float('diameter', 255, 2)->nullable()->default(null);
             $table->string('group_of_base_material')->nullable()->default(null);
             $table->string('base_material')->nullable()->default(null);
-            $table->integer('qty')->nullable()->default(null);
+            $table->float('qty', 255, 2)->nullable()->default(null);
             $table->integer('unit')->nullable()->default(null);
             $table->string('batch_number')->nullable()->default(null);
             $table->string('naks_certificate_no')->nullable()->default(null);
@@ -32,7 +32,7 @@ class CreateNaksConsumablesTable extends Migration
             $table->string('naks_tech_group')->nullable()->default(null);            
             $table->string('inspection_test_report')->nullable()->default(null);            
             $table->string('inspection_certificate_standart')->nullable()->default(null);            
-            $table->string('certification_date')->nullable()->default(null);            
+            $table->date('certification_date')->nullable()->default(null);            
             $table->float('certification_qty', 255, 2)->nullable()->default(null);            
             $table->string('icm_inspection_status')->nullable()->default(null);            
             $table->string('icm_rfi_no')->nullable()->default(null);            
