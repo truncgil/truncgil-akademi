@@ -26,17 +26,18 @@ $relationDatas = [
             'russian_standard_group_no_2' => '{russian_standart_group_no_2}',
             'p_no_from' => '{p_no_from}',
             'p_no_from' => '{p_no_to}',
-            'sfa_no' => '{aws_sfa_no_class}',
-            'gost' => '{gost}',
-            'pre_heating_min' => '{pre_heating}',
-            'inter_pass_max' => '{inter_pass}',
-            'temp_range' => '{temp_range}',
-            'min_time' => '{min_time}',
+            'filler_metals_sfa_no' => '{filter_metals_aws_sfa_no_class}',
+            'filler_metals_gost' => '{filter_metals_gost}',
+            'pre_heating_min' => '{pre_heating_min}',
+            'inter_pass_max' => '{inter_pass_max}',
+            'pwht_temp_range' => '{pwht_temp_range}',
+            'pwht_min_time' => '{pwht_min_time}',
             'shielding_gas' => '{shielding_gas}',
             'backing_gas' => '{backing_gas}',
             'current_polarity' => '{current_polarity}',
-            'base_material' => '{work_type}',
-            'joint_type' => '{joint_design}',
+            'work_type' => '{work_type}',
+            'joint_type_definition' => '{joint_design}',
+            'naks_certificate_no' => '{naks_technology}',
         ]
     ],
     'naks_certificate_no' => [
@@ -44,13 +45,10 @@ $relationDatas = [
         'pattern' => '{certificate_no}',
         'type' => 'multiple-choice'
     ],
-    'base_material' => [
-        'table' => 'materials',
+    'work_type' => [
         'datas' => $materials,
-        'value' => 'steel_grade',
-        'text' => ['steel_grade'],
-        'type' => 'select',
-        'affected' => []
+        'pattern' => '{base_metal}',
+        'type' => 'select-dropdown'
     ],
     'group_of_technical_devices' => [
         'table' => 'prosedure_qualification_records',
