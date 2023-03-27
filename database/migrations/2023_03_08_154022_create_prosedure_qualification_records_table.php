@@ -54,7 +54,6 @@ class CreateProsedureQualificationRecordsTable extends Migration
             $table->string('current_polarity')->nullable()->default(null);
             $table->string('joint_design')->nullable()->default(null);
             $table->string('base_metal')->nullable()->default(null);
-            $table->string('work_type')->nullable()->default(null);
             $table->string('qualitication_group_of_parent_material')->nullable()->default(null);
             $table->float('qualitication_outside_diameter_min', 255, 2)->nullable()->default(null);
             $table->float('qualitication_outside_diameter_max', 255, 2)->nullable()->default(null);
