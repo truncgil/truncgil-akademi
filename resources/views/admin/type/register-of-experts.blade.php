@@ -13,11 +13,11 @@ $relationDatas = [
         'table' => 'users',
         'datas' => db('users')->where("level","like","Welder%")->get(),
         'value' => 'id',
-        'text' => ['name_en','name_ru'],    
+        'text' => ['name','name_ru'],    
         'type' => 'select',
         'affected' => [
             'name_ru' => '{name_ru}',
-            'name_en' => '{name_en}',
+            'name_en' => '{name}',
             'date_of_birth' => '{date_of_birth}',
         ]
     ],
