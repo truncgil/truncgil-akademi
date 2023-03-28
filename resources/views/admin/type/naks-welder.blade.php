@@ -12,9 +12,10 @@ $weldingMethods = db("welding_methods")->whereNotIn('ru_short_name',['*'])->get(
 $productType = db("product_types")->get();
 $jointType = db("joint_types")->get();
 $hazardClasses = db("hazard_classes")->get();
-$materials = db("materials")->get();
+$materials = db("materials")->whereNotIn("ru_group", ['*'])->groupBy("ru_group")->get();
 $weldingPositions = db("welding_positions")->get();
 $subcontractors = db("subcontractors")->get();
+
 
 $relationDatas = [
     'user_id' => [
@@ -67,6 +68,8 @@ $relationDatas = [
         'pattern' => '{company_name_en}',
         'type' => 'multiple-choice'
     ],
+    
+
 
     
    

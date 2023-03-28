@@ -31,8 +31,8 @@ class CreateWelderTestsTable extends Migration
             $table->string('grade_1')->nullable()->default(null);
             $table->string('grade_2')->nullable()->default(null);
             $table->string('joint_type')->nullable()->default(null);
-            $table->string('diameter')->nullable()->default(null);
-            $table->string('thickness')->nullable()->default(null);
+            $table->float('diameter', 255, 2)->nullable()->default(null);
+            $table->float('thickness', 255, 2)->nullable()->default(null);
             $table->float('dia_min', 255, 2)->nullable()->default(null);
             $table->float('dia_max', 255, 2)->nullable()->default(null);
             $table->float('thk_min', 255, 2)->nullable()->default(null);
@@ -55,6 +55,7 @@ class CreateWelderTestsTable extends Migration
             $table->string('pwht_operator_id')->nullable()->default(null);
             $table->date('ht_date')->nullable()->default(null);
             $table->string('ht_report_no')->nullable()->default(null);
+            $table->string('ht_result')->nullable()->default(null);
             $table->date('pt_date')->nullable()->default(null);
             $table->string('pt_report_no')->nullable()->default(null);
             $table->string('pt_result')->nullable()->default(null);
@@ -75,11 +76,13 @@ class CreateWelderTestsTable extends Migration
             $table->string('impact_result')->nullable()->default(null);
             $table->date('metallography_date')->nullable()->default(null);
             $table->string('metallography_report_no')->nullable()->default(null);
+            $table->string('metallography_result')->nullable()->default(null);
             $table->date('ferrit_date')->nullable()->default(null);
             $table->string('ferrit_report_no')->nullable()->default(null);
+            $table->string('ferrit_result')->nullable()->default(null);
             $table->string('intergranullar_corrosion_test_date')->nullable()->default(null);
             $table->string('intergranullar_corrosion_report_no')->nullable()->default(null);
-            $table->string('corrosion_result')->nullable()->default(null);
+            $table->string('intergranullar_corrosion_result')->nullable()->default(null);
             $table->date('approval_date')->nullable()->default(null);
             $table->string('status')->nullable()->default(null);
         });
