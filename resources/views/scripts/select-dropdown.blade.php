@@ -13,6 +13,16 @@
         $(".select-dropdown .dropdown-item").on("click", function(){
             var parent = $(this).parent().parent().parent().parent();
             var json = JSON.parse($(this).attr("data-filter-value"));
+            var affected = $(this).attr("affected");
+            $.each(affected,function(key,value){
+                    //var value = d.
+                    var replaceString = value;
+                    //console.log(replaceString
+                    $.each(result, function(resultKey, resultValue){
+                        replaceString = replaceString.replace("{"+resultKey+"}",resultValue);
+                    });
+                    parent.find("[name='"+key+"']").val(replaceString).trigger("blur");
+                });
             
             console.log(json);
 

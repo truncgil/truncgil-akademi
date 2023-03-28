@@ -238,6 +238,7 @@ $material_group_test_pieces = db("material_group_test_pieces")->select(
             
         });
 
+
         $(".outside_diameter").on("change", function() {
             if(type_grade_json.short_name !== undefined) {
                 var group = $(this).attr("data-group");
@@ -400,6 +401,27 @@ $material_group_test_pieces = db("material_group_test_pieces")->select(
                 selectedNumbers.push(json.en_welding_number);
             });
             dataGroupParent.find(".qualitication_process").val(selectedNumbers.join(" + "));
+        });
+        $(".brend .dropdown-item input:checkbox").on("click", function(){
+            var parent = $(this).parent().parent().parent().parent();
+            var dataGroup = parent.attr("data-group");
+            var dataGroupParent = $("." + dataGroup);
+            var checkboxChecked = parent.find("input:checked").parent();
+            var selectedNumbers = [];
+            var selectedFilterMetals = [];
+            $.each(checkboxChecked, function(index, item) {
+                var json = JSON.parse($(this).attr("data-filter-value"));
+                if(json.aws_class != null) {
+                    selectedNumbers.push(json.aws_class + "-" + json.aws_specification);
+                }
+                if(json.gost_class != null) {
+                    selectedFilterMetals.push(json.gost_class + "-" + json.gost_specification);
+                }
+                
+            });
+            //'filter_metals_gost' => '{gost_class}-{gost_specification}'
+            dataGroupParent.find(".filter_metals_aws_sfa_no_class").val(selectedNumbers.join(" + "));
+            dataGroupParent.find(".filter_metals_gost").val(selectedFilterMetals.join(" + "));
         });
 
        $(".naks_technology .dropdown-item input:checkbox").on("click", function() {
