@@ -190,6 +190,13 @@ $relationDatas = [
         ],
         'type' => 'integer'
     ],
+    'qualitication_pwht' => [
+        'values' => [
+            'YES',
+            'NO',
+        ],
+        'type' => 'manuel-select'
+    ],
     
     
    
@@ -370,6 +377,18 @@ $material_group_test_pieces = db("material_group_test_pieces")->select(
             
 
         });
+        
+
+        $(".pwht_temp_range").on("keyup", function() {
+            
+            var dataGroup = $(this).attr("data-group");
+            var dataGroupParent = $("." + dataGroup);
+            if($(this).val()!="") {
+                dataGroupParent.find(".qualitication_pwht").val("YES");
+            } else {
+                dataGroupParent.find(".qualitication_pwht").val("NO");
+            }
+        });
         $(".welding_process .dropdown-item input:checkbox").on("click", function(){
             var parent = $(this).parent().parent().parent().parent();
             var dataGroup = parent.attr("data-group");
@@ -397,12 +416,16 @@ $material_group_test_pieces = db("material_group_test_pieces")->select(
             dataGroupParent.find(baseMetalUsedForPQRCoupon).addClass("d-none");
             dataGroupParent.find(weldingProcess).addClass("d-none");
             dataGroupParent.find(brend).addClass("d-none");
+
+            
             
             $.each(checkboxChecked, function(index, item) {
                 var json = JSON.parse($(this).attr("data-filter-value"));
                 var mathGroup = json.mat_group_1.split("-");
                 var weldingConsumables = json.welding_consumable.split(",");
                 var workType = json.work_type;
+
+                dataGroupParent.find(".qualitication_pwht").val(json.pwht).prop("readonly", true);
 
                 $.each(weldingConsumables, function(weldingIndex, weldingItem) {
                     dataGroupParent.find(brend +":contains('"+weldingItem+"')").removeClass("d-none");
