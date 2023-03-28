@@ -37,10 +37,7 @@ $excepts = [
 ];
 
 $relationDatas = [
-    'level' => [
-        'values' => levels2(),
-        'type' => 'manuel-select'
-    ],
+
     
     'gender' => [
         'values' => [
@@ -63,7 +60,7 @@ $relationDatas = [
         'pattern' => '{company_name_en}',
         'type' => 'select-dropdown'
     ],
-    'job_name' => [
+    'level' => [
         'datas' => db("job_descriptions")->get(),
         'pattern' => '{title}',
         'type' => 'select-dropdown'
