@@ -128,7 +128,7 @@ $relationDatas = [
         'type' => 'select',
         'affected' => [
             'russian_standart_group_no' => '{ru_group}',
-            'p_no_from' => '{iso}',
+            'p_no_from' => '{asme_number}',
         ]
     ],
     'type_grade_2' => [
@@ -139,7 +139,7 @@ $relationDatas = [
         'type' => 'select',
         'affected' => [
             'russian_standart_group_no_2' => '{ru_group}',
-            'p_no_to' => '{iso}',
+            'p_no_to' => '{asme_number}',
         ]
     ],
     /*
@@ -424,7 +424,6 @@ $material_group_test_pieces = db("material_group_test_pieces")->select(
                 var mathGroup = json.mat_group_1.split("-");
                 var weldingConsumables = json.welding_consumable.split(",");
                 var workType = json.work_type;
-
                 dataGroupParent.find(".qualitication_pwht").val(json.pwht).prop("readonly", true);
 
                 $.each(weldingConsumables, function(weldingIndex, weldingItem) {
