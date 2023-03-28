@@ -1,8 +1,6 @@
 <?php function levels() {
     // user no, full control, write, read, modify
     return [
-        'Welder' => [0,0,0,0,0],
-        'Engineer' => [0,0,0,0,0],
         'Admin' =>                          [1,1,1,1,1],
         'Manager (Center Office)' =>    [2,0,1,1,1],
         'Manager (QC)' =>               [2,0,1,1,0],
@@ -17,6 +15,12 @@
         'Field Staff' =>                                                [10,0,1,1,1],
     ];
 } 
+function levels2() {
+    return [
+        'Welder',
+        'Engineer',
+    ];
+}
 
 function level_keys() {
     return array_keys(levels());

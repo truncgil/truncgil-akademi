@@ -38,7 +38,7 @@ $excepts = [
 
 $relationDatas = [
     'level' => [
-        'values' => array_keys(levels()),
+        'values' => array_keys(levels2()),
         'type' => 'manuel-select'
     ],
     
