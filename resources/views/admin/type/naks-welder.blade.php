@@ -28,7 +28,7 @@ $relationDatas = [
             'year_of_birth' => '{date_of_birth}',
             'welder_name_ru' => '{name_ru}',
             'welder_name_en' => '{name}',
-            'company' => '{company}',
+            'company' => '{subcontructer}',
         ]
     ],
     'process' => [
