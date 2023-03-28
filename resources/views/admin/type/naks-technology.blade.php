@@ -69,6 +69,9 @@ $relationDatas = [
         'type' => 'select-dropdown',
         'filter-columns' => [
             'connection_type'
+        ],
+        'affected' => [
+            'connection_type' => '{naks_name}',
         ]
     ],
     'joint_view' => [

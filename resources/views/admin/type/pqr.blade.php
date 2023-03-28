@@ -76,7 +76,7 @@ $blockGroup = [
 $relationDatas = [
     'naks_technology' => [
         'datas' => $naksTechnology,
-        'pattern' => '{certificate_no}',
+        'pattern' => '{short_number}-{certificate_no}',
         'type' => 'multiple-choice',
         'seperator' => ' + '
     ],

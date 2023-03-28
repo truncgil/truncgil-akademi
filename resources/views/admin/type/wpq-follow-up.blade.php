@@ -203,7 +203,8 @@ $relationDatas = [
         var type_grade_json;
 
 
-        $(".vt,.ht,.pt,.pmi,.rt,.tensile,.bending,.impact,.metallography,.ferrit,.corrosion").removeClass("col-12").addClass("col-md-6");
+        $(".vt,.ht,.pt,.pmi,.rt,.tensile,.bending,.impact,.metallography,.ferrit").removeClass("col-12").addClass("col-md-6");
+        $("#vt,#ht,#pt,#pmi,#rt,#tensile,#bending,#impact,#metallography,#ferrit,#corrosion").addClass("border").addClass("bg-white");
 
         $(".joint_type .dropdown-item").on("click", function(){
             var parent = $(this).parent().parent().parent().parent();

@@ -12,6 +12,10 @@
         });
         $(".select-dropdown .dropdown-item").on("click", function(){
             var parent = $(this).parent().parent().parent().parent();
+            var json = JSON.parse($(this).attr("data-filter-value"));
+            
+            console.log(json);
+
             parent.find("input[type='text']").val($(this).text().trim()).trigger("blur");
         });
     });

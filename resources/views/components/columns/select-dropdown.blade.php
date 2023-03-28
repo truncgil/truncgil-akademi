@@ -17,7 +17,9 @@ $addedValues = [];
     <button type="button" class="btn btn-outline-default btn-sm dropdown-toggle {{isset($columnData['filter']) ? "dropdown-filter" : ""}}" 
     data-toggle="dropdown"
     data-pattern="{{$columnData['pattern']}}"
-    
+    <?php if(isset($columnData['affected'])) { ?>
+     affected="{{json_encode($columnData['affected'])}}"
+    <?php } ?>
     <?php if(isset($columnData['filter'])) {
          ?>
          data-table="{{$columnData['filter']['table']}}"
