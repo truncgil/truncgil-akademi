@@ -29,6 +29,7 @@ $relationDatas = [
             'welder_name_ru' => '{name_ru}',
             'welder_name_en' => '{name}',
             'company' => '{subcontructer}',
+            'qualitification_category' => '{qualitification}',
         ]
     ],
     'process' => [
