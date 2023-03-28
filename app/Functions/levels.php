@@ -1,7 +1,9 @@
 <?php function levels() {
     // user no, full control, write, read, modify
     return [
-    'Admin' =>                          [1,1,1,1,1],
+        'Welder' => [0,0,0,0,0],
+        'Engineer' => [0,0,0,0,0],
+        'Admin' =>                          [1,1,1,1,1],
         'Manager (Center Office)' =>    [2,0,1,1,1],
         'Manager (QC)' =>               [2,0,1,1,0],
         'Manager (PTO)' =>              [2,0,1,1,0],
