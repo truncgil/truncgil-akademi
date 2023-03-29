@@ -461,6 +461,14 @@ $material_group_test_pieces = db("material_group_test_pieces")->select(
                 dataGroupParent.find(weldingProcess +"[data-filter-value*='"+json.welding_method+"']").removeClass("d-none");
             });
        });
+
+       $(".backing_gas").on("blur", function() {
+            if($(this).val() == "-") {
+                $("." + $(this).attr("data-group")).find(".qualitication_backing_gas").val("-");
+            } else {
+                $("." + $(this).attr("data-group")).find(".qualitication_backing_gas").val($(this).val());
+            }
+       });
   //     $(".pqr-info").removeClass("col-12").addClass("col-md-6");
   //     $(".base-material").removeClass("col-12").addClass("col-md-6");
        $("#pqr-info").addClass("border").addClass("bg-white");
