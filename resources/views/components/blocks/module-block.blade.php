@@ -28,16 +28,16 @@ foreach($columns AS $column) {
                 $slug = str_slug($blockTitle); 
                 $class = "col-12 border-1";
                 $color = -1;
-                if(isset($columnResize[$slug]['class'])) {
-                    $class = $columnResize[$slug]['class'];
+                if(isset($columnRedesign[$slug]['class'])) {
+                    $class = $columnRedesign[$slug]['class'];
                 }
-                if(isset($columnResize[$slug]['color'])) {
-                    $color = $columnResize[$slug]['color'];
+                if(isset($columnRedesign[$slug]['color'])) {
+                    $color = $columnRedesign[$slug]['color'];
                 }
                 $options['no-options'] = true;
 
-                if(isset($columnResize[$slug]['border'])) $options['border'] = true;
-                if(isset($columnResize[$slug]['content-class'])) $options['content-class'] = $columnResize[$slug]['content-class'];
+                if(isset($columnRedesign[$slug]['border'])) $options['border'] = true;
+                if(isset($columnRedesign[$slug]['content-class'])) $options['content-class'] = $columnRedesign[$slug]['content-class'];
                  ?>
                   {{col($class . " " . $slug, $blockTitle, $color, $options)}} 
                     <div class="row">
