@@ -23,8 +23,6 @@
             var input = parent.find(".multiple-choice-input");
             if(input.hasAttr("max")) {
                 var max = input.attr("max");
-                console.log(max);
-                console.log(checkedSelector.length);
        //         if(!$(this).is(":checked")) {
                     if(checkedSelector.length>max) {
                         return false;
@@ -40,7 +38,6 @@
                 
             });
             
-            console.log(selected.join(input.attr("seperator")));
             input.val(selected.join(input.attr("seperator"))).trigger("blur");
             //console.log(selected);
         });
@@ -48,7 +45,6 @@
             var parent = $(this).parent().parent();
             var input = parent.find("input[type='text']");
             var selected = input.val().split(input.attr("seperator"));
-            console.log(selected);
             parent.find("input[type='checkbox']").prop("checked", false);
             $.each(selected, function(e,i) {
                 parent.find("input[type='checkbox'][value='"+i+"']").prop("checked", true);

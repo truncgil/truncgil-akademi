@@ -23,11 +23,7 @@
             if(affected !== undefined) {
                 affected = JSON.parse(affected);
                 $.each(affected,function(key,value){
-                    //var value = d.
-                    console.log(value);
-                    console.log(json);
                     var replaceString = value;
-                    //console.log(replaceString
 
                     $.each(json, function(resultKey, resultValue){
                         replaceString = replaceString.replace("{"+resultKey+"}",resultValue);
