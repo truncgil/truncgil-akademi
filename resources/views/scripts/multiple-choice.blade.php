@@ -9,10 +9,11 @@
             });
             
         });
-        $(".multiple-choice > input").on("click focus", function(e) {
+        $(".multiple-choice > input").on("click", function(e) {
             e.stopPropagation();
             $(this).parent().find('[data-toggle=dropdown]').dropdown('toggle');
         });
+
         $(".multiple-choice input[type='checkbox']").on("click", function(){
 
             var selected = [];
