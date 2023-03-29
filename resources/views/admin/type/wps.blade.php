@@ -13,6 +13,7 @@ $ruWeldingGeometries = db("ru_welding_geometries")->get();
 $weldingPositions = db("welding_positions")->get();
 $materials = db("materials")->groupBy("steel_grade")->get();
 $currentTypes = db("current_types")->get();
+$workTypes = db("work_types")->get();
 
 $relationDatas = [
     'pqr_no' => [
@@ -38,6 +39,7 @@ $relationDatas = [
             'work_type' => '{work_type}',
             'joint_type_definition' => '{joint_design}',
             'naks_certificate_no' => '{naks_technology}',
+            'technology_category' => '{technology_category}',
         ]
     ],
     'naks_certificate_no' => [
@@ -46,8 +48,8 @@ $relationDatas = [
         'type' => 'multiple-choice'
     ],
     'work_type' => [
-        'datas' => $materials,
-        'pattern' => '{base_metal}',
+        'datas' => $workTypes,
+        'pattern' => '{title_en}',
         'type' => 'select-dropdown'
     ],
     'group_of_technical_devices' => [
