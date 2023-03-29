@@ -43,9 +43,13 @@ foreach($columns AS $column) {
                     <div class="row">
                         <?php foreach($blockColumns AS $column) {
                         //    dd($columnsList[$column]);
-                        $column = $columnsList[$column]
+                        $column = $columnsList[$column];
+                        $columnClass = "col-md-3";
+
+                        if(isset($columnRedesign[$column['name']]['class'])) 
+                            $columnClass = $columnRedesign[$column['name']]['class'];
                             ?>
-                            <div class="col-md-3">
+                            <div class="{{$columnClass}}">
                                 {{e2($column['name'])}}
                                 @include("components.columns.{$column['type']}")
                             </div>
