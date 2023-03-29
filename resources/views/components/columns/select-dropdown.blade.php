@@ -45,7 +45,7 @@ $addedValues = [];
                     
 
                     ?>
-                <label class="dropdown-item" {{$filterColumns}} data-filter-value="{{json_encode_tr($data)}}">
+                <label class="dropdown-item" data-group="{{$rowName}}" {{$filterColumns}} data-filter-value="{{json_encode_tr($data)}}">
                     <?php if(isset($columnData['pattern'])) {
                         $patternString = $columnData['pattern'];
                         

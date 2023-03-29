@@ -43,7 +43,7 @@ $seperator = isset($columnData['seperator']) ? $columnData['seperator'] : ',';
             $implodeValue = implode(',',$values);
             $addedValues[] = $patternString;
           ?>
-         <label class="dropdown-item" data-filter-value="{{json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)}}"><input type="checkbox" value="{{$patternString}}" name="" id="">{{$patternString}}</label> 
+         <label class="dropdown-item" data-group="{{$rowName}}" data-filter-value="{{json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)}}"><input type="checkbox" value="{{$patternString}}" name="" id="">{{$patternString}}</label> 
          <?php } ?>
          <?php if(isset($recordedDatas[$columnName])) {
                 foreach($recordedDatas[$columnName] AS $recordedValue) {
