@@ -45,10 +45,10 @@ for($k=1;$k<=4;$k++) {
         'min_thick_' . $k,
         'max_thick_' . $k,
     ];
-    $columnResize['material-' . $k]['class'] = "col-md-6";
-    $columnResize['material-' . $k]['color'] = 10;
-    $columnResize['material-' . $k]['border'] = true;
-    $columnResize['material-' . $k]['content-class'] = "bg-gray";
+    $columnRedesign['material-' . $k]['class'] = "col-md-6";
+    $columnRedesign['material-' . $k]['color'] = 10;
+    $columnRedesign['material-' . $k]['border'] = true;
+    $columnRedesign['material-' . $k]['content-class'] = "bg-gray";
 }
 
 $blockGroup['Result'] = [
@@ -57,12 +57,12 @@ $blockGroup['Result'] = [
     'date',
 ];
 
-$columnResize['result']['content-class'] = "bg-white";
-$columnResize['result']['color'] = 19;
+$columnRedesign['result']['content-class'] = "bg-white";
+$columnRedesign['result']['color'] = 19;
 
-$columnResize['general-information']['class'] = "col-md-12";
-$columnResize['general-information']['color'] = 30;
-$columnResize['general-information']['border'] = true;
+$columnRedesign['general-information']['class'] = "col-md-12";
+$columnRedesign['general-information']['color'] = 30;
+$columnRedesign['general-information']['border'] = true;
 
 
 

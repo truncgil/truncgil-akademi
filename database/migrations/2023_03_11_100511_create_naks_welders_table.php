@@ -29,15 +29,22 @@ class CreateNaksWeldersTable extends Migration
             $table->string('naks_certificate_no')->nullable()->default(null);
             $table->date('period_of_validity')->nullable()->default(null);
             $table->string('group_of_technical_device')->nullable()->default(null);
-            $table->string('material')->nullable()->default(null);
-            $table->float('diameter_min', 255, 2)->nullable()->default(null);
-            $table->float('diameter_max', 255, 2)->nullable()->default(null);
-            $table->float('min_thick', 255, 2)->nullable()->default(null);
-            $table->float('max_thick', 255, 2)->nullable()->default(null);
+
+            for($k=1;$k<=4;$k++) {
+                $table->string('material_' . $k)->nullable()->default(null);
+                $table->float('diameter_min_' . $k, 255, 2)->nullable()->default(null);
+                $table->float('diameter_max_' . $k, 255, 2)->nullable()->default(null);
+                $table->float('min_thick_' . $k, 255, 2)->nullable()->default(null);
+                $table->float('max_thick_' . $k, 255, 2)->nullable()->default(null);
+            }
+            
+
+            /*
             $table->float('diameter_min_2', 255, 2)->nullable()->default(null);
             $table->float('diameter_max_2', 255, 2)->nullable()->default(null);
             $table->float('min_thick_2', 255, 2)->nullable()->default(null);
             $table->float('max_thick_2', 255, 2)->nullable()->default(null);
+            */
             $table->string('welding_position')->nullable()->default(null);
             $table->string('company')->nullable()->default(null);
             $table->string('order_no')->nullable()->default(null);
