@@ -19,9 +19,9 @@ $hazardClasses = db("hazard_classes")->get();
 $blockGroup = [
     'General Information' => [
         'wpq_document_no',
-        'naks_no',
-        'name_surname',
         'naks_id',
+        'name_surname',
+        'naks_no',
         'technology_range',
         'material_group_gost',
         'wps_no',

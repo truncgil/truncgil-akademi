@@ -14,14 +14,20 @@ $weldingPositions = db("welding_positions")->get();
 $materials = db("materials")->groupBy("steel_grade")->get();
 $currentTypes = db("current_types")->get();
 $workTypes = db("work_types")->get();
+$weldingConsumables = db("welding_consumables")->whereNotNull('gost_specification')->get();
 
 $relationDatas = [
+    'type' => [
+        'values' => [
+            'pWPS',
+            'WPS',
+        ],
+        'type' => 'manuel-select'
+    ],
     'pqr_no' => [
-        'table' => 'prosedure_qualification_records',
         'datas' => $pqr,
-        'value' => 'pqr_no',
-        'text' => ['pqr_no'],
-        'type' => 'select',
+        'pattern' => "{pqr_no}",
+        'type' => 'select-dropdown',
         'affected' => [
             'russian_standard_group_no_1' => '{russian_standart_group_no}',
             'russian_standard_group_no_2' => '{russian_standart_group_no_2}',
@@ -37,16 +43,40 @@ $relationDatas = [
             'backing_gas' => '{backing_gas}',
             'current_polarity' => '{current_polarity}',
             'work_type' => '{work_type}',
-            'joint_type_definition' => '{joint_design}',
+   //         'joint_type_definition' => '{joint_design}',
             'naks_certificate_no' => '{naks_technology}',
             'technology_category' => '{technology_category}',
             'work_type' => '{base_metal}',
+            'welding_process' => '{welding_process}',
         ]
+    ],
+    'joint_type_ru' => [
+        'datas' => $ruWeldingGeometries,
+        'pattern' => '{connection_symbol}',
+        'type' => 'multiple-choice',
+    ],
+    'welding_process' => [
+        'datas' => $weldingMethods,
+        'pattern' => '{ru_short_name}/{en_welding_number}',
+        'type' => 'multiple-choice',
     ],
     'naks_certificate_no' => [
         'datas' => $naksCertificates,
-        'pattern' => '{certificate_no}',
-        'type' => 'multiple-choice'
+        'pattern' => '{short_number}-{certificate_no}',
+        'type' => 'multiple-choice',
+        'seperator' => ' + '
+    ],
+    'filler_metals_sfa_no' => [
+        'datas' => $weldingConsumables,
+        'pattern' => '{brend}',
+        'type' => 'multiple-choice',
+        'filter-columns' => ['gost_specification']
+    ],
+    'filler_metals_gost' => [
+        'datas' => $weldingConsumables,
+        'pattern' => '{gost_specification}',
+        'type' => 'multiple-choice',
+        'filter-columns' => ['brend']
     ],
     'work_type' => [
         'datas' => $workTypes,
@@ -86,7 +116,7 @@ $relationDatas = [
         'pattern' => '{gost}({en})',
         'type' => 'multiple-choice'
     ],
-    'type_grade' => [
+    'material_type_grade' => [
         'datas' => $materials,
         'pattern' => '{steel_grade}',
         'type' => 'multiple-choice',
@@ -97,6 +127,42 @@ $relationDatas = [
 ];
 
 ?>
+<script>
+    $(function(){
+        var jointTypes = <?php echo json_encode_tr($jointTypes) ?>;
+        console.log(jointTypes);
+        $(".pqr_no .dropdown-item").on("click", function(){
+            var json = JSON.parse($(this).attr("data-filter-value"));
+            var dataGroup = $(this).attr("data-group");
+            var parent = $("." + dataGroup);
+            console.log(json);
+            parent.find(".date").attr("min", json.approved_date);
+            parent.find(".min_outside_diameter").attr("max", json.qualitication_outside_diameter_min);
+            parent.find(".max_outside_diameter").attr("max", json.qualitication_outside_diameter_max);
+
+            parent.find(".material_type_grade .dropdown-item").filter(function(){
+                $(this).toggle($(this).attr("data-filter-value").indexOf(json.russian_standart_group_no.trim()) > -1);
+            });
+
+            $.each(jointTypes, function(jointTypeIndex, jointTypeItem) {
+                if(jointTypeItem.short_name_en.trim() == json.joint_design.trim()) {
+                    parent.find(".joint_type_definition").val(jointTypeItem.definition_en).attr("readonly", "readonly");
+                }
+            });
+        });
+        $(".joint_type .dropdown-item").on("click", function(){
+            var json = JSON.parse($(this).attr("data-filter-value"));
+            var dataGroup = $(this).attr("data-group");
+            var parent = $("." + dataGroup);
+
+            parent.find(".joint_type_ru .dropdown-item").filter(function(){
+                $(this).toggle($(this).text().trim().indexOf(json.naks_name.trim()) > -1);
+            });
+        });
+    });
+</script>
+
+
 <div class="content">
     <div class="row">   
         @include("components.blocks.module-block")     

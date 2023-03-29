@@ -46,6 +46,7 @@ for($k=1;$k<=4;$k++) {
         'max_thick_' . $k,
     ];
     $columnRedesign['material-' . $k]['class'] = "col-md-6";
+    $columnRedesign['material_' . $k]['class'] = "col-12";
     $columnRedesign['material-' . $k]['color'] = 10;
     $columnRedesign['material-' . $k]['border'] = true;
     $columnRedesign['material-' . $k]['content-class'] = "bg-gray";
@@ -105,7 +106,22 @@ $relationDatas = [
         'pattern' => '{serial_number}',
         'type' => 'multiple-choice'
     ],
-    'material' => [
+    'material_1' => [
+        'datas' => $materials,
+        'pattern' => '{ru_group}',
+        'type' => 'multiple-choice'
+    ],
+    'material_2' => [
+        'datas' => $materials,
+        'pattern' => '{ru_group}',
+        'type' => 'multiple-choice'
+    ],
+    'material_3' => [
+        'datas' => $materials,
+        'pattern' => '{ru_group}',
+        'type' => 'multiple-choice'
+    ],
+    'material_4' => [
         'datas' => $materials,
         'pattern' => '{ru_group}',
         'type' => 'multiple-choice'

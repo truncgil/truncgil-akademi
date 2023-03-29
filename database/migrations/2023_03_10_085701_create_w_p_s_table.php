@@ -38,7 +38,7 @@ class CreateWPSTable extends Migration
             $table->float('max_thick',2,2)->nullable()->default(null);
             $table->string('filler_metals_sfa_no')->nullable()->default(null);
             $table->string('filler_metals_gost')->nullable()->default(null);
-            $table->string('pre_heating_min')->nullable()->default(null);
+            $table->float('pre_heating_min', 255, 2)->nullable()->default(null);
             $table->string('inter_pass_max')->nullable()->default(null);
             $table->string('pwht_temp_range')->nullable()->default(null);
             $table->string('pwht_min_time')->nullable()->default(null);
