@@ -9,7 +9,7 @@
             });
             
         });
-        $(".multiple-choice > input").on("click", function(e) {
+        $(".multiple-choice > input").on("click focus", function(e) {
             e.stopPropagation();
             $(this).parent().find('[data-toggle=dropdown]').dropdown('toggle');
         });

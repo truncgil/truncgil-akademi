@@ -10,7 +10,7 @@
             });
             
         });
-        $(".select-dropdown > input").on("click", function(e) {
+        $(".select-dropdown > input").on("click focus", function(e) {
             e.stopPropagation();
             $(this).parent().find('[data-toggle=dropdown]').dropdown('toggle');
         });
