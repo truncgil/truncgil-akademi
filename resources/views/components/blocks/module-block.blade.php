@@ -26,11 +26,20 @@ foreach($columns AS $column) {
             foreach($blockGroup AS $blockTitle => $blockColumns) {
                 
                 $slug = str_slug($blockTitle); 
-                
+                $class = "col-12 border-1";
+                $color = -1;
+                if(isset($columnResize[$slug]['class'])) {
+                    $class = $columnResize[$slug]['class'];
+                }
+                if(isset($columnResize[$slug]['color'])) {
+                    $color = $columnResize[$slug]['color'];
+                }
+                $options['no-options'] = true;
+
+                if(isset($columnResize[$slug]['border'])) $options['border'] = true;
+                if(isset($columnResize[$slug]['content-class'])) $options['content-class'] = $columnResize[$slug]['content-class'];
                  ?>
-                  {{col("col-12 border-1 " . $slug, $blockTitle,-1,[
-                    'no-options' => true
-                    ])}} 
+                  {{col($class . " " . $slug, $blockTitle, $color, $options)}} 
                     <div class="row">
                         <?php foreach($blockColumns AS $column) {
                         //    dd($columnsList[$column]);

@@ -4,7 +4,7 @@ function col($size,$title="",$color="0",$options=[]) {
     $colors = colors();
      ?>
      <div class="<?php echo $size ?>">
-        <div class="block block-themed block-rounded" id="<?php echo $id; ?>">
+        <div class="block block-themed block-rounded <?php echo isset($options['border']) ? "border" : "" ?>" id="<?php echo $id; ?>">
             <?php if($title!="") {
                  ?>
                  <div class="block-header 
@@ -51,7 +51,7 @@ function col($size,$title="",$color="0",$options=[]) {
                  <?php 
             } ?>
             
-            <div class="block-content">
+            <div class="block-content <?php echo isset($options['content-class']) ? $options['content-class'] : "" ?>">
                
            
      <?php 

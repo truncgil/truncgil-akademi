@@ -17,6 +17,58 @@ $weldingPositions = db("welding_positions")->get();
 $subcontractors = db("subcontractors")->get();
 
 
+$blockGroup = [
+    'General Information' => [
+        'user_id',
+        'welder_name_ru',
+        'welder_name_en',
+        'year_of_birth',
+        'company',
+        'qualitification_category',
+        'work_experience',
+        'welder_id',
+        'process',
+        'component',
+        'weld_type',
+        'naks_certificate_no',
+        'period_of_validity',
+        'group_of_technical_device',
+    ],
+
+];
+
+for($k=1;$k<=4;$k++) {
+    $blockGroup['Material ' . $k] = [
+        'material_' . $k,
+        'diameter_min_' . $k,
+        'diameter_max_' . $k,
+        'min_thick_' . $k,
+        'max_thick_' . $k,
+    ];
+    $columnResize['material-' . $k]['class'] = "col-md-6";
+    $columnResize['material-' . $k]['color'] = 10;
+    $columnResize['material-' . $k]['border'] = true;
+    $columnResize['material-' . $k]['content-class'] = "bg-gray";
+}
+
+$blockGroup['Result'] = [
+    'welding_position',
+    'order_no',
+    'date',
+];
+
+$columnResize['result']['content-class'] = "bg-white";
+$columnResize['result']['color'] = 19;
+
+$columnResize['general-information']['class'] = "col-md-12";
+$columnResize['general-information']['color'] = 30;
+$columnResize['general-information']['border'] = true;
+
+
+
+
+
+
 $relationDatas = [
     'user_id' => [
         'table' => 'users',
@@ -77,6 +129,11 @@ $relationDatas = [
 ];
 
 ?>
+<script>
+    $(function(){
+
+    })
+</script>
 <div class="content">
     <div class="row">   
         @include("components.blocks.module-block")     
