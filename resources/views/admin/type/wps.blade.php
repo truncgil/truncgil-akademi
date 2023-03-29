@@ -40,6 +40,7 @@ $relationDatas = [
             'joint_type_definition' => '{joint_design}',
             'naks_certificate_no' => '{naks_technology}',
             'technology_category' => '{technology_category}',
+            'work_type' => '{base_metal}',
         ]
     ],
     'naks_certificate_no' => [
