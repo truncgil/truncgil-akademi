@@ -469,6 +469,9 @@ $material_group_test_pieces = db("material_group_test_pieces")->select(
                 $("." + $(this).attr("data-group")).find(".qualitication_backing_gas").val($(this).val());
             }
        });
+       $(".pre_heating_min").on("blur", function() {
+                $("." + $(this).attr("data-group")).find(".pre_heating").val($(this).val());
+       });
   //     $(".pqr-info").removeClass("col-12").addClass("col-md-6");
   //     $(".base-material").removeClass("col-12").addClass("col-md-6");
        $("#pqr-info").addClass("border").addClass("bg-white");
