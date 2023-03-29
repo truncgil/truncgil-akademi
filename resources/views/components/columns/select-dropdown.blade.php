@@ -4,7 +4,7 @@ $filterColumns = isset($columnData['filter-columns']) ? 'filter-columns='.implod
 $addedValues = [];
 ?>
 <div class="input-group select-dropdown {{$columnName}}"  data-group="{{$rowName}}">
-    <input type="text" class="form-control {{isset($listData) ? 'edit' : ''}}" name="{{$columnName}}" 
+    <input type="text" class="form-control {{isset($listData) ? 'edit' : ''}}" readonly name="{{$columnName}}" 
     <?php if(isset($listData))  { 
     ?>
     value="{{$listData->$columnName}}" 
@@ -16,10 +16,9 @@ $addedValues = [];
     <div class="dropdown dropdown-sm">
     <button type="button" class="btn btn-outline-default btn-sm dropdown-toggle {{isset($columnData['filter']) ? "dropdown-filter" : ""}}" 
     data-toggle="dropdown"
+
     data-pattern="{{$columnData['pattern']}}"
-    <?php if(isset($columnData['affected'])) { ?>
-     affected="{{json_encode($columnData['affected'])}}"
-    <?php } ?>
+    
     <?php if(isset($columnData['filter'])) {
          ?>
          data-table="{{$columnData['filter']['table']}}"
@@ -30,10 +29,14 @@ $addedValues = [];
     >
         
     </button>
-    <div class="dropdown-menu">
+    <div class="dropdown-menu dropdown-menu-right">
         <h6 class="dropdown-header"></h6>
         <input type="text" placeholder="{{e2("Search")}}" id="" class="form-control search">
-        <div class="dropdown-list">
+        <div class="dropdown-list"
+        <?php if(isset($columnData['affected'])) { ?>
+                affected="{{json_encode($columnData['affected'])}}"
+        <?php } ?>
+        >
             
             <?php 
             if(isset($columnData['datas']))  { 
@@ -65,7 +68,10 @@ $addedValues = [];
                     foreach($recordedDatas[$columnName] AS $recordedValue) {
                         if(!in_array($recordedValue, $addedValues)) {
                             ?>
-                            <label class="dropdown-item">{{$recordedValue}}</label>
+                            <label class="dropdown-item"
+                            
+                            
+                            >{{$recordedValue}}</label>
                             <?php 
 
                         }

@@ -1,11 +1,20 @@
 <script>
     $(function(){
+        $(".multiple-choice .search").on("keyup", function(){
+            var bu = $(this);
+            var parent = bu.parent(); //tr
+            var value = $(this).val().toLowerCase();
+            parent.find('.dropdown-list .dropdown-item').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+            
+        });
         $(".multiple-choice input[type='checkbox']").on("click", function(){
 
             var selected = [];
             var selector = $(this).parent().parent().find("input[type='checkbox']");
             var checkedSelector = $(this).parent().parent().find("input[type='checkbox']:checked");
-            var parent = $(this).parent().parent().parent().parent();
+            var parent = $(this).parent().parent().parent().parent().parent();
             var input = parent.find("input[type='text']");
             if(input.hasAttr("max")) {
                 var max = input.attr("max");
@@ -26,7 +35,7 @@
                 
             });
             
-            
+            console.log(selected.join(input.attr("seperator")));
             input.val(selected.join(input.attr("seperator"))).trigger("blur");
             //console.log(selected);
         });

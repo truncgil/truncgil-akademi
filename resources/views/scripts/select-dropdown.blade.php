@@ -12,19 +12,27 @@
         });
         $(".select-dropdown .dropdown-item").on("click", function(){
             var parent = $(this).parent().parent().parent().parent();
+            var parentGroupName = parent.attr("data-group");
+            var dataGroupParent = $("." + parentGroupName);
             var json = JSON.parse($(this).attr("data-filter-value"));
-            var affected = $(this).attr("affected");
-            $.each(affected,function(key,value){
+            var affected = $(this).parent().attr("affected");
+            if(affected !== undefined) {
+                affected = JSON.parse(affected);
+                $.each(affected,function(key,value){
                     //var value = d.
+                    console.log(value);
+                    console.log(json);
                     var replaceString = value;
                     //console.log(replaceString
-                    $.each(result, function(resultKey, resultValue){
+
+                    $.each(json, function(resultKey, resultValue){
                         replaceString = replaceString.replace("{"+resultKey+"}",resultValue);
                     });
-                    parent.find("[name='"+key+"']").val(replaceString).trigger("blur");
+                    dataGroupParent.find("[name='"+key+"']").val(replaceString).trigger("blur");
                 });
+            }
             
-            console.log(json);
+            
 
             parent.find("input[type='text']").val($(this).text().trim()).trigger("blur");
         });
