@@ -4,7 +4,7 @@ $filterColumns = isset($columnData['filter-columns']) ? 'filter-columns='.implod
 $addedValues = [];
 ?>
 <div class="input-group select-dropdown {{$columnName}}"  data-group="{{$rowName}}">
-    <input type="text" class="form-control {{isset($listData) ? 'edit' : ''}}" readonly name="{{$columnName}}" 
+    <input type="text" class="form-control select-dropdown-input {{isset($listData) ? 'edit' : ''}}" readonly name="{{$columnName}}" 
     <?php if(isset($listData))  { 
     ?>
     value="{{$listData->$columnName}}" 

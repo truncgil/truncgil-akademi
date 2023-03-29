@@ -7,7 +7,7 @@ $seperator = isset($columnData['seperator']) ? $columnData['seperator'] : ',';
 <div class="input-group multiple-choice {{$columnName}}"  data-group="{{$rowName}}">
     <input type="text" 
     readonly
-    class="form-control {{isset($listData) ? 'edit' : ''}}" 
+    class="form-control multiple-choice-input {{isset($listData) ? 'edit' : ''}}" 
     name="{{$columnName}}" 
     seperator="{{$seperator}}"
     <?php if(isset($listData))  { 

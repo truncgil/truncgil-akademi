@@ -9,13 +9,17 @@
             });
             
         });
+        $(".multiple-choice > input").on("click", function(e) {
+            e.stopPropagation();
+            $(this).parent().find('[data-toggle=dropdown]').dropdown('toggle');
+        });
         $(".multiple-choice input[type='checkbox']").on("click", function(){
 
             var selected = [];
             var selector = $(this).parent().parent().find("input[type='checkbox']");
             var checkedSelector = $(this).parent().parent().find("input[type='checkbox']:checked");
             var parent = $(this).parent().parent().parent().parent().parent();
-            var input = parent.find("input[type='text']");
+            var input = parent.find(".multiple-choice-input");
             if(input.hasAttr("max")) {
                 var max = input.attr("max");
                 console.log(max);

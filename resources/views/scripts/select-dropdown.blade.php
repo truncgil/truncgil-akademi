@@ -10,6 +10,10 @@
             });
             
         });
+        $(".select-dropdown > input").on("click", function(e) {
+            e.stopPropagation();
+            $(this).parent().find('[data-toggle=dropdown]').dropdown('toggle');
+        });
         $(".select-dropdown .dropdown-item").on("click", function(){
             var parent = $(this).parent().parent().parent().parent();
             var parentGroupName = parent.attr("data-group");
@@ -34,7 +38,7 @@
             
             
 
-            parent.find("input[type='text']").val($(this).text().trim()).trigger("blur");
+            parent.find(".select-dropdown-input").val($(this).text().trim()).trigger("blur");
         });
     });
 </script>
