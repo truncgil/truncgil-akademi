@@ -32,11 +32,6 @@ $blockGroup = [
         'grade_1',
         'grade_2',
         'joint_type',
-        'diameter',
-        'dia_min',
-        'dia_max',
-        'thk_min',
-        'thk_max',
         'welding_method',
         'wire',
         'electrode',
@@ -46,6 +41,14 @@ $blockGroup = [
         'evaluated_norm',
         'approval_date',
         'status',
+    ],
+    'Qualification Range' => [
+        'diameter',
+        'thickness',
+        'dia_min',
+        'dia_max',
+        'thk_min',
+        'thk_max',
     ],
     'VT' => [
         'vt_date',
@@ -106,6 +109,18 @@ $blockGroup = [
 
 ];
 
+$columnRedesign['diameter']['class'] = "col-md-6";
+$columnRedesign['thickness']['class'] = "col-md-6";
+$columnRedesign['pwht_operator_name_surname']['class'] = "col-md-6";
+$columnRedesign['pwht_operator_id']['class'] = "col-md-6";
+
+$columnsArray = ['vt', 'rt', 'ht', 'pt', 'pmi', 'bending', 'impact', 'metallography', 'ferrit', 'tensile'];
+foreach($columnsArray AS $columnKey) {
+    $columnRedesign[$columnKey . '_date']['class'] = "col-md-6";
+    $columnRedesign[$columnKey . '_report_no']['class'] = "col-md-6";
+    $columnRedesign[$columnKey . '_result']['class'] = "col-md-12";
+}
+
 $relationDatas = [
     'naks_id' => [
         'datas' => $naksWelders,
@@ -139,13 +154,11 @@ $relationDatas = [
         
     ],
     'wps_no' => [
-        'table' => 'w_p_s',
         'datas' => $wps,
-        'value' => 'id',
-        'text' => ['id'],
-        'type' => 'select',
+        'pattern' => '{details}',
+        'type' => 'select-dropdown',
         'affected' => [
-            'welding_date' => '{date}',
+            //'welding_date' => '{date}',
         ]
     ],
     
@@ -220,6 +233,8 @@ $relationDatas = [
 
         $(".vt,.ht,.pt,.pmi,.rt,.tensile,.bending,.impact,.metallography,.ferrit").removeClass("col-12").addClass("col-md-6");
         $("#vt,#ht,#pt,#pmi,#rt,#tensile,#bending,#impact,#metallography,#ferrit,#corrosion").addClass("border").addClass("bg-white");
+
+
 
         $(".naks_no .dropdown-item").on("click", function() {
             console.log(".naks_no .dropdown-item");
@@ -299,6 +314,22 @@ $relationDatas = [
                 .attr("min",json.min_thick)
                 .attr("max",json.max_thick)
                 .attr("required", true);
+        });
+
+        $(".wps_no .dropdown-item").on("click", function(){
+            var json = JSON.parse($(this).attr("data-filter-value"));
+            var dataGroup = $(this).attr("data-group");
+            var parent = $("." + dataGroup);
+            var ruGroup = json.russian_standard_group_no_1;
+            console.log(json);
+            parent.find(".welding_date").attr("min", json.approved_date);
+            
+            parent.find(".grade_1 .dropdown-item").filter(function(){
+                $(this).toggle($(this).attr("data-filter-value").indexOf(ruGroup.trim()) > -1);
+            });
+            parent.find(".grade_2 .dropdown-item").filter(function(){
+                $(this).toggle($(this).attr("data-filter-value").indexOf(ruGroup.trim()) > -1);
+            });
         });
 
         
