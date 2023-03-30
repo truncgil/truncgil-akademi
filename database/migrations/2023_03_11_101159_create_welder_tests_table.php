@@ -25,7 +25,7 @@ class CreateWelderTestsTable extends Migration
             $table->date('naks_validity')->nullable()->default(null);
             $table->string('wps_no')->nullable()->default(null);
             $table->date('welding_date')->nullable()->default(null);
-            $table->integer('kss_number')->nullable()->default(null);
+            $table->string('kss_number')->nullable()->default(null);
             $table->string('material_group_1')->nullable()->default(null);
             $table->string('material_group_2')->nullable()->default(null);
             $table->string('grade_1')->nullable()->default(null);
