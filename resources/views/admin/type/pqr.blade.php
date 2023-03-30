@@ -96,11 +96,14 @@ $relationDatas = [
         'type' => 'multiple-choice'
     ],
     'technology_category' => [
+        /*
         'filter' => [
             'targetColumn' => 'naks_technology',
             'table' => 'naks_certificates',
             'filterColumn' => 'certificate_no'
         ],
+        */
+        'datas' => $naksTechnology,
         'pattern' => '{technology_category}',
         'type' => 'select-dropdown'
     ],
@@ -232,6 +235,8 @@ $material_group_test_pieces = db("material_group_test_pieces")->select(
             $( document ).ajaxComplete(function(event, xhr, settings) {
                 type_grade_json = xhr.responseJSON;
                 var value = parent.find(".p_no_from").val();
+                console.log(material_group_test_pieces);
+                console.log(value);
                 parent.find(".qualitication_group_of_parent_material").val(material_group_test_pieces[value]);
                 
             });
@@ -391,22 +396,25 @@ $material_group_test_pieces = db("material_group_test_pieces")->select(
             }
         });
         $(".welding_process .dropdown-item input:checkbox").on("click", function(){
-            var parent = $(this).parent().parent().parent().parent();
+            var parent = $(this).parent();
             var dataGroup = parent.attr("data-group");
+            console.log(dataGroup);
             var dataGroupParent = $("." + dataGroup);
-            var checkboxChecked = parent.find("input:checked").parent();
+            var checkboxChecked = dataGroupParent.find(".welding_process input:checked").parent();
             var selectedNumbers = [];
+            dataGroupParent.find(".qualitication_process").val("");
             $.each(checkboxChecked, function(index, item) {
                 var json = JSON.parse($(this).attr("data-filter-value"));
                 selectedNumbers.push(json.en_welding_number);
             });
+            console.log(selectedNumbers);
             dataGroupParent.find(".qualitication_process").val(selectedNumbers.join(" + "));
         });
         $(".brend .dropdown-item input:checkbox").on("click", function(){
-            var parent = $(this).parent().parent().parent().parent();
+            var parent = $(this).parent();
             var dataGroup = parent.attr("data-group");
             var dataGroupParent = $("." + dataGroup);
-            var checkboxChecked = parent.find("input:checked").parent();
+            var checkboxChecked = dataGroupParent.find(".brend input:checked").parent();
             var selectedNumbers = [];
             var selectedFilterMetals = [];
             $.each(checkboxChecked, function(index, item) {
@@ -425,10 +433,10 @@ $material_group_test_pieces = db("material_group_test_pieces")->select(
         });
 
        $(".naks_technology .dropdown-item input:checkbox").on("click", function() {
-            var parent = $(this).parent().parent().parent().parent();
+            var parent = $(this).parent();
             var dataGroup = parent.attr("data-group");
             var dataGroupParent = $("." + dataGroup);
-            var checkboxChecked = parent.find("input:checked").parent();
+            var checkboxChecked = dataGroupParent.find(".naks_technology input:checked").parent();
 
             var baseMetalUsedForPQRCoupon = ".base_metal_used_for_pqr_coupon .dropdown-item"; 
             var weldingProcess = ".welding_process .dropdown-item"; 
