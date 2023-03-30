@@ -32,7 +32,11 @@ $seperator = isset($columnData['seperator']) ? $columnData['seperator'] : ',';
     </button>
     <div class="dropdown-menu dropdown-menu-right">
         <input type="text" placeholder="{{e2("Search")}}" id="" class="form-control search">
-        <div class="dropdown-list">
+        <div class="dropdown-list"
+        <?php if(isset($columnData['affected'])) { ?>
+                affected="{{json_encode($columnData['affected'])}}"
+        <?php } ?>
+        >
         <?php foreach($datas AS $data)  { 
             $patternString = $columnData['pattern'];
             $values = [];

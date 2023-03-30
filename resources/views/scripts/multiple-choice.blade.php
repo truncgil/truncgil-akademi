@@ -20,17 +20,33 @@
             var selector = $(this).parent().parent().find("input[type='checkbox']");
             var checkedSelector = $(this).parent().parent().find("input[type='checkbox']:checked");
             var parent = $(this).parent().parent().parent().parent().parent();
+            var dataGroup = $(this).parent().attr("data-group");
+            var dataGroupParent = $("." + dataGroup);
             var input = parent.find(".multiple-choice-input");
+
+            var json = JSON.parse($(this).parent().attr("data-filter-value"));
+            var affected = $(this).parent().parent().attr("affected");
+
+            if(affected !== undefined) {
+                affected = JSON.parse(affected);
+
+                $.each(affected,function(key,value){
+                    var replaceString = value;
+
+                    $.each(json, function(resultKey, resultValue){
+                        replaceString = replaceString.replace("{"+resultKey+"}",resultValue);
+                    });
+                    dataGroupParent.find("[name='"+key+"']").val(replaceString).trigger("blur");
+                });
+            }
+
             if(input.hasAttr("max")) {
                 var max = input.attr("max");
-       //         if(!$(this).is(":checked")) {
                     if(checkedSelector.length>max) {
                         return false;
                     }
-         //       }
-                
-
             }
+
             selector.each(function() {
                 if($(this).is(":checked")) {
                     selected.push($(this).val());

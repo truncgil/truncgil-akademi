@@ -107,17 +107,31 @@ $blockGroup = [
 ];
 
 $relationDatas = [
-    'naks_no' => [
-        'table' => 'naks_welders',
+    'naks_id' => [
         'datas' => $naksWelders,
-        'value' => 'naks_certificate_no',
-        'text' => ['naks_certificate_no'],
-        'type' => 'select',
+        'pattern' => "{welder_id}",
+        'type' => 'select-dropdown',
+        'filter-columns' => [
+            'naks_no'
+        ]
+        
+        
+    ],
+    'material_group_gost' => [
+        'datas' => [],
+        'pattern' => "{}",
+        'type' => 'select-dropdown'
+        
+        
+    ],
+
+    'naks_no' => [
+        'datas' => $naksWelders,
+        'pattern' => "{naks_certificate_no}",
+        'type' => 'multiple-choice',
         'affected' => [
             'name_surname' => '{welder_name_ru}',
-            'naks_id' => '{welder_id}',
-            'technology_range' => '{group_of_technical_device}',
-            'material_group_gost' => '{material}',
+          //  'material_group_gost' => '{material_1}',
             'naks_validity' => '{period_of_validity}',
             'joint_type' => '{weld_type}',
             'welding_method' => '{process}',
@@ -198,6 +212,7 @@ $relationDatas = [
 ];
 
 ?>
+
 <script>
     $(function(){
         var type_grade_json;
@@ -205,6 +220,67 @@ $relationDatas = [
 
         $(".vt,.ht,.pt,.pmi,.rt,.tensile,.bending,.impact,.metallography,.ferrit").removeClass("col-12").addClass("col-md-6");
         $("#vt,#ht,#pt,#pmi,#rt,#tensile,#bending,#impact,#metallography,#ferrit,#corrosion").addClass("border").addClass("bg-white");
+
+        $(".naks_no .dropdown-item").on("click", function() {
+            console.log(".naks_no .dropdown-item");
+            var selectedItems = $(".naks_no input:checked");
+            var dataGroup = $(this).attr("data-group");
+            var dataGroupParent = $("." + dataGroup); 
+
+            var technologyRange = dataGroupParent.find(".technology_range");
+            var materialGroupGost = dataGroupParent.find(".material_group_gost");
+            technologyRange.val("");
+
+            var materials = [];
+
+            $.each(selectedItems, function(selectedItemIndex, selectedItem) {
+                var json = JSON.parse($(this).parent().attr("data-filter-value"));
+                var material_1 = json.material_1.split(",");
+                var material_2 = json.material_2.split(",");
+                var material_3 = json.material_3.split(",");
+                var material_4 = json.material_4.split(",");
+                materials = materials.concat(material_1, material_2, material_3, material_4);
+
+                technologyRange.val(technologyRange.val() + "," + json.group_of_technical_device);
+
+            
+
+            });
+
+            var added = [];
+            $.each(materials, function(materialIndex, materialItem) {
+                if(!added.includes(materialItem)) {
+                    added.push(materialItem);
+                }
+            });
+
+            $.each(added, function(addedIndex, addedItem) {
+                dataGroupParent.find(".material_group_gost .dropdown-list").append(
+                    '<label class="dropdown-item" data-group="'+ dataGroup +'" data-filter-value="">'
+                    + '<input type="checkbox" value="' + addedItem + '" name="" id="">'
+                    + addedItem + '</label>');
+            });
+
+            dataGroupParent.find(".material_group_gost input").on("click", function() {
+                var checkedItems = dataGroupParent.find(".material_group_gost input:checked");
+                var checkedValues = [];
+                $.each(checkedItems, function(checkedIndex, checkedItems) {
+
+                    checkedValues.push($(this).val());
+
+                });
+
+                console.log(checkedValues.join(","));
+
+                dataGroupParent.find(".material_group_gost .select-dropdown-input").val(checkedValues.join(","));
+            });
+
+            
+
+
+
+
+        });
 
         $(".joint_type .dropdown-item").on("click", function(){
             var parent = $(this).parent().parent().parent().parent();
